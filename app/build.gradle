@@ -1,0 +1,106 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        // The Fabric Gradle plugin uses an open ended version to react
+        // quickly to Android tooling updates
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+def debugsuffix = System.
+        getProperty('debugsuffix', project.getProperties().get('debugsuffix', null))
+
+def final theApplicationId = 'co.crossroadsapp.leagueoflegends'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId = theApplicationId
+        minSdkVersion 19
+        targetSdkVersion 23
+        versionCode 113
+        versionName "1.3.2"
+        multiDexEnabled true
+    }
+//    buildTypes {
+//        release {
+////            minifyEnabled false
+////            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+////            applicationVariants.all { variant ->
+////                variant.outputs.each { output ->
+////                    String formattedString = "crossroads";
+////                    output.outputFile = new File(output.outputFile.parent, output.outputFile.name.replace("app-dev-release", formattedString))
+////                }
+////            }
+//        }
+//        debug {
+////            applicationVariants.all { variant ->
+////                variant.outputs.each { output ->
+////                    String formattedString = "dev_csrd";
+////                    output.outputFile = new File(output.outputFile.parent, output.outputFile.name.replace("app-dev-debug", formattedString))
+////                }
+////            }
+//        }
+//    }
+
+    productFlavors {
+        rel {
+            applicationId = theApplicationId
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    String formattedString = "crossroads";
+                    output.outputFile = new File(output.outputFile.parent, output.outputFile.name.replace("app-rel-release", formattedString))
+                }
+            }
+        }
+        dev {
+            applicationId = 'dev.crossroadsapp.destiny'
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    String formattedString = "dev_csrd";
+                    output.outputFile = new File(output.outputFile.parent, output.outputFile.name.replace("app-dev-release", formattedString))
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.3@aar') {
+        transitive = true;
+    }
+    compile 'com.loopj.android:android-async-http:1.4.9'
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.mixpanel.android:mixpanel-android:4.+'
+    compile 'io.branch.sdk.android:library:2.+'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:cardview-v7:23.4.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.google.android.gms:play-services-gcm:9.2.0'
+    compile 'com.android.support:support-v13:23.4.0'
+    compile 'com.parse.bolts:bolts-android:1.+'
+    compile 'fr.avianey.com.viewpagerindicator:library:2.4.1@aar'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.google.firebase:firebase-database:9.2.0'
+    compile 'com.google.firebase:firebase-invites:9.2.0'
+    compile 'com.android.support:support-v4:23.4.0'
+    compile 'joda-time:joda-time:2.9.5'
+}
+
+apply plugin: 'com.google.gms.google-services'
