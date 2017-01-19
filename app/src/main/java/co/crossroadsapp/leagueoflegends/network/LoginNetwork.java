@@ -24,7 +24,8 @@ public class LoginNetwork extends Observable {
 
     private Context mContext;
     private NetworkEngine ntwrk;
-    private String url = Constants.VALIDATE_USERLOGIN_URL;
+    //private String url = Constants.VALIDATE_USERLOGIN_URL;
+    private String url = Constants.LOGIN_URL;
     private String url_reg = Constants.REGISTRATION_URL;
     private String urlUser = Constants.USER_BY_ID_URL;
     private UserData user;

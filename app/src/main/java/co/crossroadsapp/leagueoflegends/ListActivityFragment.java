@@ -230,7 +230,7 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
 
         appIcon = (ImageView) findViewById(R.id.badge_icon);
 
-        if (user!=null) {
+        if (user!=null && user.getImageUrl()!=null) {
             updateUserProfileImage(user.getImageUrl());
             if (user.getUser()!=null){
                 userNameDrawer.setText(user.getPsnId());

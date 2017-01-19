@@ -150,7 +150,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/login_name"
-            android:hint="@string/playstation_hint"
+            android:hint="Enter email address"
             android:textColor="@color/trimbe_white"
             android:textCursorDrawable="@drawable/cursor_draw"
             android:background="@null"

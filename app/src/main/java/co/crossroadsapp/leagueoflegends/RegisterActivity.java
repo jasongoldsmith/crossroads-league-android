@@ -59,9 +59,9 @@ public class RegisterActivity extends BaseActivity implements Observer {
         Bundle b = getIntent().getExtras();
         //user = b.getParcelable("userdata");
 
-        final String consoleType = Util.getDefaults("consoleType", getApplicationContext());
-        final String memId = Util.getDefaults("membershipId", getApplicationContext());
-        final String consoleId = Util.getDefaults("consoleId", getApplicationContext());
+//        final String consoleType = Util.getDefaults("consoleType", getApplicationContext());
+//        final String memId = Util.getDefaults("membershipId", getApplicationContext());
+//        final String consoleId = Util.getDefaults("consoleId", getApplicationContext());
 
 //        mPrefs = getPreferences(MODE_PRIVATE);
 
@@ -69,22 +69,22 @@ public class RegisterActivity extends BaseActivity implements Observer {
 
         dialog = new ProgressDialog(this);
 
-        consoleIdText = (TextView) findViewById(R.id.psn);
+        //consoleIdText = (TextView) findViewById(R.id.psn);
 
-        setConsoleIdText(consoleType, consoleId);
+        //setConsoleIdText(consoleType, consoleId);
 
         name_signup = (EditText) findViewById(R.id.signup_name);
         pswd_signup = (EditText) findViewById(R.id.signup_pswrd);
         pswd_signup.setTypeface(Typeface.DEFAULT);
         pswd_signup.setTransformationMethod(new PasswordTransformationMethod());
 
-        psnid_signup = (EditText) findViewById(R.id.signup_psn);
+        //psnid_signup = (EditText) findViewById(R.id.signup_psn);
         signup_btn = (ImageView) findViewById(R.id.signup_btn);
 
-        if((consoleId!=null) && (!consoleId.isEmpty())) {
-            psnid_signup.setText(consoleId);
-            psnid_signup.setEnabled(false);
-        }
+//        if((consoleId!=null) && (!consoleId.isEmpty())) {
+//            psnid_signup.setText(consoleId);
+//            psnid_signup.setEnabled(false);
+//        }
 //        privacyTerms = (TextView) findViewById(R.id.privacy_terms);
 //
 //        webView = (WebView) findViewById(R.id.web);
@@ -157,12 +157,12 @@ public class RegisterActivity extends BaseActivity implements Observer {
             }
         });
 
-        psnid_signup.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View v, boolean hasFocus) {
-                //pswd_signup.setHint("");
-                v.performClick();
-            }
-        });
+//        psnid_signup.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                //pswd_signup.setHint("");
+//                v.performClick();
+//            }
+//        });
 
         pswd_signup.addTextChangedListener(new TextWatcher() {
             @Override
@@ -179,19 +179,19 @@ public class RegisterActivity extends BaseActivity implements Observer {
             }
         });
 
-        psnid_signup.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
-                    // the user is done typing.
-                    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                    //to hide it, call the method again
-                    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-                    //signup_btn.performClick();
-                }
-                return false;
-            }
-        });
+//        psnid_signup.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
+//                    // the user is done typing.
+//                    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+//                    //to hide it, call the method again
+//                    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+//                    //signup_btn.performClick();
+//                }
+//                return false;
+//            }
+//        });
 
         signup_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -199,9 +199,10 @@ public class RegisterActivity extends BaseActivity implements Observer {
                 v.setEnabled(false);
                 username = name_signup.getText().toString();
                 password = pswd_signup.getText().toString();
-                psnid = psnid_signup.getText().toString();
+                //psnid = psnid_signup.getText().toString();
 
-                if (!username.isEmpty() && !password.isEmpty() && !psnid.isEmpty()) {
+//                if (!username.isEmpty() && !password.isEmpty() && !psnid.isEmpty()) {
+                if (!username.isEmpty() && !password.isEmpty()) {
                     signup_btn.setImageDrawable(getResources().getDrawable(R.drawable.img_login_btn_tapped));
                     RequestParams params = new RequestParams();
                     params.put("userName", username);
@@ -209,14 +210,14 @@ public class RegisterActivity extends BaseActivity implements Observer {
                     //params.put("psnId", psnid);
 
                     //testing params for array list
-                    List<Map<String, String>> consoles = new ArrayList<Map<String,
-                                                String>>();
-                    Map<String, String> user1 = new HashMap<String, String>();
-                    user1.put("consoleType", consoleType);
-                    user1.put("consoleId", consoleId);
-                    consoles.add(user1);
-                    params.put("consoles", consoles);
-                    params.put("bungieMemberShipId", memId);
+//                    List<Map<String, String>> consoles = new ArrayList<Map<String,
+//                                                String>>();
+//                    Map<String, String> user1 = new HashMap<String, String>();
+//                    user1.put("consoleType", consoleType);
+//                    user1.put("consoleId", consoleId);
+//                    consoles.add(user1);
+//                    params.put("consoles", consoles);
+//                    params.put("bungieMemberShipId", memId);
                     dialog.show();
                     dialog.setCancelable(false);
                     mManager.postLogin(RegisterActivity.this, params, Constants.REGISTER);
@@ -290,7 +291,8 @@ public class RegisterActivity extends BaseActivity implements Observer {
 
     private void enableSubmitIfReady() {
         if(name_signup!=null && pswd_signup!=null) {
-            if (!name_signup.getText().toString().isEmpty() && !pswd_signup.getText().toString().isEmpty() && !psnid_signup.getText().toString().isEmpty()) {
+//            if (!name_signup.getText().toString().isEmpty() && !pswd_signup.getText().toString().isEmpty() && !psnid_signup.getText().toString().isEmpty()) {
+            if (!name_signup.getText().toString().isEmpty() && !pswd_signup.getText().toString().isEmpty()) {
                 signup_btn.setImageDrawable(getResources().getDrawable(R.drawable.img_login_btn_tapped));
             } else {
                 signup_btn.setImageDrawable(getResources().getDrawable(R.drawable.img_login_btn));
@@ -315,12 +317,11 @@ public class RegisterActivity extends BaseActivity implements Observer {
                 mManager.setUserdata(ud);
 
                 // decide the activity to open
-                Intent regIntent = mManager.decideToOpenActivity(null);
-//            Intent regIntent = new Intent(getApplicationContext(),
-//                    CreateNewEvent.class);
-                //regIntent.putExtra("userdata", ud);
-                startActivity(regIntent);
-                finish();
+                //Intent regIntent = mManager.decideToOpenActivity(null);
+//                    Intent regIntent = new Intent(getApplicationContext(),
+//                    SelectRegionActivity.class);
+//                startActivity(regIntent);
+//                finish();
             }
         }
         }

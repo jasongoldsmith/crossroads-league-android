@@ -60,7 +60,7 @@ android {
             applicationId = theApplicationId
             applicationVariants.all { variant ->
                 variant.outputs.each { output ->
-                    String formattedString = "crossroads";
+                    String formattedString = "crossroads:lol";
                     output.outputFile = new File(output.outputFile.parent, output.outputFile.name.replace("app-rel-release", formattedString))
                 }
             }
@@ -69,7 +69,7 @@ android {
             applicationId = 'dev.crossroadsapp.destiny'
             applicationVariants.all { variant ->
                 variant.outputs.each { output ->
-                    String formattedString = "dev_csrd";
+                    String formattedString = "dev_csrd_lol";
                     output.outputFile = new File(output.outputFile.parent, output.outputFile.name.replace("app-dev-release", formattedString))
                 }
             }

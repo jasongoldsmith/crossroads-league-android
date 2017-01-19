@@ -51,7 +51,7 @@ import java.util.Observer;
 public class MainActivity extends BaseActivity implements Observer {
 
     //private View register_layout;
-    private RelativeLayout signin_playstation;
+    private RelativeLayout login;
     public UserData userData;
     Intent contentIntent;
     private String p;
@@ -68,7 +68,7 @@ public class MainActivity extends BaseActivity implements Observer {
     private Handler handler;
     private LinearLayoutManager horizontalLayoutManagaer;
     private InvitationLoginData invitationRp;
-    private RelativeLayout signin_xbox;
+    private RelativeLayout signup;
     private String cookies;
     private WebView webViewPS;
     private WebView webViewXBOX;
@@ -384,8 +384,8 @@ public class MainActivity extends BaseActivity implements Observer {
 //            mManager.getPublicEventList(MainActivity.this);
 //        }
         //register_layout = findViewById(R.id.register);
-        signin_playstation = (RelativeLayout) findViewById(R.id.playstation);
-        signin_xbox = (RelativeLayout) findViewById(R.id.xbox);
+        login = (RelativeLayout) findViewById(R.id.playstation);
+        signup = (RelativeLayout) findViewById(R.id.xbox);
 //            register_layout.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
@@ -400,22 +400,32 @@ public class MainActivity extends BaseActivity implements Observer {
 //                    finish();
 //                }
 //            });
-        signin_playstation.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TravellerLog.w(this, "Launch login page activity");
-                console = Constants.PLAYSTATION;
-                launchLogin();
-                //finish();
+//                TravellerLog.w(this, "Launch login page activity");
+//                console = Constants.PLAYSTATION;
+//                launchLogin();
+                TravellerLog.w(this, "Launch login activity");
+                    Intent regIntent = new Intent(getApplicationContext(),
+                            LoginActivity.class);
+                    //regIntent.putExtra("userdata", userData);
+                    startActivity(regIntent);
+                    finish();
             }
         });
-        signin_xbox.setOnClickListener(new View.OnClickListener() {
+        signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TravellerLog.w(this, "Launch login page activity");
-                console = Constants.XBOX;
-                launchLogin();
-                //finish();
+//                TravellerLog.w(this, "Launch login page activity");
+//                console = Constants.XBOX;
+//                launchLogin();
+                TravellerLog.w(this, "Launch signup activity");
+                    Intent regIntent = new Intent(getApplicationContext(),
+                            RegisterActivity.class);
+                    //regIntent.putExtra("userdata", userData);
+                    startActivity(regIntent);
+                    finish();
             }
         });
     }

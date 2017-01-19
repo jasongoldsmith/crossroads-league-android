@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/img_b_g_v_nightfall_strike_default"
+        android:src="@drawable/img_b_g_launch_scrn"
         android:layout_alignParentTop="true"
         android:adjustViewBounds="true"/>
 
@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/traveller_bdg"
-        android:src="@drawable/img_traveler_badge"
+        android:src="@drawable/img_c_r_lo_l_brand"
         android:layout_marginTop="129dp"
         android:layout_centerHorizontal="true"/>
 
@@ -31,11 +31,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/playstation"
-            android:background="#0086d0">
-            <ImageView
+            android:background="#947b42">
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/p_s_n_logo"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:text="LOG IN"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
 
@@ -44,11 +48,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/xbox"
-            android:background="@color/user_profile_border_xbox">
-            <ImageView
+            android:background="#b79954">
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/xbox_live_logo"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:text="SIGN UP"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
 

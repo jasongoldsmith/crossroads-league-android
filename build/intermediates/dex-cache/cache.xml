@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8a372c4191f80489770a231f7be4820b204b886a">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.android.support-cardview-v7-25.0.0_2d9bfff97fde1dd770339fcbd9b8ae4d01def40d/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.android.support-support-compat-25.0.0_bd01f92106291867b2e701b4333a0845cf96dcc0/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="43a08f2cc1bc8e9678b5a1740f3b91b50ab50ac6">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.facebook.android-facebook-android-sdk-4.18.0_a321bcb10967cdf50dbd6552e9119c8d022c7b92/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/customtabs/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="94ba691efc31bf53264db0716d9c9ec03843ea31">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.android.support-customtabs-25.0.0_6adb2505d243204fc6dfe7515fa782f335fd7143/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.android.support-support-vector-drawable-25.0.0_86fe07da34e608192e2102f1e436cdc9d5441041/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="363f626ad5686283250cdb6073ae1bba5cb07a87">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.google.firebase-firebase-common-9.2.0_65be8cf016ca430116ef37f15c58949c16d36ff7/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/internal_impl-25.0.0_0444956be106e2a18706aec9c8910b487939769a/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database/9.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d7572433ba21aa9e4624c819fa738b2748b82d05">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.google.firebase-firebase-database-9.2.0_bda8349c73df38ec72d57f98092b00df0b3add40/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/internal_impl-25.0.0_0c79f6eca990efbcf41d09057bf5c7cf1d63316f/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.android.support-appcompat-v7-25.0.0_5a28fbada497bdc2235418a024b75a5d359aa368/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.android.support-support-core-utils-25.0.0_02278ba5c003d178198e692b4fd9f0b50cdc270e/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/crashlytics/2.6.3/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="945351720761133089e10b45ab9a8dce04fd4e3f">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.crashlytics.sdk.android-crashlytics-2.6.3_1d440d9f880d497ec5ca7e0671895747813adef6/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.android.support-support-media-compat-25.0.0_88b2df478292a0fd3acde95ca4e2087c03972918/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database-connection/9.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="33203b081101ca6242a4cd746aafe5fc2dd98a34">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.google.firebase-firebase-database-connection-9.2.0_b00ad1e1a3685a294256e0b67d13f62da6f90597/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.9.5/5f01da7306363fad2028b916f3eab926262de928/joda-time-2.9.5.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="5f01da7306363fad2028b916f3eab926262de928">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/joda-time-2.9.5_18ee5a0d47ca0ec42bfb3c81e495420e5be23afc/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.android.support-design-23.4.0_fea91610cced5af96f1226d7d4ae6e53debd1646/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/incremental-classes/dev/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="9ec7d453191bfdf5a01344d59cf2950da95167c4">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/instant-run-bootstrap_9651cc9acbf1529808d765cada6262dfa504695e/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="07daa0b6e1d455c82a38422ffe287c18823d339a">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.android.support-support-fragment-25.0.0_aeced904714046a6de9658a0a50da9d317626ece/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/fr.avianey.com.viewpagerindicator/library/2.4.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="86f452c126cb92a79e1dcf08efec5404529b698e">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/fr.avianey.com.viewpagerindicator-library-2.4.1_9240dc3cc543f7a8f96d23762c63a73fbf073b84/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/beta/1.2.2/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b42cf2134829f715edfa2adaf0ee246631322dba">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.crashlytics.sdk.android-beta-1.2.2_0c4e6f9f6e844b7fdf1b5173abc5901508a0bb7a/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/crashlytics-core/2.3.12/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e052a32a30acd5705ab2d581fd4274c8ff263cb5">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.crashlytics.sdk.android-crashlytics-core-2.3.12_6ef0dce4194c91f453692ef6f40415926a4d7aa0/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="dd7676ac12aa6653718b7ea33d93ce9d6915d526">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.google.android.gms-play-services-basement-9.2.0_9a6e077f0e8f648feef25910ec30e0a312c839c5/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="593fbaec1c3e100480a2bd72457b64b7dde6ac2d">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.google.android.gms-play-services-tasks-9.2.0_0eee0bc1c0aa5fb08e50dff0cf93e270191dad7e/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="26674000177e45447a0326a6ad84612761199a13">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.android.support-support-core-ui-25.0.0_c20aa0191c0e7ceea24369feeaf5b4a15734f523/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/internal_impl-25.0.0_1010d67f3a4b56f7934e03909dcc0502efa25c27/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/libs/firebase-client-android-2.3.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="40379dc17021767e23597c2b23cda32ed6f37155">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/2/firebase-client-android-2.3.1_2e6b9f2fda6bcca4765ebb9377a06703db43d708/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.4/695b63d702f505b9b916e02272e3b6381bade7f/gson-2.4.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="0695b63d702f505b9b916e02272e3b6381bade7f">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/gson-2.4_a5577f6465d871276605a452d65a0a97fd50a8cf/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.mixpanel.android/mixpanel-android/4.9.3/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="76ddce763ecf8a63007603028e881394390232bf">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.mixpanel.android-mixpanel-android-4.9.3_aa6b6e9ec3601b4469182a2a5eb1b3013eff9919/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/answers/1.3.10/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ed6b455e3dd7bbf1ff31f8df0b41e2f0d87f3ace">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.crashlytics.sdk.android-answers-1.3.10_bc5f25066a02ecfd0bc234f30fdf22267df8eb4b/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.0/support-annotations-25.0.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a22d2cc94da87b254451fa8ed28afc30b4653773">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/support-annotations-25.0.0_d9ae56699ea914cdd6575ea8dc71c41d6471f2c3/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.4.0/8ad21bf21784dacce5f2043afb97218cc377e835/bolts-applinks-1.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/bolts-applinks-1.4.0_31daeba18b8a6c9afa6b801c293892864a583c92/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/.gradle/caches/modules-2/files-2.1/cz.msebera.android/httpclient/4.3.6/526a9f794eab830eae4f23a62c572878b3f491ab/httpclient-4.3.6.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="526a9f794eab830eae4f23a62c572878b3f491ab">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/httpclient-4.3.6_f8b7e267200b7c75936ceea1b2bb66ba57c89358/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/multidex/1.0.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.android.support-multidex-1.0.1_94ec8b13e8843b4f6afbf2f569956955a764f397/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.android.support-recyclerview-v7-23.4.0_15d0d8f5ddf857f06930082523ce6b3771e1212f/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/io.fabric.sdk.android/fabric/1.3.14/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a319fd4d548ba4cc9511561d37109ba922bfbf6a">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/io.fabric.sdk.android-fabric-1.3.14_57faba23d6c4a809ea5d9d1df101500df3609c29/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="dc4c18602ecffb3e69cda6cdc51ba4feac0f97d7">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.google.firebase-firebase-iid-9.2.0_71b1f4714a0f50de2dafebf23ff362f19060d459/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="fb15fd9774b5c51dcb39d8e6fa1b6f06bcd1cd34">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.google.firebase-firebase-analytics-impl-9.2.0_527ceac13d88b9201e720a81bfb43c9d87a5d73f/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/internal_impl-25.0.0_5a9d8b0117ef4f1b313d4a90e7d89aabbf825b67/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/incremental-runtime-classes/dev/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ab66c50e937dd749e362ee5bdda9228e84da5fcd">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/instant-run_c9785dd8333577cd01314fb04e597a0190e8355c/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/internal_impl-25.0.0_f936316324d3c13d1d4d8d5c6d515f3d47c643cc/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/9.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="535d4497b5fa5d451e07a043e9e220d5c25ab7c7">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.google.android.gms-play-services-gcm-9.2.0_f7cbd953236a850d6a6dde2d684b73331251197d/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/picasso-2.5.2_4ace823f1ea2f8964c41a6494ba1fbc2ecb04535/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/support-v13/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="2bf893856577f5038c0b8007a43fda3b3c5beb23">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.android.support-support-v13-23.4.0_601122573b9db6a7bb12f521c7494dacf905c22b/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.9/386a4339ffe52d5d63e80f9bed8d2b1d1a418249/android-async-http-1.4.9.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/android-async-http-1.4.9_2d0b54329f9402ef0bbe580ae2a4f8a85d2a38b3/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/support-v13/23.4.0/jars/libs/internal_impl-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="be09545b7e6ff322c7286d2e80bed3b75b76c529">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/internal_impl-23.4.0_3f9fd263dfdccd53143f2d24d4b4bece2086e2aa/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="30489a97b06cc3945bdbcc1770089af9e3b3b64d">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.google.android.gms-play-services-base-9.2.0_d7b9bd3bdc00ac64f5f9918e1519711220dd8cc5/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/bolts-tasks-1.4.0_13a4423fc5ab74c6be0930ca839202207f474db1/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.0.0_467862f3802cfa7a3d19ef86ad78829f2c00b2db/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/answers-shim/0.0.6/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ffde64dbb0fc07c8b9735c6c42a06a36be15ed13">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.crashlytics.sdk.android-answers-shim-0.0.6_8740d54dad9cbd512af8d5ebe0becc205d9c48bd/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="4838df6db988160b107e954e02a745370df543b6">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.google.firebase-firebase-analytics-9.2.0_b1d5d4a0472333badcd2d96ba7f53cf0eca92dab/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/9.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="5acfd484717d9175c175569a114d46dbeec074ed">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.google.android.gms-play-services-appinvite-9.2.0_c106356d556212d3b8fb739cf74ef84d1afb4058/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/io.branch.sdk.android/library/2.5.6/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f1f3bd8c244e0989c15a2c2b48d4d331059cce47">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/io.branch.sdk.android-library-2.5.6_b0ec021043a8d951d8fa182fdc5280633e5829a6/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/9.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="fbb50f7f89342c915898c9376a67229e2fcee286">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.google.android.gms-play-services-iid-9.2.0_2649a92e5a1a77e723bef8f702da1bb0aed2d953/classes.dex" />
+    </item>
+    <item
+        jar="/Users/sharmha/LoL-Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/sharmha/LoL-Android/app/build/intermediates/transforms/dex/dev/debug/folders/1000/10/com.android.support-support-v4-25.0.0_9a1c08d2afb1704cfb81553698cbb24ad456cdb9/classes.dex" />
+    </item>
+
+</items>

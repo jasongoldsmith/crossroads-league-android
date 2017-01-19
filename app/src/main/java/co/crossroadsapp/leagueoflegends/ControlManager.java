@@ -77,6 +77,7 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -137,6 +138,7 @@ public class ControlManager implements Observer{
     private BungieMessageNetwork bungieMsgNtwrk;
     private ReviewCardData reviewCard;
     private ReviewCardUpdate reviewCardUpdate;
+    private Map<String, Object> regionMap;
 
     public ControlManager() {
     }
@@ -1172,28 +1174,32 @@ public class ControlManager implements Observer{
 
     public void parseAndSaveConfigUrls(JSONObject data) {
         try {
-            if(data.has("playerDetailsURL") && !data.isNull("playerDetailsURL")) {
-                if(!data.getString("playerDetailsURL").isEmpty()) {
-                    bungieCurrentUserUrl = data.getString("playerDetailsURL");
-                    Util.setDefaults("playerDetailsURL", bungieCurrentUserUrl, mCurrentAct.get());
+            if(data.has("LolRegions") && !data.isNull("LolRegions")) {
+                JSONObject jsonData = data.optJSONObject("LolRegions");
+                if (jsonData!=null) {
+                    regionMap = Util.toMap(jsonData);
                 }
             }
-            if(data.has("psnLoginURL") && !data.isNull("psnLoginURL")) {
-                if(!data.getString("psnLoginURL").isEmpty()) {
-                    psnURL = data.getString("psnLoginURL");
-                    Util.setDefaults("psnLoginURL", psnURL, mCurrentAct.get());
-                }
-            }
-            if(data.has("xboxLoginURL") && !data.isNull("xboxLoginURL")) {
-                if(!data.getString("xboxLoginURL").isEmpty()) {
-                    xboxURL = data.getString("xboxLoginURL");
-                    Util.setDefaults("xboxLoginURL", xboxURL, mCurrentAct.get());
-                }
-            }
+//            if(data.has("psnLoginURL") && !data.isNull("psnLoginURL")) {
+//                if(!data.getString("psnLoginURL").isEmpty()) {
+//                    psnURL = data.getString("psnLoginURL");
+//                    Util.setDefaults("psnLoginURL", psnURL, mCurrentAct.get());
+//                }
+//            }
+//            if(data.has("xboxLoginURL") && !data.isNull("xboxLoginURL")) {
+//                if(!data.getString("xboxLoginURL").isEmpty()) {
+//                    xboxURL = data.getString("xboxLoginURL");
+//                    Util.setDefaults("xboxLoginURL", xboxURL, mCurrentAct.get());
+//                }
+//            }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    protected Map<String, Object> getRegions() {
+        return this.regionMap;
     }
 
     public void getUserFromNetwork(RequestParams rp) {

@@ -53,6 +53,7 @@ public class Constants {
     public static final String UPDATE_HELMET_URL = "api/v1/a/account/group/mute";
     public static final String INVITE_PLAYER_URL = "api/v1/a/event/invite";
     public static final String VALIDATE_USERLOGIN_URL = "api/v1/auth/validateUserLogin";
+    public static final String LOGIN_URL = "api/v1/auth/login";
     public static final String REGISTRATION_URL = "api/v1/auth/register";
     public static final String USER_BY_ID_URL = "api/v1/a/user/listById";
     public static final String LOGOUT_URL = "api/v1/auth/logout";
@@ -89,7 +90,7 @@ public class Constants {
     public static String FIREBASE_PROD_URL = "https://crossroadsapp-live.firebaseio.com/";
 
     //network base url
-    public static String NETWORK_DEV_BASE_URL = "https://travelerbackend.herokuapp.com/";
+    public static String NETWORK_DEV_BASE_URL = "https://lol-development.herokuapp.com/";
     public static String NETWORK_PROD_BASE_URL = "https://live.crossroadsapp.co/";
     public static String NETWORK_DEV_BASE_STAGING_URL = "https://travelerbackendproduction.herokuapp.com/";
 

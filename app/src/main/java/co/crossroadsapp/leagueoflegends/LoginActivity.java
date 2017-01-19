@@ -196,10 +196,10 @@ public class LoginActivity extends BaseActivity implements Observer {
                         showError(getResources().getString(R.string.password_missing), null);
                     } else {
                         RequestParams params = new RequestParams();
-                        HashMap<String, String> consoles = new HashMap<String, String>();
-                        consoles.put("consoleType", consoleType);
-                        consoles.put("consoleId", username);
-                        params.put("consoles", consoles);
+//                        HashMap<String, String> consoles = new HashMap<String, String>();
+//                        consoles.put("consoleType", consoleType);
+//                        consoles.put("consoleId", username);
+                        params.put("userName", username);
                         params.put("passWord", password);
                         if(invitationRp!=null) {
                             params.put("invitation", invitationRp.getRp());
@@ -390,7 +390,7 @@ public class LoginActivity extends BaseActivity implements Observer {
                 //save in preferrence
                     Util.setDefaults("user", username, getApplicationContext());
                     Util.setDefaults("password", password, getApplicationContext());
-                    Util.setDefaults("consoleType", consoleType, getApplicationContext());
+                    //Util.setDefaults("consoleType", consoleType, getApplicationContext());
 
                 ud.setPassword(password);
                 mManager.setUserdata(ud);
