@@ -20,7 +20,7 @@ public class ActivityData {
     private String activityCheckpoint;
     private String activityDifficulty;
     private String activityIconUrl;
-    private int activityLevel;
+    private String activityLevel;
     private boolean activityFeature;
     private AdCardData adCardData;
     private ArrayList<ModifierData> modifierList;
@@ -138,11 +138,11 @@ public class ActivityData {
         return this.maxPlayer;
     }
 
-    public void setActivityLevel(int level) {
+    public void setActivityLevel(String level) {
         activityLevel = level;
     }
 
-    public int getActivityLevel() {
+    public String getActivityLevel() {
         return this.activityLevel;
     }
 
@@ -186,13 +186,13 @@ public class ActivityData {
                 setActivitySubtype(actData.getString("aSubType"));
                 setMinPlayer(actData.getInt("minPlayers"));
                 setMaxPlayer(actData.getInt("maxPlayers"));
-                if (!actData.isNull("aCheckpoint")) {
+                if (!actData.isNull("aCheckpoint") && actData.has("aCheckpoint")) {
                     setActivityCheckpoint(actData.getString("aCheckpoint"));
                 }
                 if(actData.has("aDifficulty") && !actData.isNull("aDifficulty")) {
                     setActivityDifficulty(actData.getString("aDifficulty"));
                 }
-                if (!actData.isNull("aIconUrl")) {
+                if (!actData.isNull("aIconUrl") && actData.has("aIconUrl")) {
                     setActivityIconUrl(actData.getString("aIconUrl"));
                 } else {
                     setActivityIconUrl(null);
@@ -200,14 +200,14 @@ public class ActivityData {
                 if(actData.has("aLight") && !actData.isNull("aLight")) {
                     setActivityLight(actData.getInt("aLight"));
                 }
-                if (!actData.isNull("aLevel")) {
-                    setActivityLevel(actData.getInt("aLevel"));
+                if (!actData.isNull("aLevel") && actData.has("aLevel")) {
+                    setActivityLevel(actData.getString("aLevel"));
                 }
-                if (!actData.isNull("isFeatured")) {
+                if (!actData.isNull("isFeatured") && actData.has("isFeatured")) {
                     setActivityFeature(actData.getBoolean("isFeatured"));
                 }
 
-                if (actData.has("adCard")) {
+                if (actData.has("adCard") && actData.has("adCard")) {
                     JSONObject jsonobjectAd = actData.optJSONObject("adCard");
                     AdCardData adcard = new AdCardData();
                     adcard.toJson(jsonobjectAd);

@@ -63,7 +63,6 @@ public class GroupListNetwork extends Observable {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                 }
 
                 @Override

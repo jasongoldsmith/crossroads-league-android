@@ -118,7 +118,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/create_new_event_activity"
-                android:background="@color/create_new_event_green"
+                android:background="@color/app_theme_color"
                 android:text="@string/add"
                 android:fontFamily="sans-serif"
                 android:textStyle="bold"

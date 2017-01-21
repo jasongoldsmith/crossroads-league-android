@@ -216,26 +216,27 @@ public class MainActivity extends BaseActivity implements Observer {
     }
 
     private void forwardAfterVersionCheck() {
-        //if (u != null && p!= null && console!=null && !u.isEmpty() && !p.isEmpty() && !console.isEmpty()) {
-        String isCookieValid = Util.getDefaults(Constants.COOKIE_VALID_KEY, getApplicationContext());
-        if(cookies!=null && !cookies.isEmpty() && isCookieValid!=null && isCookieValid.equalsIgnoreCase("true")) {
-            //todo check how to minimize api calls to get full event list in future from multiple locations
-            TravellerLog.w(this, "Logging user in the background as user data available");
-
-            if(u!=null && !u.isEmpty()) {
-                RequestParams rp = new RequestParams();
-                rp.put("id", u);
-                mManager.getUserFromNetwork(rp);
-            }
-
-            Thread t = new Thread(){
-                public void run(){
-                    //start service for validating cookie
-                    Intent intent = new Intent(MainActivity.this, BungieUserService.class);
-                    startService(intent);
-                }
-            };
-            t.start();
+        if (u != null && p!= null && !u.isEmpty() && !p.isEmpty() && console!=null && !console.isEmpty()) {
+//        if (u != null && p!= null && console!=null && !u.isEmpty() && !p.isEmpty() && !console.isEmpty()) {
+//        String isCookieValid = Util.getDefaults(Constants.COOKIE_VALID_KEY, getApplicationContext());
+//        if(cookies!=null && !cookies.isEmpty() && isCookieValid!=null && isCookieValid.equalsIgnoreCase("true")) {
+//            //todo check how to minimize api calls to get full event list in future from multiple locations
+//            TravellerLog.w(this, "Logging user in the background as user data available");
+//
+//            if(u!=null && !u.isEmpty()) {
+//                RequestParams rp = new RequestParams();
+//                rp.put("id", u);
+//                mManager.getUserFromNetwork(rp);
+//            }
+//
+//            Thread t = new Thread(){
+//                public void run(){
+//                    //start service for validating cookie
+//                    Intent intent = new Intent(MainActivity.this, BungieUserService.class);
+//                    startService(intent);
+//                }
+//            };
+//            t.start();
 
             //check if existing user with version below 1.1.0
             String newUser = Util.getDefaults("showUnverifiedMsg", getApplicationContext());
@@ -245,29 +246,29 @@ public class MainActivity extends BaseActivity implements Observer {
 //                rp.put("userName", u);
 //                mManager.postLogout(MainActivity.this, rp);
 //            } else {
-//                mManager.getEventList();
-//                if (mManager.getEventListCurrent() != null) {
-//                    if (mManager.getEventListCurrent().isEmpty()) {
-//                        mManager.getEventList();
-//                    }
-//                } else {
-//                    mManager.getEventList();
-//                }
-//                if (mManager.getCurrentGroupList() != null) {
-//                    if (mManager.getCurrentGroupList().isEmpty()) {
-//                        mManager.getGroupList(null);
-//                    }
-//                } else {
-//                    mManager.getGroupList(null);
-//                }
-//                Util.storeUserData(userData, u, p);
-//                RequestParams params = new RequestParams();
+                //mManager.getEventList();
+                if (mManager.getEventListCurrent() != null) {
+                    if (mManager.getEventListCurrent().isEmpty()) {
+                        mManager.getEventList();
+                    }
+                } else {
+                    mManager.getEventList();
+                }
+                if (mManager.getCurrentGroupList() != null) {
+                    if (mManager.getCurrentGroupList().isEmpty()) {
+                        mManager.getGroupList();
+                    }
+                } else {
+                    mManager.getGroupList();
+                }
+                Util.storeUserData(userData, u, p);
+                RequestParams params = new RequestParams();
 //                HashMap<String, String> consoles = new HashMap<String, String>();
 //                consoles.put("consoleType", console);
 //                consoles.put("consoleId", u);
-//                params.put("consoles", consoles);
-//                params.put("passWord", p);
-//                mManager.postLogin(MainActivity.this, params, Constants.LOGIN);
+                params.put("userName", u);
+                params.put("passWord", p);
+                mManager.postLogin(params, Constants.LOGIN);
             //let user move on to app
 //            Intent regIntent;
 //
@@ -290,18 +291,14 @@ public class MainActivity extends BaseActivity implements Observer {
 //                    }
 //                }
 //            }
-        }else {
-            if(cookies==null && p!=null) {
-                showGenericError("CHANGES TO SIGN IN", "Good news! You can now sign in using your Xbox or PlayStation account (the same one you use for Bungie.net)", "OK", null, Constants.GENERAL_ERROR, null, false);
-            }
-            if(u!=null && !u.isEmpty()) {
-                // continue with delete
-                RequestParams rp = new RequestParams();
-                rp.put("userName", u);
-                mManager.postLogout(rp);
-            } else {
-                Util.clearDefaults(getApplicationContext());
-            }
+        }else if(u != null && p!= null && !u.isEmpty() && !p.isEmpty()){
+            TravellerLog.w(this, "Launch login activity");
+            Intent regIntent = new Intent(getApplicationContext(),
+                    SelectRegionActivity.class);
+            //regIntent.putExtra("userdata", userData);
+            startActivity(regIntent);
+            finish();
+        } else {
             launchMainLayout();
         }
     }
@@ -698,9 +695,11 @@ public class MainActivity extends BaseActivity implements Observer {
                 if (ud!=null && ud.getUserId()!=null) {
                     if((ud.getAuthenticationId() == Constants.LOGIN)) {
                         //save in preferrence
-                        Util.setDefaults("user", ud.getUserId(), getApplicationContext());
+                        Util.setDefaults("user", u, getApplicationContext());
 //                        Util.setDefaults("password", password, getApplicationContext());
-                        Util.setDefaults("consoleType", console, getApplicationContext());
+                        if(ud.getConsoleType()!=null) {
+                            Util.setDefaults("consoleType", ud.getConsoleType(), getApplicationContext());
+                        }
                         ud.setPassword(p);
                         mManager.setUserdata(ud);
                         Intent regIntent;

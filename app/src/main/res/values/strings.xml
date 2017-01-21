@@ -117,7 +117,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="comment_hint">Type your comment</string>
     <string name="gaurdian_for_help">Guardians searching for Fireteams:</string>
-    <string name="signin">SIGN IN</string>
+    <string name="signin">LOG IN</string>
     <string name="reset_pswd">RESET PASSWORD</string>
     <string name="reset_pswd_test">Instructions on how to reset your password will be sent to your Bungie account.</string>
     <string name="unverified_bungie_text">Check your messages on <![CDATA[<a href="http://www.bungie.net">Bungie.net</a>]]> for a verification link.</string>
@@ -154,4 +154,5 @@
     <string name="searching">searching...</string>
     <string name="searching_friend">Invite a Friend</string>
     <string name="title_activity_select_region">SelectRegionActivity</string>
+    <string name="summonername_hint">Enter Summoner Name</string>
 </resources>

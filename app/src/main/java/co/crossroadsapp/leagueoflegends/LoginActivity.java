@@ -85,15 +85,15 @@ public class LoginActivity extends BaseActivity implements Observer {
 //        pswd_login.setTransformationMethod(new PasswordTransformationMethod());
         login_btn = (TextView) findViewById(R.id.signin);
 
-        playstationBtn = (CardView) findViewById(R.id.playstation_btn);
-        xboxBtn = (CardView) findViewById(R.id.xbox_btn);
-        playstationBtnText = (TextView) findViewById(R.id.playstation_text);
-        xboxBtnText = (TextView) findViewById(R.id.xbox_text);
+//        playstationBtn = (CardView) findViewById(R.id.playstation_btn);
+//        xboxBtn = (CardView) findViewById(R.id.xbox_btn);
+//        playstationBtnText = (TextView) findViewById(R.id.playstation_text);
+//        xboxBtnText = (TextView) findViewById(R.id.xbox_text);
         showPswd = (ImageView) findViewById(R.id.show_pswd);
 
         back = (ImageView) findViewById(R.id.backbtn);
 
-        heroImg = (ImageView) findViewById(R.id.hero_img);
+        //heroImg = (ImageView) findViewById(R.id.hero_img);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,29 +127,29 @@ public class LoginActivity extends BaseActivity implements Observer {
             }
         });
 
-        playstationBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playstationBtn.setCardBackgroundColor(getResources().getColor(R.color.app_theme_color));
-                playstationBtnText.setTextColor(getResources().getColor(R.color.trimbe_white));
-                name_login.setHint(getResources().getString(R.string.playstation_hint));
-                xboxBtn.setCardBackgroundColor(getResources().getColor(R.color.edittext_background));
-                xboxBtnText.setTextColor(getResources().getColor(R.color.hinttext_color));
-                consoleType = "PS4";
-            }
-        });
-
-        xboxBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                xboxBtn.setCardBackgroundColor(getResources().getColor(R.color.app_theme_color));
-                xboxBtnText.setTextColor(getResources().getColor(R.color.trimbe_white));
-                name_login.setHint(getResources().getString(R.string.xbox_hint));
-                playstationBtn.setCardBackgroundColor(getResources().getColor(R.color.edittext_background));
-                playstationBtnText.setTextColor(getResources().getColor(R.color.hinttext_color));
-                consoleType = "XBOXONE";
-            }
-        });
+//        playstationBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                playstationBtn.setCardBackgroundColor(getResources().getColor(R.color.app_theme_color));
+//                playstationBtnText.setTextColor(getResources().getColor(R.color.trimbe_white));
+//                name_login.setHint(getResources().getString(R.string.playstation_hint));
+//                xboxBtn.setCardBackgroundColor(getResources().getColor(R.color.edittext_background));
+//                xboxBtnText.setTextColor(getResources().getColor(R.color.hinttext_color));
+//                consoleType = "PS4";
+//            }
+//        });
+//
+//        xboxBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                xboxBtn.setCardBackgroundColor(getResources().getColor(R.color.app_theme_color));
+//                xboxBtnText.setTextColor(getResources().getColor(R.color.trimbe_white));
+//                name_login.setHint(getResources().getString(R.string.xbox_hint));
+//                playstationBtn.setCardBackgroundColor(getResources().getColor(R.color.edittext_background));
+//                playstationBtnText.setTextColor(getResources().getColor(R.color.hinttext_color));
+//                consoleType = "XBOXONE";
+//            }
+//        });
 
         forgotLogin = (TextView) findViewById(R.id.forgot_login);
 
@@ -207,7 +207,7 @@ public class LoginActivity extends BaseActivity implements Observer {
                         dialog.show();
                         //login_btn.setImageDrawable(getResources().getDrawable(R.drawable.img_login_btn_tapped));
                         dialog.setCancelable(false);
-                        mManager.postLogin(LoginActivity.this, params, Constants.LOGIN);
+                        mManager.postLogin(params, Constants.LOGIN);
                     }
                 }
             }
@@ -282,11 +282,11 @@ public class LoginActivity extends BaseActivity implements Observer {
 
                 if (keypadHeight > screenHeight * 0.15) { // 0.15 ratio is perhaps enough to determine keypad height.
                     // keyboard is opened
-                    heroImg.setVisibility(View.GONE);
+                    //heroImg.setVisibility(View.GONE);
                 }
                 else {
                     // keyboard is closed
-                    heroImg.setVisibility(View.VISIBLE);
+                    //heroImg.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -394,15 +394,21 @@ public class LoginActivity extends BaseActivity implements Observer {
 
                 ud.setPassword(password);
                 mManager.setUserdata(ud);
-                //decide landing page based on push notification available or not
-                Intent regIntent;
+                    Intent regIntent;
+                    if(ud.getConsoleType()!=null || !ud.getConsoleType().isEmpty()) {
+                        Util.setDefaults("consoleType", ud.getConsoleType(), getApplicationContext());
+                        //decide landing page based on push notification available or not
 
-                //decide activity to open
-                regIntent = mManager.decideToOpenActivity(localPushEvent);
+                        //decide activity to open
+                        regIntent = mManager.decideToOpenActivity(localPushEvent);
 
-                    //clear invitation req params
-                    if(invitationRp!=null) {
-                        invitationRp.clearRp();
+                        //clear invitation req params
+                        if (invitationRp != null) {
+                            invitationRp.clearRp();
+                        }
+                    } else {
+                        regIntent = new Intent(getApplicationContext(),
+                                SelectRegionActivity.class);
                     }
                 startActivity(regIntent);
                 finish();

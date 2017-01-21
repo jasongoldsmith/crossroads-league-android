@@ -11,58 +11,10 @@
         android:src="@drawable/img_background_map"
         android:scaleType="fitXY"/>
 
-    <!--<RelativeLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="60dp"-->
-    <!--android:id="@+id/error_layout"-->
-    <!--android:layout_alignParentTop="true"-->
-    <!--android:background="@android:color/black"-->
-    <!--android:visibility="gone">-->
-    <!--<ImageView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/error"-->
-    <!--android:src="@drawable/icon_error"-->
-    <!--android:layout_alignParentLeft="true"-->
-    <!--android:layout_marginTop="10dp"-->
-    <!--android:layout_marginLeft="22dp"/>-->
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/error_text"-->
-    <!--android:text="MISADVENTURE"-->
-    <!--android:textSize="12sp"-->
-    <!--android:textColor="#ff0000"-->
-    <!--android:layout_toRightOf="@+id/error"-->
-    <!--android:layout_marginTop="15dp"-->
-    <!--android:layout_marginLeft="13dp"/>-->
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/error_sub"-->
-    <!--android:text="Your Username or Password do not match"-->
-    <!--android:textSize="12sp"-->
-    <!--android:textColor="@color/trimbe_white"-->
-    <!--android:layout_toRightOf="@+id/error"-->
-    <!--android:layout_below="@+id/error_text"-->
-    <!--android:layout_marginBottom="14dp"-->
-    <!--android:layout_marginLeft="13dp"-->
-    <!--android:layout_marginRight="30dp"/>-->
-
-    <!--<ImageView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/err_close"-->
-    <!--android:src="@drawable/icon_close_sm"-->
-    <!--android:layout_alignParentRight="true"-->
-    <!--android:layout_marginTop="9dp"-->
-    <!--android:layout_marginEnd="7dp"/>-->
-    <!--</RelativeLayout>-->
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/name_layout"
+        android:layout_above="@+id/region_card"
         android:layout_centerHorizontal="true">
 
         <ImageView
@@ -75,59 +27,68 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/create_accnt"
+            android:id="@+id/create_summoner_accnt"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
             android:layout_marginTop="22dp"
-            android:text="@string/create_crossroads_accnt"
+            android:text="CHOOSE YOUR REGION"
+            android:textColor="@color/trimbe_white"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:textSize="12sp"/>
     </RelativeLayout>
 
-    <!--<RelativeLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="60dp"-->
-    <!--android:id="@+id/psnid_layout"-->
-    <!--android:layout_marginTop="20dp"-->
-    <!--android:layout_marginStart="10dp"-->
-    <!--android:layout_marginEnd="10dp"-->
-    <!--android:background="#4f000000"-->
-    <!--android:layout_above="@+id/name_layout">-->
-    <!--<ImageView-->
-    <!--android:layout_width="25dp"-->
-    <!--android:layout_height="25dp"-->
-    <!--android:id="@+id/psn_icon"-->
-    <!--android:src="@drawable/img_icon_id"-->
-    <!--android:layout_centerVertical="true"-->
-    <!--android:layout_marginStart="17dp"-->
-    <!--android:layout_marginTop="13dp"-->
-    <!--android:layout_marginBottom="22dp"/>-->
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/psn"-->
-    <!--android:layout_toRightOf="@+id/psn_icon"-->
-    <!--android:fontFamily="sans-serif"-->
-    <!--android:layout_marginLeft="25dp"-->
-    <!--android:layout_marginTop="13dp"-->
-    <!--android:textSize="10sp"/>-->
-    <!--<EditText-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:id="@+id/signup_psn"-->
-    <!--android:textCursorDrawable="@drawable/cursor_draw"-->
-    <!--android:textColor="@android:color/white"-->
-    <!--android:singleLine="true"-->
-    <!--android:imeOptions="actionDone"-->
-    <!--android:background="@null"-->
-    <!--android:textSize="14sp"-->
-    <!--android:layout_toRightOf="@+id/psn_icon"-->
-    <!--android:layout_below="@+id/psn"-->
-    <!--android:layout_marginTop="9dp"-->
-    <!--android:layout_marginBottom="10dp"-->
-    <!--android:layout_marginLeft="25dp" />-->
-    <!--</RelativeLayout>-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/region_card"
+        android:background="@color/freelancer_background"
+        android:layout_above="@+id/name_layout"
+        android:layout_marginLeft="33dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp">
+
+        <Spinner
+            android:id="@+id/summoner_region"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/freelancer_background"
+            android:gravity="center"
+            android:overlapAnchor="false"
+            android:popupElevation="0dp"
+            android:popupBackground="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:id="@+id/firstcard_img"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="13dp"
+            android:src="@drawable/icon_ghost_default"
+            android:layout_centerVertical="true"
+            android:visibility="gone"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/act_subtype_text"
+            android:layout_toRightOf="@+id/firstcard_img"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:text="Missing regions"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/subtype_downarw"
+            android:src="@drawable/icon_arrow_dwn"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="15dp"/>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -136,8 +97,9 @@
         android:layout_marginTop="2dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="50dp"
         android:background="#4f000000"
-        android:layout_above="@+id/pswd_layout">
+        android:layout_above="@+id/register_btn">
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -156,12 +118,12 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="13dp"
             android:textSize="10sp"
-            android:text="@string/username_text"/>
+            android:text="SUMMONER NAME"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/signup_name"
-            android:hint="@string/username_hint"
+            android:hint="@string/summonername_hint"
             android:background="@null"
             android:textCursorDrawable="@drawable/cursor_draw"
             android:textSize="14sp"
@@ -175,74 +137,10 @@
             android:layout_marginLeft="25dp" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/pswd_layout"
-        android:layout_marginTop="2dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="50dp"
-        android:background="#4f000000"
-        android:layout_above="@+id/signup_btn">
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:id="@+id/pswrd_icon"
-            android:src="@drawable/img_icon_password"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginBottom="22dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/pswd"
-            android:layout_toRightOf="@+id/pswrd_icon"
-            android:fontFamily="sans-serif"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="13dp"
-            android:textSize="10sp"
-            android:text="PASSWORD"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/signup_pswrd"
-            android:hint="Enter password"
-            android:textCursorDrawable="@drawable/cursor_draw"
-            android:background="@null"
-            android:singleLine="true"
-            android:inputType="textPassword"
-            android:imeOptions="actionDone"
-            android:textColor="@android:color/white"
-            android:textSize="14sp"
-            android:layout_toRightOf="@+id/pswrd_icon"
-            android:layout_below="@+id/pswd"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="25dp" />
-    </RelativeLayout>
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:gravity="center"-->
-    <!--android:id="@+id/privacy_terms"-->
-    <!--android:textColorLink="@color/app_theme_color"-->
-    <!--android:layout_above="@+id/signup_btn"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:layout_marginTop="10dp"-->
-    <!--android:layout_marginBottom="10dp"-->
-    <!--android:layout_marginRight="2dp"-->
-    <!--android:layout_marginLeft="2dp"-->
-    <!--android:textColor="@color/trimbe_white"-->
-    <!--android:textSize="12sp"-->
-    <!--android:text="@string/terms_conditions"/>-->
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/signup_btn"
+        android:id="@+id/register_btn"
         android:src="@drawable/img_login_btn"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="32dp"

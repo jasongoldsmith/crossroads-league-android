@@ -45,7 +45,8 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="48dp"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true"
+                android:visibility="gone"/>
 
             <co.crossroadsapp.leagueoflegends.utils.CircularImageView
                 android:layout_width="@dimen/player_profile_width"
@@ -117,7 +118,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/create_new_event"
-            android:background="#0086d0"
+            android:background="@color/app_theme_color"
             android:text="@string/add_activity"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
@@ -257,65 +258,65 @@
                 android:gravity="center_horizontal"/>
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:id="@+id/multi_console_layout"
-            android:layout_marginTop="25dp"
-            android:layout_marginRight="37dp"
-            android:layout_marginLeft="37dp"
-            android:layout_below="@+id/profile_header">
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="44dp"-->
+            <!--android:id="@+id/multi_console_layout"-->
+            <!--android:layout_marginTop="25dp"-->
+            <!--android:layout_marginRight="37dp"-->
+            <!--android:layout_marginLeft="37dp"-->
+            <!--android:layout_below="@+id/profile_header">-->
 
-            <Spinner
-                android:id="@+id/console_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/freelancer_background"
-                android:gravity="center"
-                android:overlapAnchor="false"
-                android:popupElevation="0dp"
-                android:popupBackground="@android:color/transparent"/>
+            <!--<Spinner-->
+                <!--android:id="@+id/console_spinner"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@color/freelancer_background"-->
+                <!--android:gravity="center"-->
+                <!--android:overlapAnchor="false"-->
+                <!--android:popupElevation="0dp"-->
+                <!--android:popupBackground="@android:color/transparent"/>-->
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:id="@+id/console_icon"
-                android:src="@drawable/icon_psn_consolex"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="16dp"
-                android:layout_centerVertical="true"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/consoletype_text"
-                android:fontFamily="sans-serif"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:textColor="@android:color/white"
-                android:layout_centerInParent="true"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/down_arw_img"
-                android:src="@drawable/icon_arrow_dwn"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:padding="8dp"/>
+            <!--<ImageView-->
+                <!--android:layout_width="24dp"-->
+                <!--android:layout_height="24dp"-->
+                <!--android:id="@+id/console_icon"-->
+                <!--android:src="@drawable/icon_psn_consolex"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_marginLeft="16dp"-->
+                <!--android:layout_centerVertical="true"/>-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/consoletype_text"-->
+                <!--android:fontFamily="sans-serif"-->
+                <!--android:textStyle="bold"-->
+                <!--android:textSize="14sp"-->
+                <!--android:textColor="@android:color/white"-->
+                <!--android:layout_centerInParent="true"/>-->
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/down_arw_img"-->
+                <!--android:src="@drawable/icon_arrow_dwn"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:padding="8dp"/>-->
 
-        </RelativeLayout>
+        <!--</RelativeLayout>-->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:id="@+id/crash_btn"
-            android:layout_below="@+id/multi_console_layout"
-            android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
             android:text="@string/report_crash"
             android:textSize="14sp"
             android:textColor="@android:color/white"
+            android:layout_marginTop="25dp"
             android:layout_marginRight="37dp"
             android:layout_marginLeft="37dp"
+            android:layout_below="@+id/profile_header"
             android:gravity="center"
             android:background="@color/logout_btn_background"/>
 

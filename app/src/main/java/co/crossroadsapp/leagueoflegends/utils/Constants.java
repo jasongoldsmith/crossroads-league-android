@@ -86,7 +86,7 @@ public class Constants {
     public static int INTENT_ID = 9999;
 
     //firebase url
-    public static String FIREBASE_DEV_URL = "https://crossroadsapp-dev.firebaseio.com/";
+    public static String FIREBASE_DEV_URL = "https://lolapp-dev.firebaseio.com/";
     public static String FIREBASE_PROD_URL = "https://crossroadsapp-live.firebaseio.com/";
 
     //network base url

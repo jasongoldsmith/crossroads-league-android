@@ -188,7 +188,8 @@
 
         <activity
             android:name=".SelectRegionActivity"
-            android:label="@string/title_activity_select_region"></activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

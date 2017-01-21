@@ -248,18 +248,18 @@ public class ControlManager implements Observer{
     }
 
     public void getGroupList() {
-        try {
-            if(mCurrentAct.get()!=null) {
-                groupListNtwrk = new GroupListNetwork(mCurrentAct.get());
-                if(mCurrentAct.get() instanceof ListActivityFragment) {
-                    groupListNtwrk.addObserver((ListActivityFragment) mCurrentAct.get());
-                }
-                groupListNtwrk.addObserver(this);
-                groupListNtwrk.getGroups();
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            if(mCurrentAct.get()!=null) {
+//                groupListNtwrk = new GroupListNetwork(mCurrentAct.get());
+//                if(mCurrentAct.get() instanceof ListActivityFragment) {
+//                    groupListNtwrk.addObserver((ListActivityFragment) mCurrentAct.get());
+//                }
+//                groupListNtwrk.addObserver(this);
+//                groupListNtwrk.getGroups();
+//            }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void postSetGroup(RequestParams params) {
@@ -447,20 +447,20 @@ public class ControlManager implements Observer{
         return activityList;
     }
 
-    public void postLogin(Activity activity, RequestParams params, int postId) {
+    public void postLogin(RequestParams params, int postId) {
         try {
             if(mCurrentAct!=null) {
                 loginNetwork = new LoginNetwork(mCurrentAct.get());
                 loginNetwork.addObserver(this);
                 if (postId == Constants.LOGIN) {
-                    if (activity instanceof LoginActivity) {
-                        loginNetwork.addObserver((LoginActivity) activity);
+                    if (mCurrentAct.get() instanceof LoginActivity) {
+                        loginNetwork.addObserver((LoginActivity) mCurrentAct.get());
                     } else if (mCurrentAct != null && mCurrentAct.get() instanceof MainActivity) {
                         loginNetwork.addObserver((MainActivity) mCurrentAct.get());
                     }
                     loginNetwork.doSignup(params);
                 } else if (postId == Constants.REGISTER) {
-                    loginNetwork.addObserver((RegisterActivity) activity);
+                    loginNetwork.addObserver((RegisterActivity) mCurrentAct.get());
                     loginNetwork.doRegister(params);
                 }
             }
@@ -581,6 +581,8 @@ public class ControlManager implements Observer{
                     ((AddFinalActivity) mCurrentAct.get()).showError(err);
                 } else if (mCurrentAct.get() instanceof CrashReport) {
                     ((CrashReport) mCurrentAct.get()).showError(err);
+                } else if (mCurrentAct.get() instanceof SelectRegionActivity) {
+                    ((SelectRegionActivity) mCurrentAct.get()).showError(err);
                 }
             }
         //}
@@ -731,7 +733,7 @@ public class ControlManager implements Observer{
                 }
                 gData = (ArrayList<GroupData>) data;
             }
-        } else if(observable instanceof LoginNetwork) {
+        } else if(observable instanceof LoginNetwork || observable instanceof AddNewConsoleNetwork) {
             if (data!=null) {
                 getEventList();
                 getGroupList();
@@ -937,9 +939,10 @@ public class ControlManager implements Observer{
 
     public void addOtherConsole(RequestParams rp_console) {
         try {
-            if (mCurrentAct.get() != null && mCurrentAct.get() instanceof UpdateConsoleActivity) {
+            if (mCurrentAct.get() != null && mCurrentAct.get() instanceof SelectRegionActivity) {
                 addConsoleNetwork = new AddNewConsoleNetwork(mCurrentAct.get());
-                addConsoleNetwork.addObserver((UpdateConsoleActivity)mCurrentAct.get());
+                addConsoleNetwork.addObserver(this);
+                addConsoleNetwork.addObserver((SelectRegionActivity)mCurrentAct.get());
                 addConsoleNetwork.doAddConsole(rp_console);
             }
         } catch (JSONException e) {

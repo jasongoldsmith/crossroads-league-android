@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.loopj.android.http.RequestParams;
 
@@ -23,12 +24,12 @@ public class AddNewActivity extends BaseActivity implements Observer {
     private ImageView exoticAct;
     private ImageView questAct;
     private ImageView storyAct;
-    private ImageView patrolAct;
-    private ImageView strikeAct;
-    private ImageView crucibleAct;
-    private ImageView arenaAct;
-    private ImageView raiddAct;
-    private ImageView featuredAct;
+    private RelativeLayout patrolAct;
+    private RelativeLayout strikeAct;
+    private RelativeLayout crucibleAct;
+    private RelativeLayout arenaAct;
+    private RelativeLayout raiddAct;
+    private RelativeLayout featuredAct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,86 +68,86 @@ public class AddNewActivity extends BaseActivity implements Observer {
         });
 
         //Raid
-        featuredAct = (ImageView) findViewById(R.id.first_act);
+        featuredAct = (RelativeLayout) findViewById(R.id.first_act);
         featuredAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                featuredAct.setImageResource(R.drawable.img_featured_selected);
-                callPostGetActivity("Featured");
+                //featuredAct.setImageResource(R.drawable.img_featured_selected);
+                callPostGetActivity("PvP, Summoner's Rift");
             }
         });
 
-        raiddAct = (ImageView) findViewById(R.id.second_act);
+        raiddAct = (RelativeLayout) findViewById(R.id.second_act);
         raiddAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                raiddAct.setImageResource(R.drawable.img_raids_selected);
-                callPostGetActivity("Raid");
+                //raiddAct.setImageResource(R.drawable.img_raids_selected);
+                callPostGetActivity("PvP, Twisted Treeline");
             }
         });
 
-        arenaAct = (ImageView) findViewById(R.id.third_act);
+        arenaAct = (RelativeLayout) findViewById(R.id.third_act);
         arenaAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arenaAct.setImageResource(R.drawable.img_arena_selected);
-                callPostGetActivity("Arena");
+                //arenaAct.setImageResource(R.drawable.img_arena_selected);
+                callPostGetActivity("PvP, ARAM");
             }
         });
 
-        crucibleAct = (ImageView) findViewById(R.id.fourth_act);
+        crucibleAct = (RelativeLayout) findViewById(R.id.fourth_act);
         crucibleAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                crucibleAct.setImageResource(R.drawable.img_cruicible_selected);
-                callPostGetActivity("Crucible");
+                //crucibleAct.setImageResource(R.drawable.img_cruicible_selected);
+                callPostGetActivity("PvP, Rotating");
             }
         });
 
-        strikeAct = (ImageView) findViewById(R.id.fifth_act);
+        strikeAct = (RelativeLayout) findViewById(R.id.fifth_act);
         strikeAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                strikeAct.setImageResource(R.drawable.img_strikes_selected);
-                callPostGetActivity("Strike");
+                //strikeAct.setImageResource(R.drawable.img_strikes_selected);
+                callPostGetActivity("AI, Summoner's Rift");
             }
         });
 
-        patrolAct = (ImageView) findViewById(R.id.sixth_act);
+        patrolAct = (RelativeLayout) findViewById(R.id.sixth_act);
         patrolAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                patrolAct.setImageResource(R.drawable.img_patrol_selected);
-                callPostGetActivity("Patrol");
+                //patrolAct.setImageResource(R.drawable.img_patrol_selected);
+                callPostGetActivity("AI, Twisted Treeline");
             }
         });
 
-        storyAct = (ImageView) findViewById(R.id.seventh_act);
-        storyAct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                storyAct.setImageResource(R.drawable.img_story_selected);
-                callPostGetActivity("Story");
-            }
-        });
-
-        questAct = (ImageView) findViewById(R.id.eigth_act);
-        questAct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                questAct.setImageResource(R.drawable.img_quest_selected);
-                callPostGetActivity("Quest");
-            }
-        });
-
-        exoticAct = (ImageView) findViewById(R.id.ninth_act);
-        exoticAct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                exoticAct.setImageResource(R.drawable.img_exotic_selected);
-                callPostGetActivity("Exotic");
-            }
-        });
+//        storyAct = (ImageView) findViewById(R.id.seventh_act);
+//        storyAct.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                storyAct.setImageResource(R.drawable.img_story_selected);
+//                callPostGetActivity("Story");
+//            }
+//        });
+//
+//        questAct = (ImageView) findViewById(R.id.eigth_act);
+//        questAct.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                questAct.setImageResource(R.drawable.img_quest_selected);
+//                callPostGetActivity("Quest");
+//            }
+//        });
+//
+//        exoticAct = (ImageView) findViewById(R.id.ninth_act);
+//        exoticAct.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                exoticAct.setImageResource(R.drawable.img_exotic_selected);
+//                callPostGetActivity("Exotic");
+//            }
+//        });
         //todo handle adscard here
 //        if(b.containsKey("adsCardId")) {
 //            adcardEventId = b.getString("adsCardId");
@@ -154,15 +155,15 @@ public class AddNewActivity extends BaseActivity implements Observer {
     }
 
     private void setButtonDefaultStates() {
-        exoticAct.setImageResource(R.drawable.img_exotic);
-        questAct.setImageResource(R.drawable.img_quest);
-        storyAct.setImageResource(R.drawable.img_story);
-        patrolAct.setImageResource(R.drawable.img_patrol);
-        strikeAct.setImageResource(R.drawable.img_strikes);
-        crucibleAct.setImageResource(R.drawable.img_cruicible);
-        arenaAct.setImageResource(R.drawable.img_arena);
-        raiddAct.setImageResource(R.drawable.img_raids);
-        featuredAct.setImageResource(R.drawable.img_featured);
+//        exoticAct.setImageResource(R.drawable.img_exotic);
+//        questAct.setImageResource(R.drawable.img_quest);
+//        storyAct.setImageResource(R.drawable.img_story);
+//        patrolAct.setImageResource(R.drawable.img_patrol);
+//        strikeAct.setImageResource(R.drawable.img_strikes);
+//        crucibleAct.setImageResource(R.drawable.img_cruicible);
+//        arenaAct.setImageResource(R.drawable.img_arena);
+//        raiddAct.setImageResource(R.drawable.img_raids);
+//        featuredAct.setImageResource(R.drawable.img_featured);
     }
 
     private void callPostGetActivity(String type) {

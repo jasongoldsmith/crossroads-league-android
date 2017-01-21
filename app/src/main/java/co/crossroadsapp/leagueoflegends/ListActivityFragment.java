@@ -230,8 +230,10 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
 
         appIcon = (ImageView) findViewById(R.id.badge_icon);
 
-        if (user!=null && user.getImageUrl()!=null) {
-            updateUserProfileImage(user.getImageUrl());
+        if (user!=null) {
+            if(user.getImageUrl()!=null) {
+                updateUserProfileImage(user.getImageUrl());
+            }
             if (user.getUser()!=null){
                 userNameDrawer.setText(user.getPsnId());
             }
@@ -373,13 +375,13 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
         });
 
         inviteFrnds = (TextView) findViewById(R.id.invite);
-        imgConsole = (ImageView) findViewById(R.id.console_icon);
-        down_arw_img = (ImageView) findViewById(R.id.down_arw_img);
-        consoleText = (TextView) findViewById(R.id.consoletype_text);
+//        imgConsole = (ImageView) findViewById(R.id.console_icon);
+//        down_arw_img = (ImageView) findViewById(R.id.down_arw_img);
+//        consoleText = (TextView) findViewById(R.id.consoletype_text);
+//
+//        dropdown = (Spinner) findViewById(R.id.console_spinner);
 
-        dropdown = (Spinner) findViewById(R.id.console_spinner);
-
-        dropdown.setOnItemSelectedListener(this);
+        //dropdown.setOnItemSelectedListener(this);
         // Set adapter for console selector
         updateConsoleListUserDrawer();
 
@@ -620,54 +622,56 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
 
     private void updateConsoleListUserDrawer() {
         //final ArrayList<String> consoleItems = new ArrayList<String>();
-        consoleItems = Util.getCorrectConsoleName(mManager.getConsoleList());
-        //final ArrayList<String> consoleItems = mManager.getConsoleList();
-        if(needToAdd(consoleItems)) {
-            //consoleItems.add("Add Console");
-        }
-        if (consoleItems.size()>1) {
-            down_arw_img.setVisibility(View.VISIBLE);
-            adapterConsole = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, consoleItems) {
+        if(mManager.getConsoleList()!=null) {
+            consoleItems = Util.getCorrectConsoleName(mManager.getConsoleList());
+            //final ArrayList<String> consoleItems = mManager.getConsoleList();
+            if (needToAdd(consoleItems)) {
+                //consoleItems.add("Add Console");
+            }
+            if (consoleItems.size() > 1) {
+                //down_arw_img.setVisibility(View.VISIBLE);
+                adapterConsole = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, consoleItems) {
 
-                int FONT_STYLE = Typeface.BOLD;
+                    int FONT_STYLE = Typeface.BOLD;
 
-                public View getView(int position, View convertView, ViewGroup parent) {
-                    View v = super.getView(position, convertView, parent);
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        View v = super.getView(position, convertView, parent);
 
-                    ((TextView) v).setTypeface(Typeface.SANS_SERIF, FONT_STYLE);
-                    ((TextView) v).setTextColor(
-                            getResources().getColorStateList(R.color.trimbe_white)
-                    );
-                    ((TextView) v).setGravity(Gravity.CENTER);
+                        ((TextView) v).setTypeface(Typeface.SANS_SERIF, FONT_STYLE);
+                        ((TextView) v).setTextColor(
+                                getResources().getColorStateList(R.color.trimbe_white)
+                        );
+                        ((TextView) v).setGravity(Gravity.CENTER);
 
-                    ((TextView) v).setPadding(Util.dpToPx(0, ListActivityFragment.this), 0, 0, 0);
-                    ((TextView) v).setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-                    ((TextView) v).setText(((TextView) v).getText());
+                        ((TextView) v).setPadding(Util.dpToPx(0, ListActivityFragment.this), 0, 0, 0);
+                        ((TextView) v).setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                        ((TextView) v).setText(((TextView) v).getText());
 
-                    if (((TextView) v).getText().toString().equalsIgnoreCase(Constants.CONSOLEXBOXONESTRG) || ((TextView) v).getText().toString().equalsIgnoreCase(Constants.CONSOLEXBOX360STRG)) {
-                        imgConsole.setImageResource(R.drawable.icon_xboxone_consolex);
-                    } else {
-                        imgConsole.setImageResource(R.drawable.icon_psn_consolex);
+                        if (((TextView) v).getText().toString().equalsIgnoreCase(Constants.CONSOLEXBOXONESTRG) || ((TextView) v).getText().toString().equalsIgnoreCase(Constants.CONSOLEXBOX360STRG)) {
+                            //imgConsole.setImageResource(R.drawable.icon_xboxone_consolex);
+                        } else {
+                            //imgConsole.setImageResource(R.drawable.icon_psn_consolex);
+                        }
+
+                        return v;
                     }
 
-                    return v;
+                    public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                        return getCustomView(position, convertView, parent, consoleItems);
+                    }
+                };
+                adapterConsole.setDropDownViewResource(R.layout.empty_layout);
+                //dropdown.setAdapter(adapterConsole);
+                adapterConsole.notifyDataSetChanged();
+            } else if(consoleItems.size()>0){
+                if (consoleItems.get(0).equalsIgnoreCase(Constants.CONSOLEXBOXONESTRG)) {
+                    //imgConsole.setImageResource(R.drawable.icon_xboxone_consolex);
+                } else if (consoleItems.get(0).equalsIgnoreCase(Constants.CONSOLEPS4STRG)) {
+                    //imgConsole.setImageResource(R.drawable.icon_psn_consolex);
                 }
-
-                public View getDropDownView(int position, View convertView, ViewGroup parent) {
-                    return getCustomView(position, convertView, parent, consoleItems);
-                }
-            };
-            adapterConsole.setDropDownViewResource(R.layout.empty_layout);
-            dropdown.setAdapter(adapterConsole);
-            adapterConsole.notifyDataSetChanged();
-        } else {
-            if(consoleItems.get(0).equalsIgnoreCase(Constants.CONSOLEXBOXONESTRG)) {
-                imgConsole.setImageResource(R.drawable.icon_xboxone_consolex);
-            } else if (consoleItems.get(0).equalsIgnoreCase(Constants.CONSOLEPS4STRG)) {
-                imgConsole.setImageResource(R.drawable.icon_psn_consolex);
+                //down_arw_img.setVisibility(View.GONE);
+                //consoleText.setText(consoleItems.get(0).toString());
             }
-            down_arw_img.setVisibility(View.GONE);
-            consoleText.setText(consoleItems.get(0).toString());
         }
     }
 
@@ -1197,7 +1201,7 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
 
     @Override
     public void onResume() {
-        checkPrivacyDialoge();
+        //checkPrivacyDialoge();
         super.onResume();
         //get latest event list
         if (mManager!= null) {
@@ -1206,8 +1210,8 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
             getExistingList();
             mManager.getEventList();
         }
-        registerFirbase();
-        registerUserFirebase();
+//        registerFirbase();
+//        registerUserFirebase();
 //        if (user!=null && user.getPsnVerify()!=null) {
 //            if (!user.getPsnVerify().equalsIgnoreCase(Constants.PSN_VERIFIED)) {
 //                //register user listener

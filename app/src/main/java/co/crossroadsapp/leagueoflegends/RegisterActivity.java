@@ -220,7 +220,7 @@ public class RegisterActivity extends BaseActivity implements Observer {
 //                    params.put("bungieMemberShipId", memId);
                     dialog.show();
                     dialog.setCancelable(false);
-                    mManager.postLogin(RegisterActivity.this, params, Constants.REGISTER);
+                    mManager.postLogin(params, Constants.REGISTER);
                 } else {
                     if(username.length()==0){
                         showError(getResources().getString(R.string.username_missing));
@@ -318,10 +318,10 @@ public class RegisterActivity extends BaseActivity implements Observer {
 
                 // decide the activity to open
                 //Intent regIntent = mManager.decideToOpenActivity(null);
-//                    Intent regIntent = new Intent(getApplicationContext(),
-//                    SelectRegionActivity.class);
-//                startActivity(regIntent);
-//                finish();
+                    Intent regIntent = new Intent(getApplicationContext(),
+                    SelectRegionActivity.class);
+                startActivity(regIntent);
+                finish();
             }
         }
         }

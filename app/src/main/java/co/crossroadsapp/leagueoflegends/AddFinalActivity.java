@@ -284,7 +284,7 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
         String actIconUrl = null;
         String backg = null;
         String subType = null;
-        int level=0;
+        String level=null;
         int light=0;
         String description = null;
         String levelText = null;
@@ -347,8 +347,9 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
 
         lightTextView.setText("");
 
-        if (level != 0) {
-            levelText = "LEVEL " + level;
+        if (level != null) {
+            //levelText = "LEVEL " + level;
+            levelText = level;
             if (light != 0) {
                 levelText = levelText + "  Recommended Light: ";
                 lightTextView.setText("\u2726" + light);
@@ -459,13 +460,17 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
         }
         }
 
-        //load activity icon
-        Util.picassoLoadImageWithoutMeasurement(getApplicationContext(), actIcon, actIconUrl, R.drawable.icon_ghost_default);
+        if(actIcon!=null && actIconUrl!=null && !actIconUrl.isEmpty()) {
+            //load activity icon
+            Util.picassoLoadImageWithoutMeasurement(getApplicationContext(), actIcon, actIconUrl, R.drawable.icon_ghost_default);
+        }
 
-        //load background image
-        Util.picassoLoadImageWithoutMeasurement(getApplicationContext(), background, backg, R.drawable.img_b_g_d_e_f_a_u_l_t);
+        if(background!=null && backg!=null && !backg.isEmpty()) {
+            //load background image
+            Util.picassoLoadImageWithoutMeasurement(getApplicationContext(), background, backg, R.drawable.img_b_g_d_e_f_a_u_l_t);
+        }
 
-        actSubtype.setText(subType);
+        actSubtype.setText(activityType);
         actSubtype.setAllCaps(true);
 
         if(finalAct==null) {
@@ -694,7 +699,7 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
 
     private void updateDrawerSubtype(final ArrayList<String> dataList) {
         if(dataList !=null && !dataList.isEmpty()) {
-            if (dataList.size() > 1) {
+            if (dataList.size() > 0) {
                 subtypeDropdownArw.setVisibility(View.VISIBLE);
                 adapterSubtypes = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, dataList) {
                     public View getView(int position, View convertView, ViewGroup parent) {

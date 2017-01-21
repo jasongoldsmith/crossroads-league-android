@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "661446125793",
-    "firebase_url": "https://crossroadsapp-dev.firebaseio.com",
-    "project_id": "crossroadsapp-dev",
-    "storage_bucket": "crossroadsapp-dev.appspot.com"
+    "project_number": "678992187547",
+    "firebase_url": "https://lolapp-dev.firebaseio.com",
+    "project_id": "lolapp-dev",
+    "storage_bucket": "lolapp-dev.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:661446125793:android:0c264b86c9c75058",
+        "mobilesdk_app_id": "1:678992187547:android:4b253a99e131fe65",
         "android_client_info": {
-          "package_name": "dev.crossroadsapp.destiny"
+          "package_name": "co.crossroadsapp.leagueoflegends"
         }
       },
       "oauth_client": [
         {
-          "client_id": "661446125793-72vk0jhhv6h5fhetg79q3je5j25pnc4d.apps.googleusercontent.com",
+          "client_id": "678992187547-cemgnt4ug3kitpba0a64hppk5rthb5q6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA4YhQdzV9mHeG1Antw9SCjkmYeM0DXGKY"
+          "current_key": "AIzaSyCELm9FbQNEZcscrOGHPrLwJ_Y6dYP37qU"
         }
       ],
       "services": {

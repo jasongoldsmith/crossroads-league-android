@@ -271,7 +271,7 @@ public class EventCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     int reqPlayer = this.elistLocal.get(eventPosition).getActivityData().getMaxPlayer() - this.elistLocal.get(eventPosition).getPlayerData().size();
                     // get players
                     int i = this.elistLocal.get(eventPosition).getPlayerData().size();
-                    int level = this.elistLocal.get(eventPosition).getActivityData().getActivityLevel();
+                    String level = this.elistLocal.get(eventPosition).getActivityData().getActivityLevel();
                     String creatorId = this.elistLocal.get(eventPosition).getCreatorData().getPlayerId();
                     final String status = this.elistLocal.get(eventPosition).getEventStatus();
                     if(!publicEventCard) {
