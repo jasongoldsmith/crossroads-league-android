@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/region_card"
-        android:background="@color/freelancer_background"
+        android:background="@color/logout_btn_background"
         android:layout_above="@+id/name_layout"
         android:layout_marginLeft="33dp"
         android:layout_marginRight="33dp"
@@ -53,7 +53,7 @@
             android:id="@+id/summoner_region"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/freelancer_background"
+            android:background="@color/logout_btn_background"
             android:gravity="center"
             android:overlapAnchor="false"
             android:popupElevation="0dp"
@@ -124,6 +124,7 @@
             android:layout_height="match_parent"
             android:id="@+id/signup_name"
             android:hint="@string/summonername_hint"
+            android:textColorHint="@color/region_hint_textcolor"
             android:background="@null"
             android:textCursorDrawable="@drawable/cursor_draw"
             android:textSize="14sp"
@@ -132,8 +133,7 @@
             android:textColor="@android:color/white"
             android:layout_toRightOf="@+id/name_icon"
             android:layout_below="@+id/name"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginLeft="25dp" />
     </RelativeLayout>
 

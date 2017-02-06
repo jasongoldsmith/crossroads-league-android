@@ -4,14 +4,17 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.v7.widget.CardView;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -102,36 +105,36 @@ public class SelectRegionActivity extends BaseActivity implements Observer, Adap
 //        }
         if (regionList.size() > 0) {
             //down_arw_img.setVisibility(View.VISIBLE);
-            adapterConsole = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, regionList);
+            adapterConsole = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, regionList){
 
-//                int FONT_STYLE = Typeface.BOLD;
-//
-//                public View getView(int position, View convertView, ViewGroup parent) {
-//                    View v = super.getView(position, convertView, parent);
-//
-//                    ((TextView) v).setTypeface(Typeface.SANS_SERIF, FONT_STYLE);
-//                    ((TextView) v).setTextColor(
-//                            getResources().getColorStateList(R.color.trimbe_white)
-//                    );
-//                    ((TextView) v).setGravity(Gravity.CENTER);
-//
-//                    ((TextView) v).setPadding(Util.dpToPx(0, SelectRegionActivity.this), 0, 0, 0);
-//                    ((TextView) v).setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-//                    ((TextView) v).setText(((TextView) v).getText());
-//
-////                    if (((TextView) v).getText().toString().equalsIgnoreCase(Constants.CONSOLEXBOXONESTRG) || ((TextView) v).getText().toString().equalsIgnoreCase(Constants.CONSOLEXBOX360STRG)) {
-////                        imgConsole.setImageResource(R.drawable.icon_xboxone_consolex);
-////                    } else {
-////                        imgConsole.setImageResource(R.drawable.icon_psn_consolex);
-////                    }
-//
-//                    return v;
-//                }
-//
-//                public View getDropDownView(int position, View convertView, ViewGroup parent) {
-//                    //return getCustomView(position, convertView, parent, regionList);
-//                }
-//            };
+                int FONT_STYLE = Typeface.BOLD;
+
+                public View getView(int position, View convertView, ViewGroup parent) {
+                    View v = super.getView(position, convertView, parent);
+
+                    ((TextView) v).setTypeface(Typeface.SANS_SERIF, FONT_STYLE);
+                    ((TextView) v).setTextColor(
+                            getResources().getColorStateList(R.color.trimbe_white)
+                    );
+                    ((TextView) v).setGravity(Gravity.CENTER);
+
+                    ((TextView) v).setPadding(Util.dpToPx(0, SelectRegionActivity.this), 0, 0, 0);
+                    ((TextView) v).setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                    ((TextView) v).setText(((TextView) v).getText());
+
+//                    if (((TextView) v).getText().toString().equalsIgnoreCase(Constants.CONSOLEXBOXONESTRG) || ((TextView) v).getText().toString().equalsIgnoreCase(Constants.CONSOLEXBOX360STRG)) {
+//                        imgConsole.setImageResource(R.drawable.icon_xboxone_consolex);
+//                    } else {
+//                        imgConsole.setImageResource(R.drawable.icon_psn_consolex);
+//                    }
+
+                    return v;
+                }
+
+                public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                    return getCustomView(position, convertView, parent, regionList);
+                }
+            };
                 adapterConsole.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 dropdown.setAdapter(adapterConsole);
                 adapterConsole.notifyDataSetChanged();
@@ -146,6 +149,23 @@ public class SelectRegionActivity extends BaseActivity implements Observer, Adap
 //        }
             }
         }
+
+    private View getCustomView(int position, View convertView, ViewGroup parent, ArrayList<String> regionList) {
+        LayoutInflater inflater=getLayoutInflater();
+        View row=inflater.inflate(R.layout.fragment_checkpoint, parent, false);
+        CardView card = (CardView) row.findViewById(R.id.activity_checkpoint_card);
+
+        card.setVisibility(View.VISIBLE);
+        RelativeLayout cardLayout = (RelativeLayout) row.findViewById(R.id.activity_checkpoint_card_frag);
+        cardLayout.setBackgroundColor(getResources().getColor(R.color.consoleAddColor));
+        card.setCardBackgroundColor(getResources().getColor(R.color.freelancer_background));
+        TextView label = (TextView) row.findViewById(R.id.activity_checkpoint_text);
+        if (regionList != null) {
+            label.setText(regionList.get(position));
+        }
+
+        return row;
+    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

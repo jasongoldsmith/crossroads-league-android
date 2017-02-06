@@ -53,6 +53,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import co.crossroadsapp.leagueoflegends.data.CurrentEventDataHolder;
 import co.crossroadsapp.leagueoflegends.data.EventData;
@@ -145,6 +146,7 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
     private ImageView down_arw_img;
     private TextView consoleText;
     private Bundle b;
+    private ToggleButton groupMute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -244,12 +246,32 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
             @Override
             public void onClick(View v) {
                 if(user!=null && user.getPsnVerify()!=null) {
-                    if (!user.getPsnVerify().equalsIgnoreCase(Constants.PSN_VERIFIED)) {
-                        showUnverifiedUserMsg();
+                    findViewById(R.id.loadingImg).setVisibility(View.VISIBLE);
+                    mManager.postHelmet();
+//                    if (!user.getPsnVerify().equalsIgnoreCase(Constants.PSN_VERIFIED)) {
+//                        showUnverifiedUserMsg();
+//                    } else {
+//                        findViewById(R.id.loadingImg).setVisibility(View.VISIBLE);
+//                        mManager.postHelmet();
+//                    }
+                }
+            }
+        });
+
+        groupMute = (ToggleButton) findViewById(R.id.mute_toggle);
+
+        groupMute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (user!=null && user.getClanId() != null) {
+                    RequestParams muteParams = new RequestParams();
+                    muteParams.add("groupId", user.getClanId());
+                    if (groupMute.isChecked()) {
+                        muteParams.add("muteNotification", "false");
                     } else {
-                        findViewById(R.id.loadingImg).setVisibility(View.VISIBLE);
-                        mManager.postHelmet();
+                        muteParams.add("muteNotification", "true");
                     }
+                    mManager.postMuteNoti(muteParams);
                 }
             }
         });
@@ -630,39 +652,39 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
             }
             if (consoleItems.size() > 1) {
                 //down_arw_img.setVisibility(View.VISIBLE);
-                adapterConsole = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, consoleItems) {
-
-                    int FONT_STYLE = Typeface.BOLD;
-
-                    public View getView(int position, View convertView, ViewGroup parent) {
-                        View v = super.getView(position, convertView, parent);
-
-                        ((TextView) v).setTypeface(Typeface.SANS_SERIF, FONT_STYLE);
-                        ((TextView) v).setTextColor(
-                                getResources().getColorStateList(R.color.trimbe_white)
-                        );
-                        ((TextView) v).setGravity(Gravity.CENTER);
-
-                        ((TextView) v).setPadding(Util.dpToPx(0, ListActivityFragment.this), 0, 0, 0);
-                        ((TextView) v).setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-                        ((TextView) v).setText(((TextView) v).getText());
-
-                        if (((TextView) v).getText().toString().equalsIgnoreCase(Constants.CONSOLEXBOXONESTRG) || ((TextView) v).getText().toString().equalsIgnoreCase(Constants.CONSOLEXBOX360STRG)) {
-                            //imgConsole.setImageResource(R.drawable.icon_xboxone_consolex);
-                        } else {
-                            //imgConsole.setImageResource(R.drawable.icon_psn_consolex);
-                        }
-
-                        return v;
-                    }
-
-                    public View getDropDownView(int position, View convertView, ViewGroup parent) {
-                        return getCustomView(position, convertView, parent, consoleItems);
-                    }
-                };
-                adapterConsole.setDropDownViewResource(R.layout.empty_layout);
-                //dropdown.setAdapter(adapterConsole);
-                adapterConsole.notifyDataSetChanged();
+//                adapterConsole = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, consoleItems) {
+//
+//                    int FONT_STYLE = Typeface.BOLD;
+//
+//                    public View getView(int position, View convertView, ViewGroup parent) {
+//                        View v = super.getView(position, convertView, parent);
+//
+//                        ((TextView) v).setTypeface(Typeface.SANS_SERIF, FONT_STYLE);
+//                        ((TextView) v).setTextColor(
+//                                getResources().getColorStateList(R.color.trimbe_white)
+//                        );
+//                        ((TextView) v).setGravity(Gravity.CENTER);
+//
+//                        ((TextView) v).setPadding(Util.dpToPx(0, ListActivityFragment.this), 0, 0, 0);
+//                        ((TextView) v).setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+//                        ((TextView) v).setText(((TextView) v).getText());
+//
+//                        if (((TextView) v).getText().toString().equalsIgnoreCase(Constants.CONSOLEXBOXONESTRG) || ((TextView) v).getText().toString().equalsIgnoreCase(Constants.CONSOLEXBOX360STRG)) {
+//                            //imgConsole.setImageResource(R.drawable.icon_xboxone_consolex);
+//                        } else {
+//                            //imgConsole.setImageResource(R.drawable.icon_psn_consolex);
+//                        }
+//
+//                        return v;
+//                    }
+//
+//                    public View getDropDownView(int position, View convertView, ViewGroup parent) {
+//                        return getCustomView(position, convertView, parent, consoleItems);
+//                    }
+//                };
+//                adapterConsole.setDropDownViewResource(R.layout.empty_layout);
+//                //dropdown.setAdapter(adapterConsole);
+//                adapterConsole.notifyDataSetChanged();
             } else if(consoleItems.size()>0){
                 if (consoleItems.get(0).equalsIgnoreCase(Constants.CONSOLEXBOXONESTRG)) {
                     //imgConsole.setImageResource(R.drawable.icon_xboxone_consolex);
@@ -792,10 +814,10 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
     private void updateUserProfileImage(String url) {
         if((url!=null) || (!url.equalsIgnoreCase("null"))) {
             if(user!=null) {
-                if(user.getPsnVerify().equalsIgnoreCase(Constants.PSN_VERIFIED)) {
+                //if(user.getPsnVerify().equalsIgnoreCase(Constants.PSN_VERIFIED)) {
                     Util.picassoLoadIcon(this, userProfile, url, R.dimen.player_profile_hgt, R.dimen.player_profile_width, R.drawable.profile_image);
                     Util.picassoLoadIcon(this, userProfileDrawer, url, R.dimen.player_profile_drawer_hgt, R.dimen.player_profile_drawer_width, R.drawable.profile_image);
-                }
+                //}
                 user.setImageUrl(url);
             }
         }
@@ -1129,7 +1151,6 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
         }
     }
 
-
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void setTRansparentStatusBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -1210,8 +1231,8 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
             getExistingList();
             mManager.getEventList();
         }
-//        registerFirbase();
-//        registerUserFirebase();
+        registerFirbase();
+        registerUserFirebase();
 //        if (user!=null && user.getPsnVerify()!=null) {
 //            if (!user.getPsnVerify().equalsIgnoreCase(Constants.PSN_VERIFIED)) {
 //                //register user listener
@@ -1476,32 +1497,37 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
                 //mManager.getEventList(ListActivityFragment.this);
             }
         } else if(observable instanceof GroupListNetwork) {
-            hideProgress();
-            if (data != null) {
-                setGroupImageUrl();
-                if (data instanceof UserData) {
-                    unregisterFirebase();
-                    registerFirbase();
-                    mManager.getEventList();
-                    hideProgress();
-                    closeProfileDrawer(Gravity.RIGHT);
-                    //mManager.getGroupList(this);
-                    //gpAct.setSelectedGroup();
-                } else if(data instanceof GroupData) {
-                    if (drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
-                        gpAct.updateGrpData(data);
-                    }
-                    //setGroupImageUrl();
-                } else {
-                    //setGroupImageUrl();
-                    if(gpAct!=null) {
-                        gpAct.update(data);
-                    }
-//                        if (drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
-//                            gpAct.update(data);
-//                        }
-                }
+            if(data!=null) {
+                GroupData gd = new GroupData();
+                gd = (GroupData) data;
+                setMuteButton(groupMute, gd.getMuteNotification());
             }
+//            hideProgress();
+//            if (data != null) {
+//                setGroupImageUrl();
+//                if (data instanceof UserData) {
+//                    unregisterFirebase();
+//                    registerFirbase();
+//                    mManager.getEventList();
+//                    hideProgress();
+//                    closeProfileDrawer(Gravity.RIGHT);
+//                    //mManager.getGroupList(this);
+//                    //gpAct.setSelectedGroup();
+//                } else if(data instanceof GroupData) {
+//                    if (drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
+//                        gpAct.updateGrpData(data);
+//                    }
+//                    //setGroupImageUrl();
+//                } else {
+//                    //setGroupImageUrl();
+//                    if(gpAct!=null) {
+//                        gpAct.update(data);
+//                    }
+////                        if (drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
+////                            gpAct.update(data);
+////                        }
+//                }
+//            }
         } else if(observable instanceof ResendBungieVerification) {
             hideProgress();
             Toast.makeText(this, "Verification Message Sent to Your Bungie.net Account",
@@ -1552,6 +1578,13 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
                 startActivity(regIntent);
                 finish();
             }
+        }
+    }
+
+    private void setMuteButton(final ToggleButton mute, boolean mn) {
+        if (mute!=null) {
+            mute.setEnabled(true);
+            mute.setChecked(!mn);
         }
     }
 

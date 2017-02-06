@@ -93,14 +93,13 @@
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateVisible|adjustResize" />
 
-        <receiver
+        <service
             android:name=".MyGcmBroadcastReceiver"
-            android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND">
+            >
             <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </receiver>
+        </service>
 
         <service
             android:name=".NotificationService"
@@ -180,11 +179,6 @@
             android:name=".MessageSent"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
-
-        <service
-            android:name=".BungieUserService"
-            android:enabled="true"
-            android:exported="true" />
 
         <activity
             android:name=".SelectRegionActivity"

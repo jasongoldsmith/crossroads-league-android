@@ -90,7 +90,7 @@ public class GroupListNetwork extends Observable {
             }
         }
         setChanged();
-        notifyObservers(this.groupList);
+        notifyObservers(this.groupList.get(0));
     }
 
     private void parseUserObj(JSONObject response) {

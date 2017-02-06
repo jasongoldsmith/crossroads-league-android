@@ -569,6 +569,9 @@ public class Util {
                 case "XBOX360":
                     console.add("Xbox 360");
                     break;
+                case "PC":
+                    console.add("PC");
+                    break;
                 default:
                     console.add("Console Missing");
             }

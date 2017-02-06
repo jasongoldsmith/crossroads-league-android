@@ -106,7 +106,7 @@ public class PlayerData {
     }
 
     public String getPsnVerify() {
-        return psnVerify;
+        return Constants.PSN_VERIFIED;
     }
 
     public void setUserId(String userId) {

@@ -90,8 +90,6 @@ public class LoginNetwork extends Observable {
             ntwrk.post(url_reg, params, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                    //post gcm token
-                    postGcm();
                     parseSignUpUser(response);
                 }
 

@@ -34,7 +34,7 @@ public class HelmetUpdateNetwork extends Observable {
 
     public void getHelmet() throws JSONException {
         if (Util.isNetworkAvailable(mContext)) {
-            ntwrk.post(url, new JsonHttpResponseHandler() {
+            ntwrk.get(url, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     try {

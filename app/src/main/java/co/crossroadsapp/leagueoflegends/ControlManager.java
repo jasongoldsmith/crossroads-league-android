@@ -248,18 +248,18 @@ public class ControlManager implements Observer{
     }
 
     public void getGroupList() {
-//        try {
-//            if(mCurrentAct.get()!=null) {
-//                groupListNtwrk = new GroupListNetwork(mCurrentAct.get());
-//                if(mCurrentAct.get() instanceof ListActivityFragment) {
-//                    groupListNtwrk.addObserver((ListActivityFragment) mCurrentAct.get());
-//                }
-//                groupListNtwrk.addObserver(this);
-//                groupListNtwrk.getGroups();
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            if(mCurrentAct.get()!=null) {
+                groupListNtwrk = new GroupListNetwork(mCurrentAct.get());
+                groupListNtwrk.addObserver(this);
+                if(mCurrentAct.get() instanceof ListActivityFragment) {
+                    groupListNtwrk.addObserver((ListActivityFragment) mCurrentAct.get());
+                }
+                groupListNtwrk.getGroups();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void postSetGroup(RequestParams params) {
@@ -736,7 +736,7 @@ public class ControlManager implements Observer{
         } else if(observable instanceof LoginNetwork || observable instanceof AddNewConsoleNetwork) {
             if (data!=null) {
                 getEventList();
-                getGroupList();
+                //getGroupList();
             }
         } else if(observable instanceof BungieUserNetwork) {
             if(data!=null) {

@@ -30,13 +30,6 @@
             android:layout_alignParentTop="true">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/img_header_bg"
-                android:layout_alignParentTop="true"
-                android:adjustViewBounds="true"/>
-
-            <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:id="@+id/badge_icon"
@@ -48,9 +41,23 @@
                 android:layout_alignParentRight="true"
                 android:visibility="gone"/>
 
+            <ToggleButton
+                android:id="@+id/mute_toggle"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="@drawable/check"
+                android:focusable="false"
+                android:checked="true"
+                android:textOn=""
+                android:textOff=""
+                android:focusableInTouchMode="false"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="11dp"
+                android:layout_alignParentRight="true"/>
+
             <co.crossroadsapp.leagueoflegends.utils.CircularImageView
-                android:layout_width="@dimen/player_profile_width"
-                android:layout_height="@dimen/player_profile_hgt"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:id="@+id/userProfile"
                 android:src="@drawable/profile_image"
                 android:layout_marginLeft="11dp"
@@ -235,7 +242,7 @@
                     android:layout_height="96dp"
                     android:id="@+id/profile_avatar"
                     android:src="@drawable/profile_image"
-                    app:borderColor="#37646d"
+                    app:borderColor="@color/app_theme_color"
                     app:border="true"/>
                 <ProgressBar
                     android:id="@+id/loadingImg"
@@ -510,7 +517,7 @@
                         android:text="0 Activities" />
 
                     <ToggleButton
-                        android:id="@+id/mute_toggle"
+                        android:id="@+id/mute_toggle_grp"
                         android:layout_width="44dp"
                         android:layout_height="44dp"
                         android:background="@drawable/check"

@@ -50,7 +50,7 @@ public class Constants {
     public static final String GROUP_LIST_URL = "api/v1/a/account/group/list";
     public static final String UPDATE_GROUP_URL = "api/v1/a/user/updateGroup";
     public static final String MUTE_GROUP_URL = "api/v1/a/account/group/mute";
-    public static final String UPDATE_HELMET_URL = "api/v1/a/account/group/mute";
+    public static final String UPDATE_HELMET_URL = "api/v1/a/user/refreshHelmet";
     public static final String INVITE_PLAYER_URL = "api/v1/a/event/invite";
     public static final String VALIDATE_USERLOGIN_URL = "api/v1/auth/validateUserLogin";
     public static final String LOGIN_URL = "api/v1/auth/login";

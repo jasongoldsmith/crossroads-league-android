@@ -6,6 +6,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import co.crossroadsapp.leagueoflegends.utils.Constants;
+
 /**
  * Created by sharmha on 2/23/16.
  */
@@ -57,7 +59,7 @@ public class UserData {
     }
 
     public String getPsnVerify() {
-        return psnVerify;
+        return Constants.PSN_VERIFIED;
     }
 
     public void setMembershipId(String memId) {

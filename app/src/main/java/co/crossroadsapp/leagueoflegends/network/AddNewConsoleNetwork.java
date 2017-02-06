@@ -37,6 +37,8 @@ public class AddNewConsoleNetwork extends Observable {
             ntwrk.post(url, params, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    //post gcm token
+                    postGcm();
                     parseConsoleResponse(response);
                 }
 
@@ -48,6 +50,11 @@ public class AddNewConsoleNetwork extends Observable {
         }else {
             Util.createNoNetworkDialogue(mContext);
         }
+    }
+
+    private void postGcm() {
+        //post gcm token
+        Util.getGCMToken(mContext, mManager);
     }
 
     private void parseConsoleResponse(JSONObject response) {

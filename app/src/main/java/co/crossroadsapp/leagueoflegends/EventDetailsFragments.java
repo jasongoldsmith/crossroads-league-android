@@ -296,14 +296,15 @@ public class EventDetailsFragments extends Fragment {
                     holder.playerProfile.setImageResource(R.drawable.img_profile_blank);
                     if(position==playerLocal.size()) {
                         if (checkUserIsPlayer() && !ifUserInvited(playerLocal)) {
-                            holder.inviteIcon.setVisibility(View.VISIBLE);
-                            holder.playerName.setText(getString(R.string.searching_friend));
-                            holder.inviteIcon.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    ((EventDetailActivity) getActivity()).showAnimatedInviteView();
-                                }
-                            });
+                            //Todo commenting invite button
+//                            holder.inviteIcon.setVisibility(View.VISIBLE);
+//                            holder.playerName.setText(getString(R.string.searching_friend));
+//                            holder.inviteIcon.setOnClickListener(new View.OnClickListener() {
+//                                @Override
+//                                public void onClick(View v) {
+//                                    ((EventDetailActivity) getActivity()).showAnimatedInviteView();
+//                                }
+//                            });
                         }
                     }
                 } else {
@@ -322,10 +323,10 @@ public class EventDetailsFragments extends Fragment {
                                 if (playerLocal.get(position).getClanTag() != null && !playerLocal.get(position).getClanTag().isEmpty()) {
                                     name = name + " [" + playerLocal.get(position).getClanTag() + "]";
                                 }
-                                if (playerLocal.get(position).getPlayerImageUrl() != null) {
+                                //if (playerLocal.get(position).getPlayerImageUrl() != null) {
                                     Util.picassoLoadIcon(((EventDetailActivity)getActivity()), holder.playerProfile, playerLocal.get(position).getPlayerImageUrl(),
                                             R.dimen.eventdetail_player_profile_hgt, R.dimen.eventdetail_player_profile_width, R.drawable.profile_image);
-                                }
+                                //}
                             } else {
                                 Util.picassoLoadIcon(((EventDetailActivity)getActivity()), holder.playerProfile, null,
                                         R.dimen.eventdetail_player_profile_hgt, R.dimen.eventdetail_player_profile_width, R.drawable.profile_image);
@@ -590,6 +591,8 @@ public class EventDetailsFragments extends Fragment {
                                 if (commentsLocal.get(position).getPlayerImageUrl() != null && !commentsLocal.get(position).getPlayerImageUrl().isEmpty()) {
                                     String playerImg = commentsLocal.get(position).getPlayerImageUrl();
                                     Util.picassoLoadImageWithoutMeasurement(getActivity(), holder.playerProfileComment, playerImg, R.drawable.profile_image);
+                                } else {
+                                    Util.picassoLoadImageWithoutMeasurement(getActivity(), holder.playerProfileComment, null, R.drawable.profile_image);
                                 }
                             } else {
                                 Util.picassoLoadImageWithoutMeasurement(getActivity(), holder.playerProfileComment, null, R.drawable.profile_image);
