@@ -3,158 +3,159 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="co.crossroadsapp.leagueoflegends.SelectRegionActivity">
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:background="@drawable/img_background_map">
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/img_background_map"
-        android:scaleType="fitXY"/>
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_b_g_s_i_g_n_i_n_2"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"/>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/region_card"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/travel_badge"
-            android:src="@drawable/img_c_r_lo_l_brand"
-            android:layout_centerHorizontal="true"
-            android:layout_above="@+id/create_accnt"/>
+            android:id="@+id/region_backbtn"
+            android:src="@drawable/icon_back_arrow"
+            android:paddingTop="22dp"
+            android:layout_alignParentLeft="true"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/create_summoner_accnt"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
-            android:layout_marginTop="22dp"
+            android:layout_below="@+id/signup_backbtn"
+            android:layout_marginTop="97dp"
             android:text="CHOOSE YOUR REGION"
             android:textColor="@color/trimbe_white"
-            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:textSize="12sp"/>
-    </RelativeLayout>
+            android:textSize="16sp"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/region_card"
-        android:background="@color/logout_btn_background"
-        android:layout_above="@+id/name_layout"
-        android:layout_marginLeft="33dp"
-        android:layout_marginRight="33dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp">
-
-        <Spinner
-            android:id="@+id/summoner_region"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/logout_btn_background"
-            android:gravity="center"
-            android:overlapAnchor="false"
-            android:popupElevation="0dp"
-            android:popupBackground="@android:color/transparent"/>
-
-        <ImageView
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:id="@+id/firstcard_img"
-            android:layout_alignParentLeft="true"
-            android:layout_margin="13dp"
-            android:src="@drawable/icon_ghost_default"
-            android:layout_centerVertical="true"
-            android:visibility="gone"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/act_subtype_text"
-            android:layout_toRightOf="@+id/firstcard_img"
-            android:fontFamily="sans-serif"
-            android:textStyle="bold"
-            android:text="Missing regions"
-            android:textColor="@android:color/white"
+            android:layout_below="@+id/create_summoner_accnt"
+            android:id="@+id/choose_region_subtext"
+            android:text="@string/select_region_text"
+            android:textColor="@color/trimbe_white"
             android:textSize="12sp"
-            android:layout_centerInParent="true"
-            android:visibility="gone"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/subtype_downarw"
-            android:src="@drawable/icon_arrow_dwn"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:padding="15dp"/>
-    </RelativeLayout>
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="57dp"
+            android:layout_marginRight="57dp"
+            android:gravity="center"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/name_layout"
-        android:layout_marginTop="2dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="50dp"
-        android:background="#4f000000"
-        android:layout_above="@+id/register_btn">
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:id="@+id/name_icon"
-            android:src="@drawable/img_icon_name"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginBottom="22dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/name"
-            android:layout_toRightOf="@+id/name_icon"
-            android:fontFamily="sans-serif"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="13dp"
-            android:textSize="10sp"
-            android:text="SUMMONER NAME"/>
-        <EditText
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/signup_name"
-            android:hint="@string/summonername_hint"
-            android:textColorHint="@color/region_hint_textcolor"
-            android:background="@null"
-            android:textCursorDrawable="@drawable/cursor_draw"
-            android:textSize="14sp"
-            android:singleLine="true"
-            android:imeOptions="actionNext"
-            android:textColor="@android:color/white"
-            android:layout_toRightOf="@+id/name_icon"
-            android:layout_below="@+id/name"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="25dp" />
-    </RelativeLayout>
+            android:layout_height="50dp"
+            android:id="@+id/region_card"
+            android:background="@color/logout_btn_background"
+            android:layout_below="@+id/choose_region_subtext"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="13dp">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/register_btn"
-        android:src="@drawable/img_login_btn"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="32dp"
-        android:layout_centerHorizontal="true"/>
+            <Spinner
+                android:id="@+id/summoner_region"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/tag_background"
+                android:gravity="center"
+                android:overlapAnchor="false"
+                android:popupElevation="0dp"
+                android:popupBackground="@android:color/transparent"/>
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:id="@+id/firstcard_img"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="13dp"
+                android:src="@drawable/icon_ghost_default"
+                android:layout_centerVertical="true"
+                android:visibility="gone"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/act_subtype_text"
+                android:layout_toRightOf="@+id/firstcard_img"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:text="Missing regions"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:layout_centerInParent="true"
+                android:visibility="gone"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/subtype_downarw"
+                android:src="@drawable/icon_arrow_dwn"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="15dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/name_layout"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="50dp"
+            android:background="#4f000000"
+            android:layout_below="@+id/region_card">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/name_icon"
+                android:src="@drawable/img_icon_id"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="22dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/signup_name"
+                android:hint="@string/summonername_hint"
+                android:textColorHint="@color/region_hint_textcolor"
+                android:background="@null"
+                android:textColor="@color/trimbe_white"
+                android:textCursorDrawable="@drawable/cursor_draw"
+                android:textSize="18sp"
+                android:inputType="textVisiblePassword"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
+                android:layout_toRightOf="@+id/name_icon"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="25dp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/register_btn"
+        android:background="@color/app_theme_color"
+        android:text="@string/join_crossroads"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5dp"
-        android:textColor="@color/copyright_text"
-        android:textSize="12sp"
-        android:layout_centerHorizontal="true"
-        android:text="@string/copyright_string"/>
+        android:gravity="center"/>
 
     <include layout="@layout/activity_base" />
 

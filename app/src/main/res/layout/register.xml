@@ -2,13 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:background="@drawable/img_background_map">
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/img_background_map"
-        android:scaleType="fitXY"/>
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_b_g_s_i_g_n_i_n_2"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"/>
 
     <!--<RelativeLayout-->
         <!--android:layout_width="match_parent"-->
@@ -59,29 +63,115 @@
     <!--</RelativeLayout>-->
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/name_layout"
+        android:id="@+id/name_pswrd_layout"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/travel_badge"
-            android:src="@drawable/img_c_r_lo_l_brand"
-            android:layout_centerHorizontal="true"
-            android:layout_above="@+id/create_accnt"/>
+            android:id="@+id/signup_backbtn"
+            android:src="@drawable/icon_back_arrow"
+            android:paddingTop="22dp"
+            android:paddingRight="20dp"
+            android:layout_alignParentLeft="true"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/create_accnt"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
-            android:layout_marginTop="22dp"
+            android:textColor="@color/trimbe_white"
+            android:layout_below="@+id/signup_backbtn"
+            android:layout_marginTop="25dp"
             android:text="@string/create_crossroads_accnt"
-            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:textSize="12sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/name_layout"
+            android:layout_marginTop="18dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/hint_background"
+            android:layout_below="@+id/create_accnt">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/name_icon"
+                android:src="@drawable/img_icon_email"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="22dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/signup_name"
+                android:hint="Enter email address"
+                android:textColorHint="@color/region_hint_textcolor"
+                android:textColor="@color/trimbe_white"
+                android:textCursorDrawable="@drawable/cursor_draw"
+                android:background="@null"
+                android:textSize="18sp"
+                android:inputType="textVisiblePassword"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
+                android:layout_toRightOf="@+id/name_icon"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="25dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/pswd_layout"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="30dp"
+            android:background="@color/hint_background"
+            android:layout_below="@+id/name_layout">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/pswrd_icon"
+                android:src="@drawable/img_icon_password"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="22dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/signup_pswrd"
+                android:hint="Enter password"
+                android:textColorHint="@color/region_hint_textcolor"
+                android:textColor="@android:color/white"
+                android:textCursorDrawable="@drawable/cursor_draw"
+                android:background="@null"
+                android:singleLine="true"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:nextFocusDown="@+id/signup_btn"
+                android:textSize="18sp"
+                android:layout_toRightOf="@+id/pswrd_icon"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="22dp" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/signup_show_pswd"
+                android:src="@drawable/icon_showpassword"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="4dp"/>
+        </RelativeLayout>
     </RelativeLayout>
 
     <!--<RelativeLayout-->
@@ -128,100 +218,6 @@
             <!--android:layout_marginLeft="25dp" />-->
     <!--</RelativeLayout>-->
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/name_layout"
-        android:layout_marginTop="2dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="#4f000000"
-        android:layout_above="@+id/pswd_layout">
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:id="@+id/name_icon"
-            android:src="@drawable/img_icon_name"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginBottom="22dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/name"
-            android:layout_toRightOf="@+id/name_icon"
-            android:fontFamily="sans-serif"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="13dp"
-            android:textSize="10sp"
-            android:text="@string/username_text"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/signup_name"
-            android:hint="@string/username_hint"
-            android:background="@null"
-            android:textCursorDrawable="@drawable/cursor_draw"
-            android:textSize="14sp"
-            android:singleLine="true"
-            android:imeOptions="actionNext"
-            android:textColor="@android:color/white"
-            android:layout_toRightOf="@+id/name_icon"
-            android:layout_below="@+id/name"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="25dp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/pswd_layout"
-        android:layout_marginTop="2dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="30dp"
-        android:background="#4f000000"
-        android:layout_above="@+id/signup_btn">
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:id="@+id/pswrd_icon"
-            android:src="@drawable/img_icon_password"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginBottom="22dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/pswd"
-            android:layout_toRightOf="@+id/pswrd_icon"
-            android:fontFamily="sans-serif"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="13dp"
-            android:textSize="10sp"
-            android:text="PASSWORD"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/signup_pswrd"
-            android:hint="Enter password"
-            android:textCursorDrawable="@drawable/cursor_draw"
-            android:background="@null"
-            android:singleLine="true"
-            android:inputType="textPassword"
-            android:imeOptions="actionDone"
-            android:textColor="@android:color/white"
-            android:textSize="14sp"
-            android:layout_toRightOf="@+id/pswrd_icon"
-            android:layout_below="@+id/pswd"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="25dp" />
-    </RelativeLayout>
-
     <!--<TextView-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
@@ -238,24 +234,42 @@
         <!--android:textSize="12sp"-->
         <!--android:text="@string/terms_conditions"/>-->
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:id="@+id/signup_btn"
-        android:src="@drawable/img_login_btn"
+        android:background="@color/app_theme_color"
+        android:text="@string/next"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="32dp"
-        android:layout_centerHorizontal="true"/>
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5dp"
-        android:textColor="@color/copyright_text"
-        android:textSize="12sp"
+        android:gravity="center"
+        android:id="@+id/signup_privacy_terms"
+        android:textColorLink="@color/app_theme_color"
+        android:layout_above="@+id/signup_btn"
         android:layout_centerHorizontal="true"
-        android:text="@string/copyright_string"/>
+        android:layout_marginTop="29dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/trimbe_white"
+        android:textSize="12sp"
+        android:text="@string/terms_conditions"/>
+
+    <WebView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:id="@+id/signup_web"
+        android:visibility="gone">
+    </WebView>
 
     <include layout="@layout/activity_base" />
 

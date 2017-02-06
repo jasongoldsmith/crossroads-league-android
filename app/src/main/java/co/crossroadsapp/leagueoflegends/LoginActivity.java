@@ -59,6 +59,7 @@ public class LoginActivity extends BaseActivity implements Observer {
     private ImageView heroImg;
     private Handler mHandler;
     private InvitationLoginData invitationRp;
+    private int firstTimeKeyboardOpens=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -186,7 +187,7 @@ public class LoginActivity extends BaseActivity implements Observer {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.setEnabled(false);
+                //v.setEnabled(false);
                 username = name_login.getText().toString();
                 password = pswd_login.getText().toString();
                 if (username!=null && password!=null) {
@@ -204,9 +205,11 @@ public class LoginActivity extends BaseActivity implements Observer {
                         if(invitationRp!=null) {
                             params.put("invitation", invitationRp.getRp());
                         }
-                        dialog.show();
+                        //dialog.show();
                         //login_btn.setImageDrawable(getResources().getDrawable(R.drawable.img_login_btn_tapped));
-                        dialog.setCancelable(false);
+                        //dialog.setCancelable(false);
+                        firstTimeKeyboardOpens=0;
+                        showProgressBar();
                         mManager.postLogin(params, Constants.LOGIN);
                     }
                 }
@@ -216,7 +219,7 @@ public class LoginActivity extends BaseActivity implements Observer {
         pswd_login.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable arg0) {
-                enableSubmitIfReady();
+                //enableSubmitIfReady();
             }
 
             @Override
@@ -255,7 +258,7 @@ public class LoginActivity extends BaseActivity implements Observer {
         name_login.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable arg0) {
-                enableSubmitIfReady();
+                //enableSubmitIfReady();
             }
 
             @Override
@@ -287,6 +290,11 @@ public class LoginActivity extends BaseActivity implements Observer {
                 else {
                     // keyboard is closed
                     //heroImg.setVisibility(View.VISIBLE);
+                    if(firstTimeKeyboardOpens>1) {
+                        onBackPressed();
+                    }else {
+                        firstTimeKeyboardOpens++;
+                    }
                 }
             }
         });
@@ -334,10 +342,11 @@ public class LoginActivity extends BaseActivity implements Observer {
     }
 
     public void showError(String err, String errorType) {
-        dialog.dismiss();
-        login_btn.setEnabled(true);
+        //dialog.dismiss();
+        //login_btn.setEnabled(true);
 //        name_login.setText("");
 //        pswd_login.setText("");
+        hideProgressBar();
         if(errorType!=null && !errorType.isEmpty()) {
             if(errorType.equalsIgnoreCase(Constants.BUNGIE_ERROR)) {
                 Intent intent = new Intent(getApplicationContext(),
@@ -352,6 +361,8 @@ public class LoginActivity extends BaseActivity implements Observer {
         } else {
             setErrText(err);
         }
+
+        showKeyboard();
     }
 
     private void enableSubmitIfReady() {
@@ -380,7 +391,8 @@ public class LoginActivity extends BaseActivity implements Observer {
     @Override
     public void update(Observable observable, Object data) {
         //dismiss progress
-        dialog.dismiss();
+        //dialog.dismiss();
+        hideProgressBar();
         //login_btn.setImageDrawable(getResources().getDrawable(R.drawable.img_login_btn));
         if (data!=null) {
             UserData ud = (UserData) data;

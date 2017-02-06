@@ -3,32 +3,42 @@
     xmlns:conversation="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:background="@drawable/img_background_map">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ImageView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/crash_text"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/contact_us"
-        android:textColor="@color/trimbe_white"
-        android:textSize="20sp"
-        android:layout_marginTop="16dp"/>
+        android:src="@drawable/img_b_g_s_i_g_n_i_n_2"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/back"
         android:src="@drawable/icon_back_arrow"
-        android:paddingTop="8dp"
+        android:paddingTop="22dp"
         android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/crash_text"
+        android:layout_centerHorizontal="true"
+        android:text="@string/contact_us"
+        android:textColor="@color/trimbe_white"
+        android:textSize="16sp"
+        android:layout_below="@+id/back"
+        android:layout_marginTop="10dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/send_crash"
-        android:background="#0086d0"
+        android:background="@color/app_theme_color"
         android:text="SEND"
         android:fontFamily="sans-serif"
         android:layout_marginTop="60dp"
@@ -38,39 +48,82 @@
         android:layout_alignParentBottom="true"
         android:gravity="center"/>
 
-    <EditText
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="66dp"
-        android:id="@+id/crash_email"
-        android:background="#4D000000"
-        android:hint="  Your Email (required)"
-        android:gravity="center_vertical"
-        android:nextFocusDown="@+id/crash_edittext"
-        android:textColor="@color/trimbe_white"
-        android:imeOptions="actionNext"
-        android:inputType="textEmailAddress"
-        android:textSize="18sp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="33dp"
-        android:layout_below="@+id/crash_text"/>
+        android:layout_height="60dp"
+        android:id="@+id/crash_email_layout"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/hint_background"
+        android:layout_below="@+id/crash_text">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/name_icon"
+            android:src="@drawable/img_icon_email"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="22dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/crash_email"
+            android:hint="Enter email address (required)"
+            android:textColorHint="@color/region_hint_textcolor"
+            android:textColor="@color/trimbe_white"
+            android:textCursorDrawable="@drawable/cursor_draw"
+            android:background="@null"
+            android:textSize="18sp"
+            android:inputType="textVisiblePassword"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
+            android:layout_toRightOf="@+id/name_icon"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="17dp" />
+    </RelativeLayout>
 
-    <EditText
+    <!--<EditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="66dp"-->
+        <!--android:id="@+id/crash_email"-->
+        <!--android:background="#4D000000"-->
+        <!--android:hint="  Your Email (required)"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:nextFocusDown="@+id/crash_edittext"-->
+        <!--android:textColor="@color/trimbe_white"-->
+        <!--android:imeOptions="actionNext"-->
+        <!--android:inputType="textEmailAddress"-->
+        <!--android:textSize="18sp"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginTop="33dp"-->
+        <!--android:layout_below="@+id/crash_text"/>-->
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_below="@+id/crash_email_layout">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/crash_edittext"
-        android:background="#4D000000"
-        android:hint="  What would you like to tell us?"
+        android:background="@color/hint_background"
+        android:hint="What would you like to tell us?"
+        android:textColorHint="@color/region_hint_textcolor"
         android:gravity="top"
+        android:inputType="textVisiblePassword"
         android:nextFocusDown="@+id/send_crash"
         android:textColor="@color/trimbe_white"
         android:imeOptions="actionDone"
         android:textSize="18sp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/crash_email"
-        android:layout_marginBottom="13dp"/>
+        android:paddingStart="17dp"
+        android:paddingTop="15dp"/>
+        </RelativeLayout>
 
     <include layout="@layout/activity_base" />
 

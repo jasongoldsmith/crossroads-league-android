@@ -59,8 +59,17 @@
                 android:text="SIGN UP"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
-
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/trimbe_white"
+        android:layout_above="@+id/signin"
+        android:text="@string/copyright_string"
+        android:layout_marginBottom="19dp"
+        android:gravity="center"
+        android:textSize="12sp"/>
 
     <!--<TextView-->
         <!--android:layout_width="match_parent"-->
@@ -113,31 +122,31 @@
             android:textColor="@color/trimbe_white"/>
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/signin"
-        android:layout_marginBottom="11dp"
-        android:textColor="@color/trimbe_white"
-        android:textSize="14sp"
-        android:id="@+id/catalyst_text"
-        android:layout_centerHorizontal="true"
-        android:text="Sign in with PlayStation or Xbox:"/>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_above="@+id/signin"-->
+        <!--android:layout_marginBottom="11dp"-->
+        <!--android:textColor="@color/trimbe_white"-->
+        <!--android:textSize="14sp"-->
+        <!--android:id="@+id/catalyst_text"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:text="Sign in with PlayStation or Xbox:"/>-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:id="@+id/privacy_terms"
-        android:textColorLink="@color/app_theme_color"
-        android:layout_below="@+id/guardian_text_layout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="169dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:textColor="@color/trimbe_white"
-        android:textSize="12sp"
-        android:text="@string/terms_conditions"/>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center"-->
+        <!--android:id="@+id/privacy_terms"-->
+        <!--android:textColorLink="@color/app_theme_color"-->
+        <!--android:layout_below="@+id/guardian_text_layout"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="169dp"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:textColor="@color/trimbe_white"-->
+        <!--android:textSize="12sp"-->
+        <!--android:text="@string/terms_conditions"/>-->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -163,29 +172,29 @@
             android:layout_alignParentLeft="true"/>
     </RelativeLayout>
 
-    <WebView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/top_header"
-        android:id="@+id/web_ps"
-        android:visibility="gone">
-    </WebView>
+    <!--<WebView-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:layout_below="@+id/top_header"-->
+        <!--android:id="@+id/web_ps"-->
+        <!--android:visibility="gone">-->
+    <!--</WebView>-->
 
-    <WebView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/top_header"
-        android:id="@+id/web"
-        android:visibility="gone">
-    </WebView>
+    <!--<WebView-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:layout_below="@+id/top_header"-->
+        <!--android:id="@+id/web"-->
+        <!--android:visibility="gone">-->
+    <!--</WebView>-->
 
-    <WebView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/top_header"
-        android:id="@+id/web_xbox"
-        android:visibility="gone">
-    </WebView>
+    <!--<WebView-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:layout_below="@+id/top_header"-->
+        <!--android:id="@+id/web_xbox"-->
+        <!--android:visibility="gone">-->
+    <!--</WebView>-->
 
     <include layout="@layout/activity_base" />
 

@@ -236,6 +236,7 @@ public class Util {
         editor.remove("password");
         editor.remove("csrf");
         editor.remove("cookie");
+        editor.remove("consoleType");
         CookieManager.getInstance().removeAllCookie();
 //        CookieManager.getInstance().setCookie("https://www.bungie.net/", " ");
 //        CookieManager.getInstance().setCookie("https://www.bungie.net/", " ");

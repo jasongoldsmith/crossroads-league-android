@@ -70,6 +70,8 @@
 
     <color name="tag_text">#9ba8ad</color>
     <color name="tag_background">#203236</color>
+    <color name="hint_background">#80304043</color>
+    <color name="support_email">#d29100</color>
 
     <color name="event_detail_fireteam_cardbackground">#8040555b</color>
     <color name="eventdetail_clan">#1d3137</color>

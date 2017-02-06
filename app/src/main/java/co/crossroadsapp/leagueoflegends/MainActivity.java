@@ -187,21 +187,21 @@ public class MainActivity extends BaseActivity implements Observer {
     }
 
     private boolean hideWebviews() {
-        if(webView!=null && webView.getVisibility()==View.VISIBLE && topBar!=null) {
-            webView.setVisibility(View.GONE);
-            topBar.setVisibility(View.GONE);
-            return false;
-        } else if(webViewPS!=null && webViewPS.getVisibility()==View.VISIBLE && topBar!=null) {
-            webViewPS.setVisibility(View.GONE);
-            topBar.setVisibility(View.GONE);
-            intializeLoginWebViews();
-            return false;
-        } else if (webViewXBOX!=null && webViewXBOX.getVisibility()==View.VISIBLE && topBar!=null){
-            webViewXBOX.setVisibility(View.GONE);
-            topBar.setVisibility(View.GONE);
-            intializeLoginWebViews();
-            return false;
-        }
+//        if(webView!=null && webView.getVisibility()==View.VISIBLE && topBar!=null) {
+//            webView.setVisibility(View.GONE);
+//            topBar.setVisibility(View.GONE);
+//            return false;
+//        } else if(webViewPS!=null && webViewPS.getVisibility()==View.VISIBLE && topBar!=null) {
+//            webViewPS.setVisibility(View.GONE);
+//            topBar.setVisibility(View.GONE);
+//            intializeLoginWebViews();
+//            return false;
+//        } else if (webViewXBOX!=null && webViewXBOX.getVisibility()==View.VISIBLE && topBar!=null){
+//            webViewXBOX.setVisibility(View.GONE);
+//            topBar.setVisibility(View.GONE);
+//            intializeLoginWebViews();
+//            return false;
+//        }
         return true;
     }
 
@@ -309,17 +309,17 @@ public class MainActivity extends BaseActivity implements Observer {
 
         mManager.getPublicEventList();
 
-        privacyTerms = (TextView) findViewById(R.id.privacy_terms);
+//        privacyTerms = (TextView) findViewById(R.id.privacy_terms);
 
         countText = (TextView) findViewById(R.id.player_count);
 
-        webView = (WebView) findViewById(R.id.web);
-        webViewPS = (WebView) findViewById(R.id.web_ps);
-        webViewXBOX = (WebView) findViewById(R.id.web_xbox);
+//        webView = (WebView) findViewById(R.id.web);
+//        webViewPS = (WebView) findViewById(R.id.web_ps);
+//        webViewXBOX = (WebView) findViewById(R.id.web_xbox);
 
-        intializeLoginWebViews();
-
-        setTextViewHTML(privacyTerms, getString(R.string.terms_conditions));
+//        intializeLoginWebViews();
+//
+//        setTextViewHTML(privacyTerms, getString(R.string.terms_conditions));
 
         topBar = (RelativeLayout) findViewById(R.id.top_header);
         topBarBack = (ImageView) findViewById(R.id.main_backbtn);
@@ -433,42 +433,42 @@ public class MainActivity extends BaseActivity implements Observer {
     }
 
     private void intializeWebViews(WebView wb, String url) {
-        if(wb!=null) {
-            wb.removeAllViews();
-            wb.getSettings().setJavaScriptEnabled(true);
-            wb.getSettings().setLoadWithOverviewMode(true);
-            wb.getSettings().setUseWideViewPort(true);
-            wb.setWebViewClient(new WebViewClient() {
-                @Override
-                public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                    if(url.equalsIgnoreCase("https://www.bungie.net/")){
-                        showBungieProgressBar();
-                        //hideWebviews();
-                    }
-                }
-                @Override
-                public void onPageFinished(WebView view, String url) {
-                    cookies = CookieManager.getInstance().getCookie(url);
-                    String csrf;
-                    String[] pair = cookies.split(";");
-                    for (int i = 0; i < pair.length; i++) {
-                        String temp = pair[i].substring(0, pair[i].indexOf('=')).trim();
-                        if (temp.equalsIgnoreCase("bungled")) {
-//                        webView.setVisibility(View.GONE);
-                            csrf = pair[i].substring(pair[i].indexOf('=') + 1, pair[i].length());
-                            Util.setDefaults("csrf", csrf, MainActivity.this);
-                            Util.setDefaults("cookie", cookies, MainActivity.this);
-                            //network call to get current user
-                            mManager.getBungieCurrentUser(csrf, cookies, getApplicationContext());
-                            return;
-                        }
-                    }
-                }
-            });
-            if(url!=null) {
-                wb.loadUrl(url);
-            }
-        }
+//        if(wb!=null) {
+//            wb.removeAllViews();
+//            wb.getSettings().setJavaScriptEnabled(true);
+//            wb.getSettings().setLoadWithOverviewMode(true);
+//            wb.getSettings().setUseWideViewPort(true);
+//            wb.setWebViewClient(new WebViewClient() {
+//                @Override
+//                public void onPageStarted(WebView view, String url, Bitmap favicon) {
+//                    if(url.equalsIgnoreCase("https://www.bungie.net/")){
+//                        showBungieProgressBar();
+//                        //hideWebviews();
+//                    }
+//                }
+//                @Override
+//                public void onPageFinished(WebView view, String url) {
+//                    cookies = CookieManager.getInstance().getCookie(url);
+//                    String csrf;
+//                    String[] pair = cookies.split(";");
+//                    for (int i = 0; i < pair.length; i++) {
+//                        String temp = pair[i].substring(0, pair[i].indexOf('=')).trim();
+//                        if (temp.equalsIgnoreCase("bungled")) {
+////                        webView.setVisibility(View.GONE);
+//                            csrf = pair[i].substring(pair[i].indexOf('=') + 1, pair[i].length());
+//                            Util.setDefaults("csrf", csrf, MainActivity.this);
+//                            Util.setDefaults("cookie", cookies, MainActivity.this);
+//                            //network call to get current user
+//                            mManager.getBungieCurrentUser(csrf, cookies, getApplicationContext());
+//                            return;
+//                        }
+//                    }
+//                }
+//            });
+//            if(url!=null) {
+//                wb.loadUrl(url);
+//            }
+//        }
     }
 
     private void smoothScroll(final int position) {
@@ -602,20 +602,20 @@ public class MainActivity extends BaseActivity implements Observer {
 
     protected void makeLinkClickable(SpannableStringBuilder strBuilder, final URLSpan span)
     {
-        int start = strBuilder.getSpanStart(span);
-        int end = strBuilder.getSpanEnd(span);
-        int flags = strBuilder.getSpanFlags(span);
-        ClickableSpan clickable = new ClickableSpan() {
-            public void onClick(View view) {
-                // Do something with span.getURL() to handle the link click...
-                webView.setWebViewClient(new WebViewClient());
-                webView.loadUrl(span.getURL());
-                topBar.setVisibility(View.VISIBLE);
-                webView.setVisibility(View.VISIBLE);
-            }
-        };
-        strBuilder.setSpan(clickable, start, end, flags);
-        strBuilder.removeSpan(span);
+//        int start = strBuilder.getSpanStart(span);
+//        int end = strBuilder.getSpanEnd(span);
+//        int flags = strBuilder.getSpanFlags(span);
+//        ClickableSpan clickable = new ClickableSpan() {
+//            public void onClick(View view) {
+//                // Do something with span.getURL() to handle the link click...
+//                webView.setWebViewClient(new WebViewClient());
+//                webView.loadUrl(span.getURL());
+//                topBar.setVisibility(View.VISIBLE);
+//                webView.setVisibility(View.VISIBLE);
+//            }
+//        };
+//        strBuilder.setSpan(clickable, start, end, flags);
+//        strBuilder.removeSpan(span);
     }
 
     @Override

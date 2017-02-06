@@ -1,15 +1,22 @@
 package co.crossroadsapp.leagueoflegends;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
+import android.os.Handler;
 import android.support.v7.widget.CardView;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -37,14 +44,15 @@ public class SelectRegionActivity extends BaseActivity implements Observer, Adap
     private ArrayList<String> regionList;
     private ArrayAdapter<String> adapterConsole;
     private EditText summonerName;
-    private ImageView registerBtn;
+    private TextView registerBtn;
     private Map<String, Object> hashMAp;
+    private ImageView back;
+    private int firstTimeKeyboardOpens=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_region);
-
         mManager = ControlManager.getmInstance();
         mManager.setCurrentActivity(this);
 
@@ -53,7 +61,17 @@ public class SelectRegionActivity extends BaseActivity implements Observer, Adap
 
         summonerName = (EditText) findViewById(R.id.signup_name);
 
-        registerBtn = (ImageView) findViewById(R.id.register_btn);
+        registerBtn = (TextView) findViewById(R.id.register_btn);
+
+        back = (ImageView) findViewById(R.id.region_backbtn);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideKeyboard();
+                gotoMainActivity();
+            }
+        });
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,10 +79,41 @@ public class SelectRegionActivity extends BaseActivity implements Observer, Adap
                 if(summonerName.getText()!=null && !summonerName.getText().toString().isEmpty()) {
                     String selectedRegion = String.valueOf(dropdown.getSelectedItem());
                     if(!selectedRegion.isEmpty()) {
+                        firstTimeKeyboardOpens=0;
+                        showProgressBar();
                         RequestParams params = new RequestParams();
                         params.put("consoleId", summonerName.getText().toString());
                         params.put("region", hashMAp.get(selectedRegion).toString());
                         mManager.addOtherConsole(params);
+                    }
+                }
+            }
+        });
+
+        final View contentView = this.findViewById(android.R.id.content);
+        contentView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+
+                Rect r = new Rect();
+                contentView.getWindowVisibleDisplayFrame(r);
+                int screenHeight = contentView.getRootView().getHeight();
+
+                // r.bottom is the position above soft keypad or device button.
+                // if keypad is shown, the r.bottom is smaller than that before.
+                int keypadHeight = screenHeight - r.bottom;
+
+                if (keypadHeight > screenHeight * 0.15) { // 0.15 ratio is perhaps enough to determine keypad height.
+                    // keyboard is opened
+                    //heroImg.setVisibility(View.GONE);
+                }
+                else {
+                    // keyboard is closed
+                    //heroImg.setVisibility(View.VISIBLE);
+                    if(firstTimeKeyboardOpens>1) {
+                        onBackPressed();
+                    }else {
+                        firstTimeKeyboardOpens++;
                     }
                 }
             }
@@ -75,8 +124,48 @@ public class SelectRegionActivity extends BaseActivity implements Observer, Adap
         updateConsoleListUserDrawer();
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void setTRansparentStatusBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+    }
+
+    @Override
+    public void onStop() {
+        if(mManager!=null && mManager.getCurrentActivity()!=null && mManager.getCurrentActivity() instanceof SelectRegionActivity) {
+            mManager.setCurrentActivity(null);
+        }
+        hideProgressBar();
+        super.onStop();
+    }
+
     public void showError(String err) {
+        //firstTimeKeyboardOpens=0;
+        hideProgressBar();
         setErrText(err);
+        showKeyboard();
+//        final Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                showKeyboard();
+//            }
+//        }, 500);
+    }
+
+    private void showKeyboard() {
+        summonerName.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+    }
+
+    private void hideKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(SelectRegionActivity.this.getCurrentFocus().getWindowToken(),0);
     }
 
     @Override
@@ -181,7 +270,7 @@ public class SelectRegionActivity extends BaseActivity implements Observer, Adap
     public void update(Observable observable, Object data) {
         //decide activity to open
         //regIntent = mManager.decideToOpenActivity(localPushEvent);
-
+        hideProgressBar();
         if (data!=null) {
             UserData ud = (UserData) data;
             if (ud != null && ud.getUserId() != null) {

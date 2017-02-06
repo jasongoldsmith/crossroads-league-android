@@ -8,6 +8,8 @@ import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -71,7 +73,7 @@ public class ForgotLoginActivity extends BaseActivity implements Observer{
 
         psnId = (EditText) findViewById(R.id.forgot_psn);
 
-        heroImg = (ImageView) findViewById(R.id.hero_img);
+        //heroImg = (ImageView) findViewById(R.id.hero_img);
 
         psnId.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -84,34 +86,38 @@ public class ForgotLoginActivity extends BaseActivity implements Observer{
             }
         });
 
-        playstationBtn = (CardView) findViewById(R.id.playstation_btn);
-        xboxBtn = (CardView) findViewById(R.id.xbox_btn);
-        playstationBtnText = (TextView) findViewById(R.id.playstation_text);
-        xboxBtnText = (TextView) findViewById(R.id.xbox_text);
+//        playstationBtn = (CardView) findViewById(R.id.playstation_btn);
+//        xboxBtn = (CardView) findViewById(R.id.xbox_btn);
+//        playstationBtnText = (TextView) findViewById(R.id.playstation_text);
+//        xboxBtnText = (TextView) findViewById(R.id.xbox_text);
 
-        playstationBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playstationBtn.setCardBackgroundColor(getResources().getColor(R.color.app_theme_color));
-                playstationBtnText.setTextColor(getResources().getColor(R.color.trimbe_white));
-                psnId.setHint(getResources().getString(R.string.playstation_hint));
-                xboxBtn.setCardBackgroundColor(getResources().getColor(R.color.edittext_background));
-                xboxBtnText.setTextColor(getResources().getColor(R.color.hinttext_color));
-                console = "PS4";
-            }
-        });
+//        playstationBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                playstationBtn.setCardBackgroundColor(getResources().getColor(R.color.app_theme_color));
+//                playstationBtnText.setTextColor(getResources().getColor(R.color.trimbe_white));
+//                psnId.setHint(getResources().getString(R.string.playstation_hint));
+//                xboxBtn.setCardBackgroundColor(getResources().getColor(R.color.edittext_background));
+//                xboxBtnText.setTextColor(getResources().getColor(R.color.hinttext_color));
+//                console = "PS4";
+//            }
+//        });
+//
+//        xboxBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                xboxBtn.setCardBackgroundColor(getResources().getColor(R.color.app_theme_color));
+//                xboxBtnText.setTextColor(getResources().getColor(R.color.trimbe_white));
+//                psnId.setHint(getResources().getString(R.string.xbox_hint));
+//                playstationBtn.setCardBackgroundColor(getResources().getColor(R.color.edittext_background));
+//                playstationBtnText.setTextColor(getResources().getColor(R.color.hinttext_color));
+//                console = "XBOXONE";
+//            }
+//        });
 
-        xboxBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                xboxBtn.setCardBackgroundColor(getResources().getColor(R.color.app_theme_color));
-                xboxBtnText.setTextColor(getResources().getColor(R.color.trimbe_white));
-                psnId.setHint(getResources().getString(R.string.xbox_hint));
-                playstationBtn.setCardBackgroundColor(getResources().getColor(R.color.edittext_background));
-                playstationBtnText.setTextColor(getResources().getColor(R.color.hinttext_color));
-                console = "XBOXONE";
-            }
-        });
+        TextView tv = (TextView)findViewById(R.id.reset_text);
+        tv.setText(Html.fromHtml(getString(R.string.reset_pswd_test)));
+        tv.setMovementMethod(LinkMovementMethod.getInstance());
 
         resetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,11 +154,11 @@ public class ForgotLoginActivity extends BaseActivity implements Observer{
 
                 if (keypadHeight > screenHeight * 0.15) { // 0.15 ratio is perhaps enough to determine keypad height.
                     // keyboard is opened
-                    heroImg.setVisibility(View.GONE);
+                    //heroImg.setVisibility(View.GONE);
                 }
                 else {
                     // keyboard is closed
-                    heroImg.setVisibility(View.VISIBLE);
+                    //heroImg.setVisibility(View.VISIBLE);
                     //finish();
                 }
             }

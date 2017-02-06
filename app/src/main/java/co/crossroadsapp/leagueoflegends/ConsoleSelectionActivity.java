@@ -1,7 +1,10 @@
 package co.crossroadsapp.leagueoflegends;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
@@ -49,6 +52,8 @@ public class ConsoleSelectionActivity extends BaseActivity implements AdapterVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_console_selection);
+
+        setTRansparentStatusBar();
 
         mManager = ControlManager.getmInstance();
         mManager.setCurrentActivity(this);
@@ -149,6 +154,16 @@ public class ConsoleSelectionActivity extends BaseActivity implements AdapterVie
         //spinnerArrayAdapter.notifyDataSetChanged();
 
         consoleType.setOnItemSelectedListener(this);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void setTRansparentStatusBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
     }
 
     public View getCustomView(int position, View convertView, ViewGroup parent, String[] consoleItems) {

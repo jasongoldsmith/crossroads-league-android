@@ -32,7 +32,7 @@
 
     <!-- error message strings -->
     <string name="username_short">Your username must have at least 3 characters.</string>
-    <string name="username_missing">Please enter your gamertag.</string>
+    <string name="username_missing">Please enter your email.</string>
     <string name="password_short">Your password must have at least 5 characters.</string>
     <string name="password_missing">Please enter a password.</string>
     <string name="login_fails">The username and password do not match. Please try again.</string>
@@ -54,9 +54,9 @@
     <string name="group_other_text">YOUR BUNGIE.NET GROUPS: (SELECT ONE)</string>
     <string name="change_password">Change Password</string>
     <string name="nogroup_text">It looks like you are not a member of any groups. Feel free to freelance with us or head to <![CDATA[<a href="http://www.bungie.net">Bungie.net</a>]]> to join a group and fully experience the Crossroads for Destiny app.</string>
-    <string name="copyright_string">&#169; Catalyst Foundry 2016</string>
+    <string name="copyright_string">&#169; Catalyst Foundry 2017</string>
 
-    <string name="terms_conditions">By signing in, I have read and agree to the Crossroads <![CDATA[<a href="https://www.crossroadsapp.co/terms">Terms of Service</a>]]> and <![CDATA[<a href="https://www.crossroadsapp.co/privacy">Privacy Policy</a>]]>. &#169; Catalyst Foundry 2016</string>
+    <string name="terms_conditions">By signing in, I have read and agree to the Crossroads <![CDATA[<a href="https://www.crossroadsapp.co/terms">Terms of Service</a>]]> and <![CDATA[<a href="https://www.crossroadsapp.co/privacy">Privacy Policy</a>]]>.</string>
     <string name="terms_string"><u>Terms of Service</u>  |</string>
     <string name="privacy_string">  <u>Privacy Policy</u> </string>
     <string name="license_string"> |  <u>Licenses</u></string>
@@ -75,7 +75,7 @@
     <string name="support_link"> support@crossroadsapp.co</string>
     <string name="contact_us">CONTACT US</string>
     <string name="password_hint">Enter password</string>
-    <string name="create_crossroads_accnt">CREATE NEW CROSSROADS ACCOUNT</string>
+    <string name="create_crossroads_accnt">SIGN UP FOR CROSSROADS</string>
     <string name="animation_speed">400</string>
 
     <string name="fireteam_ready">YOUR FIRETEAM IS READY</string>
@@ -116,10 +116,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="comment_hint">Type your comment</string>
-    <string name="gaurdian_for_help">Guardians searching for Fireteams:</string>
+    <string name="gaurdian_for_help">summoners searching for teams:</string>
     <string name="signin">LOG IN</string>
-    <string name="reset_pswd">RESET PASSWORD</string>
-    <string name="reset_pswd_test">Instructions on how to reset your password will be sent to your Bungie account.</string>
+    <string name="reset_pswd">EMAIL PASSWORD RESET</string>
+    <string name="reset_pswd_test">We will send a reset password link to your email address. If you forgot the email address you signed up with, please contact us at <![CDATA[<a href="mailto:support@crossroadsapp.com">support@crossroadsapp.com</a>]]></string>
     <string name="unverified_bungie_text">Check your messages on <![CDATA[<a href="http://www.bungie.net">Bungie.net</a>]]> for a verification link.</string>
     <string name="user_missing_text">If you are still having login issues, email us at <![CDATA[<a href="mailto:support@crossroadsapp.com">support@crossroadsapp.com</a>]]> or contact us directly.</string>
     <string name="report_issue_header">REPORT ISSUE</string>
@@ -155,4 +155,7 @@
     <string name="searching_friend">Invite a Friend</string>
     <string name="title_activity_select_region">SelectRegionActivity</string>
     <string name="summonername_hint">Enter Summoner Name</string>
+    <string name="next">NEXT</string>
+    <string name="join_crossroads">JOIN CROSSROADS</string>
+    <string name="select_region_text">Link your LoL summoner to Crossroads (you’ll only have to do this once)!</string>
 </resources>
