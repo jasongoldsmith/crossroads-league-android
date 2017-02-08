@@ -67,8 +67,7 @@
                     android:textColor="@color/activity_light_color"
                     android:singleLine="true"
                     android:ellipsize="end"
-                    android:textSize="12sp"
-                    android:visibility="gone"/>
+                    android:textSize="12sp"/>
 
                 <TextView
                     android:layout_width="wrap_content"

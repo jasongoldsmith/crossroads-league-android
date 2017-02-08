@@ -414,8 +414,9 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
                     tv[i].setLayoutParams(params);
 
                     prevTextViewId = curTextViewId;
-                    modifiersLayout3.setVisibility(View.VISIBLE);
-                    modifiersLayout3.addView(tv[i], params);
+                    //// TODO: 2/6/17 disable modifier
+//                    modifiersLayout3.setVisibility(View.VISIBLE);
+//                    modifiersLayout3.addView(tv[i], params);
 
 //                    DisplayMetrics metrics = getResources().getDisplayMetrics();
 //                    int width = metrics.widthPixels;
@@ -437,26 +438,27 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
 //                    }
                 }
 
-                modifiersLayout3.post(new Runnable() {	//post a Runnable that call reLayout to layout object
-                    @Override
-                    public void run() {
-                        int tvWidth = 0;
-                        DisplayMetrics metrics = getResources().getDisplayMetrics();
-                        int width = metrics.widthPixels-Util.dpToPx(90,AddFinalActivity.this);
-                        modifiersLayout3.removeAllViews();
-                        for (int i=0; i< tv.length; i++) {
-                            int n = tv[i].getWidth();
-                            tvWidth = tvWidth + tv[i].getWidth();
-                            if(tvWidth<width) {
-                                modifiersLayout3.setVisibility(View.VISIBLE);
-                                modifiersLayout3.addView(tv[i]);
-                            } else {
-                                modifiersLayout2.setVisibility(View.VISIBLE);
-                                modifiersLayout2.addView(tv[i]);
-                            }
-                        }
-                    }
-                });
+                //// TODO: 2/6/17 disable modifier
+//                modifiersLayout3.post(new Runnable() {	//post a Runnable that call reLayout to layout object
+//                    @Override
+//                    public void run() {
+//                        int tvWidth = 0;
+//                        DisplayMetrics metrics = getResources().getDisplayMetrics();
+//                        int width = metrics.widthPixels-Util.dpToPx(90,AddFinalActivity.this);
+//                        modifiersLayout3.removeAllViews();
+//                        for (int i=0; i< tv.length; i++) {
+//                            int n = tv[i].getWidth();
+//                            tvWidth = tvWidth + tv[i].getWidth();
+//                            if(tvWidth<width) {
+//                                modifiersLayout3.setVisibility(View.VISIBLE);
+//                                modifiersLayout3.addView(tv[i]);
+//                            } else {
+//                                modifiersLayout2.setVisibility(View.VISIBLE);
+//                                modifiersLayout2.addView(tv[i]);
+//                            }
+//                        }
+//                    }
+//                });
         }
         }
 
@@ -470,7 +472,8 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
             Util.picassoLoadImageWithoutMeasurement(getApplicationContext(), background, backg, R.drawable.img_b_g_d_e_f_a_u_l_t);
         }
 
-        actSubtype.setText(activityType);
+        String trimActivity = activityType;
+        actSubtype.setText(trimActivity!=null?trimActivity.replaceAll(".*,", "").trim():trimActivity);
         actSubtype.setAllCaps(true);
 
         if(finalAct==null) {
@@ -486,7 +489,8 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
                             subtypeDifficultyName = subActType;
                             if (activity.get(n).getActivityDifficulty() != null && !activity.get(n).getActivityDifficulty().isEmpty()) {
                                 subtypeDifficulty = activity.get(n).getActivityDifficulty();
-                                subtypeDifficultyName = subtypeDifficultyName + " - " + subtypeDifficulty;
+                                //subtypeDifficultyName = subtypeDifficultyName + " - " + subtypeDifficulty;
+                                subtypeDifficultyName = subtypeDifficulty;
                             }
                         }
                     actSubTypeList.add(subtypeDifficultyName);
@@ -705,7 +709,8 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
                     public View getView(int position, View convertView, ViewGroup parent) {
                         View v = super.getView(position, convertView, parent);
                             if(activityType!=null && !activityType.isEmpty()) {
-                                actSubtypeDropdownText.setText(activityType + " - " + ((TextView) v).getText());
+//                                actSubtypeDropdownText.setText(activityType + " - " + ((TextView) v).getText());
+                                actSubtypeDropdownText.setText(((TextView) v).getText());
                             }
                         ((TextView) v).setVisibility(View.GONE);
                         return v;
@@ -734,7 +739,8 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
         //// TODO: 8/22/16 fix later with better implementation
         String sub = actSubtypeDropdownText.getText().toString();
         String[] parts = sub.split("\\-");
-        String subT = parts[1];
+        //String subT = parts[1];
+        String subT = sub;
         subT = subT.trim();
         String subD=null;
         if(parts.length>2) {

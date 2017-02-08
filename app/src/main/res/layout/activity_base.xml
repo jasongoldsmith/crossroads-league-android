@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/error_layout"
         android:layout_alignParentTop="true"
-
+        android:visibility="gone"
         android:background="@color/support_email">
         <ImageView
             android:layout_width="wrap_content"
@@ -47,7 +47,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/error_sub"
             android:textSize="16sp"
-            android:text="mklmlkaeioj"
             android:maxLines="3"
             android:textColor="@color/trimbe_white"
             android:layout_toRightOf="@+id/error"

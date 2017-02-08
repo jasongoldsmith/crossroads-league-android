@@ -265,6 +265,7 @@ public class EventCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     }
                     currEvent = elistLocal.get(eventPosition);
                     final String eId = this.elistLocal.get(eventPosition).getEventId();
+                    String activityName = this.elistLocal.get(eventPosition).getActivityData().getActivityType();
                     String s = this.elistLocal.get(eventPosition).getActivityData().getActivitySubtype();
                     int l = this.elistLocal.get(eventPosition).getActivityData().getActivityLight();
                     String url = this.elistLocal.get(eventPosition).getActivityData().getActivityIconUrl();
@@ -278,7 +279,7 @@ public class EventCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                         tag = this.elistLocal.get(eventPosition).getActivityData().getTag();
                     }
                     checkpoint = this.elistLocal.get(eventPosition).getActivityData().getActivityCheckpoint();
-                    holder.checkpointText.setVisibility(View.GONE);
+                    //holder.checkpointText.setVisibility(View.GONE);
                     holder.eventDate.setVisibility(View.GONE);
                     holder.tagText.setVisibility(View.GONE);
                     if(tag!=null && !tag.isEmpty()) {
@@ -305,8 +306,8 @@ public class EventCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                                 holder.eventDate.setText(date);
                             }
                             if (checkpoint != null && checkpoint.length() > 0 && (!checkpoint.equalsIgnoreCase("null"))) {
-                                holder.checkpointText.setVisibility(View.VISIBLE);
-                                holder.checkpointText.setText(checkpoint);
+//                                holder.checkpointText.setVisibility(View.VISIBLE);
+//                                holder.checkpointText.setText(checkpoint);
                                 if(tag!=null && !tag.isEmpty()) {
                                     setCardViewLayoutParams(holder.event_card_mainLayout, 212);
                                     holder.tagText.setVisibility(View.VISIBLE);
@@ -316,7 +317,7 @@ public class EventCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                                     setCardViewLayoutParams(holder.event_card_mainLayout, 177);
                                 }
                             } else {
-                                holder.checkpointText.setVisibility(View.GONE);
+//                                holder.checkpointText.setVisibility(View.GONE);
                                 if(tag!=null && !tag.isEmpty()) {
                                     setCardViewLayoutParams(holder.event_card_mainLayout, 190);
                                     holder.tagText.setVisibility(View.VISIBLE);
@@ -327,8 +328,8 @@ public class EventCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                                 }
                             }
                         } else if (checkpoint != null && checkpoint.length() > 0 && (!checkpoint.equalsIgnoreCase("null"))) {
-                            holder.checkpointText.setVisibility(View.VISIBLE);
-                            holder.checkpointText.setText(checkpoint);
+//                            holder.checkpointText.setVisibility(View.VISIBLE);
+//                            holder.checkpointText.setText(checkpoint);
                             if(tag!=null && !tag.isEmpty()) {
                                 setCardViewLayoutParams(holder.event_card_mainLayout, 190);
                                 holder.tagText.setVisibility(View.VISIBLE);
@@ -427,7 +428,11 @@ public class EventCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     }
 
                     if (s != "" || s != null) {
-                        holder.eventSubType.setText(s);
+                        holder.checkpointText.setText(s);
+                    }
+
+                    if(activityName!=null && !activityName.isEmpty()) {
+                        holder.eventSubType.setText(activityName);
                     }
 
                     if(!publicEventCard) {

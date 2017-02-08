@@ -20,6 +20,7 @@ import co.crossroadsapp.leagueoflegends.utils.TravellerLog;
 import org.json.JSONObject;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -37,9 +38,40 @@ public class MyGcmBroadcastReceiver extends FirebaseMessagingService {
         // If the application is in the foreground handle both data and notification messages here.
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
-        sendNotification(remoteMessage.getNotification().getBody());
-        Log.d(TAG, "From: " + remoteMessage.getFrom());
-        Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
+        if(remoteMessage!=null) {
+            Map<String, String> data = remoteMessage.getData();
+            String alert = data.get("message");
+            String payload = data.get("payload"); //remoteMessage.getData().toString();
+            ControlManager cm = ControlManager.getmInstance();
+            if (isAppRunning(getApplicationContext())) {
+                final Intent in = new Intent(cm.getCurrentActivity(), NotificationService.class);
+                in.putExtra("payload", payload);
+                in.putExtra("message", alert);
+                in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                cm.getCurrentActivity().startService(in);
+//                Thread t = new Thread(){
+//                    public void run(){
+//                        context.startService(in);
+//                    }
+//                };
+//                t.start();
+            } else {
+                sendNotification(alert, payload);
+//                Intent notificationIntent = createNotificationIntent(getApplicationContext(), alert, payload);
+//                PendingIntent resultIntent = PendingIntent.getActivity(getApplicationContext(), Constants.INTENT_ID, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+//                NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(cm.getCurrentActivity());
+//                if (alert != null) {
+//                    mBuilder.setAutoCancel(true).setSmallIcon(R.drawable.cr_lol_app_icon).setContentIntent(resultIntent).setContentTitle(getResources().getString(R.string.app_name)).setStyle(new NotificationCompat.BigTextStyle().bigText(alert)).setContentText(alert);
+//                } else {
+//                    mBuilder.setSmallIcon(R.drawable.cr_lol_app_icon).setContentIntent(resultIntent).setContentText("New Message Received").setContentTitle(getResources().getString(R.string.app_name));
+//                }
+//                NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+//                mNotificationManager.notify(UUID.randomUUID().hashCode(), mBuilder.build());
+            }
+            //sendNotification(remoteMessage.getNotification().getBody());
+            Log.d(TAG, "From: " + remoteMessage.getFrom());
+            Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
+        }
     }
 
 //    @Override
@@ -95,23 +127,24 @@ public class MyGcmBroadcastReceiver extends FirebaseMessagingService {
 //        }
 //    }
 
-    private void sendNotification(String messageBody) {
-        Intent intent = new Intent(this, MainActivity.class);
+    private void sendNotification(String alert, String payload) {
+        Intent intent = createNotificationIntent(getApplicationContext(), alert, payload);
+        //Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
-                PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, Constants.INTENT_ID, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.icon_notification)
-                .setContentTitle("FCM Message")
-                .setContentText(messageBody)
+                .setContentTitle(getResources().getString(R.string.app_name))
+                .setContentText(alert)
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent);
 
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+        notificationManager.notify(UUID.randomUUID().hashCode(), notificationBuilder.build());
     }
 
     private Intent createNotificationIntent(Context ctxt, String alert, String payload) {

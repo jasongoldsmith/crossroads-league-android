@@ -129,8 +129,8 @@ public class ForgotLoginActivity extends BaseActivity implements Observer{
                         resetPassword.setEnabled(false);
                         RequestParams params = new RequestParams();
                         //params.put("userName", psnString);
-                        params.add("consoleId", psnString);
-                        params.add("consoleType", console);
+                        params.add("userName", psnString);
+                        //params.add("consoleType", console);
                         mManager.postResetPassword(ForgotLoginActivity.this, params);
                     } else {
                         showError(getResources().getString(R.string.username_missing));
@@ -216,9 +216,9 @@ public class ForgotLoginActivity extends BaseActivity implements Observer{
     public void update(Observable observable, Object data) {
         dialog.dismiss();
         psnId.setText("");
-        Intent intent = new Intent(getApplicationContext(),
-                PasswordReset.class);
-        startActivity(intent);
+//        Intent intent = new Intent(getApplicationContext(),
+//                PasswordReset.class);
+//        startActivity(intent);
         finish();
 //        Toast.makeText(this, "Instructions for resetting your password have been sent to your Bungie.net account. Follow the instructions to choose a new password.",
 //                Toast.LENGTH_LONG).show();

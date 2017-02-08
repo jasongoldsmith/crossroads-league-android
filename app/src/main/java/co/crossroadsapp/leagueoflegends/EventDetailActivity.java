@@ -297,18 +297,23 @@ public class EventDetailActivity extends BaseActivity implements Observer, Token
                 Util.picassoLoadIcon(EventDetailActivity.this, eventProfileImg, currEvent.getActivityData().getActivityIconUrl(), R.dimen.activity_icon_hgt, R.dimen.activity_icon_width, R.drawable.icon_ghost_default);
             }
 
+            if(currEvent.getActivityData().getActivityType()!=null) {
+                String activityName = currEvent.getActivityData().getActivityType();
+                eventName.setText(activityName);
+            }
+
             if (currEvent.getActivityData().getActivitySubtype() != null) {
                 String name = currEvent.getActivityData().getActivitySubtype();
                 if(currEvent.getActivityData().getActivityDifficulty()!=null && !currEvent.getActivityData().getActivityDifficulty().isEmpty() && !currEvent.getActivityData().getActivityDifficulty().equalsIgnoreCase("null")) {
                     name = name + " - " + currEvent.getActivityData().getActivityDifficulty();
                 }
-                eventName.setText(name);
+                eventCheckpoint.setText(name);
             }
 
-            if (currEvent.getActivityData().getActivityCheckpoint() != null && !currEvent.getActivityData().getActivityCheckpoint().equalsIgnoreCase("null") && !currEvent.getActivityData().getActivityCheckpoint().isEmpty()) {
-                eventCheckpoint.setVisibility(View.VISIBLE);
-                eventCheckpoint.setText(currEvent.getActivityData().getActivityCheckpoint());
-            }
+//            if (currEvent.getActivityData().getActivityCheckpoint() != null && !currEvent.getActivityData().getActivityCheckpoint().equalsIgnoreCase("null") && !currEvent.getActivityData().getActivityCheckpoint().isEmpty()) {
+//                eventCheckpoint.setVisibility(View.VISIBLE);
+//                eventCheckpoint.setText(currEvent.getActivityData().getActivityCheckpoint());
+//            }
         }
 
         back.setOnClickListener(new View.OnClickListener() {

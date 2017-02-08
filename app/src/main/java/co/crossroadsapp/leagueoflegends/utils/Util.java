@@ -166,14 +166,17 @@ public class Util {
                 new Thread() {
                     public void run() {
                         try {
-                            String token = instanceID.getToken(Constants.GCM_SENDER_ID, GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+                            //String token = instanceID.getToken(Constants.GCM_SENDER_ID, GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+                            String token = getDefaults("token", c);
                            final String token1 = token;
-                            ((Activity)c).runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mngr.postGCMToken(token1, c);
-                                }
-                            });
+                            if(token!=null) {
+                                ((Activity) c).runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        mngr.postGCMToken(token1, c);
+                                    }
+                                });
+                            }
                         } catch (Exception e) {
                             //handle failure here
                         }
@@ -493,7 +496,7 @@ public class Util {
 
     public static void picassoLoadIcon(Context c, ImageView eventIcon, String url, int height, int width, int avatar) {
         if (c!=null && eventIcon!=null) {
-            if(url != null) {
+            if(url != null && !url.isEmpty()) {
                 Picasso.with(c).load(url)
                         .resizeDimen(width, height)
                         .centerCrop().placeholder(avatar)

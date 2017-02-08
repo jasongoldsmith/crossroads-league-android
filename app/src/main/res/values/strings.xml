@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Crossroads:League</string>
+    <string name="app_name">Crossroads: League of Legends</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -33,7 +33,7 @@
     <!-- error message strings -->
     <string name="username_short">Your username must have at least 3 characters.</string>
     <string name="username_missing">Please enter your email.</string>
-    <string name="password_short">Your password must have at least 5 characters.</string>
+    <string name="password_short">Please enter your passwor/email.</string>
     <string name="password_missing">Please enter a password.</string>
     <string name="login_fails">The username and password do not match. Please try again.</string>
     <string name="signup_fails">Account creation failed.</string>
@@ -119,9 +119,9 @@
     <string name="gaurdian_for_help">summoners searching for teams:</string>
     <string name="signin">LOG IN</string>
     <string name="reset_pswd">EMAIL PASSWORD RESET</string>
-    <string name="reset_pswd_test">We will send a reset password link to your email address. If you forgot the email address you signed up with, please contact us at <![CDATA[<a href="mailto:support@crossroadsapp.com">support@crossroadsapp.com</a>]]></string>
+    <string name="reset_pswd_test">We will send a reset password link to your email address. If you forgot the email address you signed up with, please contact us at <![CDATA[<a href="mailto:support@crossroadsapp.com">support@crossroadsapp.co</a>]]></string>
     <string name="unverified_bungie_text">Check your messages on <![CDATA[<a href="http://www.bungie.net">Bungie.net</a>]]> for a verification link.</string>
-    <string name="user_missing_text">If you are still having login issues, email us at <![CDATA[<a href="mailto:support@crossroadsapp.com">support@crossroadsapp.com</a>]]> or contact us directly.</string>
+    <string name="user_missing_text">If you are still having login issues, email us at <![CDATA[<a href="mailto:support@crossroadsapp.com">support@crossroadsapp.co</a>]]> or contact us directly.</string>
     <string name="report_issue_header">REPORT ISSUE</string>
     <string name="report_issue">Is this comment problematic? Reporting it will hide it from everyone. Let us know more at support@crossroadsapp.co</string>
     <string name="report_submitted_header">REPORT SUBMITTED</string>
@@ -158,4 +158,7 @@
     <string name="next">NEXT</string>
     <string name="join_crossroads">JOIN CROSSROADS</string>
     <string name="select_region_text">Link your LoL summoner to Crossroads (you’ll only have to do this once)!</string>
+    <string name="save">SAVE</string>
+    <string name="enter_current_pswd">Enter current password</string>
+    <string name="enter_new_pswd">Enter new password</string>
 </resources>

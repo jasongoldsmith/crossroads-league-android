@@ -19,6 +19,7 @@ import co.crossroadsapp.leagueoflegends.data.PushNotification;
 import co.crossroadsapp.leagueoflegends.network.ActivityListNetwork;
 import co.crossroadsapp.leagueoflegends.network.ChangeCurrentConsoleNetwork;
 import co.crossroadsapp.leagueoflegends.network.EventByIdNetwork;
+import co.crossroadsapp.leagueoflegends.network.ForgotPasswordNetwork;
 import co.crossroadsapp.leagueoflegends.network.GroupListNetwork;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -147,6 +148,7 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
     private TextView consoleText;
     private Bundle b;
     private ToggleButton groupMute;
+    private TextView changePassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -353,16 +355,16 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
 //            }
 //        });
 
-        errLayout = (RelativeLayout) findViewById(R.id.error_layout);
-        errText = (TextView) findViewById(R.id.error_sub);
-        close_err = (ImageView) findViewById(R.id.err_close);
-
-        close_err.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                errLayout.setVisibility(View.GONE);
-            }
-        });
+//        errLayout = (RelativeLayout) findViewById(R.id.error_layout);
+//        errText = (TextView) findViewById(R.id.error_sub);
+//        close_err = (ImageView) findViewById(R.id.err_close);
+//
+//        close_err.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                errLayout.setVisibility(View.GONE);
+//            }
+//        });
 
         verify_logout = (TextView) findViewById(R.id.verify_logout);
 
@@ -396,7 +398,7 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
             }
         });
 
-        inviteFrnds = (TextView) findViewById(R.id.invite);
+        changePassword = (TextView) findViewById(R.id.change_password);
 //        imgConsole = (ImageView) findViewById(R.id.console_icon);
 //        down_arw_img = (ImageView) findViewById(R.id.down_arw_img);
 //        consoleText = (TextView) findViewById(R.id.consoletype_text);
@@ -441,18 +443,28 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
 //        dropdown.setAdapter(adapterConsole);
 //        adapterConsole.notifyDataSetChanged();
 
-        inviteFrnds.setOnClickListener(new View.OnClickListener() {
+//        inviteFrnds.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String url = "https://crossrd.app.link/share";
+//                final Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+//                sharingIntent.setType("text/plain");
+//                if(url!=null) {
+//                    sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, url);
+//                    startActivity(Intent.createChooser(sharingIntent, "Share"));
+//                }
+//            }
+//        });
+
+        changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "https://crossrd.app.link/share";
-                final Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                if(url!=null) {
-                    sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, url);
-                    startActivity(Intent.createChooser(sharingIntent, "Share"));
-                }
+                Intent regIntent = new Intent(getApplicationContext(),
+                        ChangePassword.class);
+                startActivity(regIntent);
             }
         });
+
         crash_report = (TextView) findViewById(R.id.crash_btn);
 
         // Get the ViewPager and set it's PagerAdapter so that it can display items

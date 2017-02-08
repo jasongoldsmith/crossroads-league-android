@@ -85,7 +85,8 @@
                 android:layout_marginRight="20dp"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/modifier_layout2"
-                android:paddingTop="10dp">
+                android:paddingTop="10dp"
+                android:visibility="gone">
             </RelativeLayout>
 
             <RelativeLayout
@@ -95,7 +96,8 @@
                 android:gravity="center"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/modifier_layout3"
-                android:paddingTop="10dp">
+                android:paddingTop="10dp"
+                android:visibility="gone">
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -104,7 +106,8 @@
                 android:gravity="center"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/level_layout"
-                android:paddingTop="10dp">
+                android:paddingTop="10dp"
+                android:visibility="gone">
             </RelativeLayout>
 
         </RelativeLayout>
@@ -161,7 +164,7 @@
                     android:id="@+id/firstcard_img"
                     android:layout_alignParentLeft="true"
                     android:layout_margin="13dp"
-                    android:src="@drawable/icon_ghost_default"
+                    android:src="@drawable/icon_people_needed"
                     android:layout_centerVertical="true"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -207,7 +210,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/checkmark"
-                    android:src="@drawable/icon_checkpoint"
+                    android:src="@drawable/icon_rank"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="14dp"
                     android:layout_centerVertical="true"

@@ -25,7 +25,7 @@ public class Constants {
     public final static int LOGIN = 1;
     public final static int REGISTER = 2;
 
-    public static final String TRAVELER_NOTIFICATION_INTENT = "co.crossroadsapp.destiny.travelerfordestiny";
+    public static final String TRAVELER_NOTIFICATION_INTENT = "co.crossroadsapp.leagueoflegends";
 
     // terms of services, legal and privacy policy url links
     public static final String LEGAL = "https://www.crossroadsapp.co/legal";
@@ -46,6 +46,7 @@ public class Constants {
     public static final String EVENT_SEND_MESSAGE_URL = "api/v1/a/messages/send";
     public static final String RESET_PASSWORD_URL = "api/v1/auth/request/resetPassword";
     public static final String UPDATE_PASSWORD_URL = "api/v1/a/user/updatePassword";
+    public static final String UPDATE_USER_CREDENTIALS = "api/v1/a/user/changeUserCredentials";
     public static final String ANDROID_VERSION_URL = "api/v1/appVersion/android";
     public static final String GROUP_LIST_URL = "api/v1/a/account/group/list";
     public static final String UPDATE_GROUP_URL = "api/v1/a/user/updateGroup";

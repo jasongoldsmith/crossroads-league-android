@@ -11,7 +11,7 @@
     <application
         android:name="io.branch.referral.BranchApp"
         android:allowBackup="true"
-        android:icon="@drawable/img_traveler_badge_icon"
+        android:icon="@drawable/cr_lol_app_icon"
         android:label="@string/app_name">
         <receiver
             android:name="io.branch.referral.InstallListener"
@@ -49,7 +49,7 @@
                     android:scheme="https" /> <!-- Test App link -->
             </intent-filter>
             <intent-filter>
-                <data android:scheme="dlcsrd" />
+                <data android:scheme="dllol" />
 
                 <action android:name="android.intent.action.VIEW" />
 
@@ -93,14 +93,19 @@
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateVisible|adjustResize" />
 
-        <service
-            android:name=".MyGcmBroadcastReceiver"
-            >
+        <service android:name=".MyGcmBroadcastReceiver">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
+        <service
+            android:name=".MyInstanceIDListenerService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
         <service
             android:name=".NotificationService"
             android:exported="false" />
@@ -133,7 +138,7 @@
 
         <meta-data
             android:name="io.branch.sdk.BranchKey"
-            android:value="key_live_ilh33QPvqAgDqnVVRh8iXcnnBBaLIp97" />
+            android:value="key_live_aewf85hEEfgHtJtKby8xRhpoAClJir2W" />
 
         <activity
             android:name=".UpdateConsoleActivity"
@@ -179,12 +184,11 @@
             android:name=".MessageSent"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
-
         <activity
             android:name=".SelectRegionActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="stateVisible|adjustResize"/>
+            android:windowSoftInputMode="stateVisible|adjustResize" />
     </application>
 
 </manifest>

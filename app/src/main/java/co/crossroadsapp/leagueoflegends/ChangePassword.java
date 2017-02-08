@@ -30,6 +30,9 @@ public class ChangePassword extends BaseActivity implements Observer {
     private ProgressDialog dialog;
     String userId;
     String newP;
+    String newE;
+    private EditText oldEmail;
+    private EditText newEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,8 @@ public class ChangePassword extends BaseActivity implements Observer {
 
         oldPswrd = (EditText) findViewById(R.id.pswrd_edit);
         newPswrd = (EditText) findViewById(R.id.pswrd_edit_new);
+        oldEmail = (EditText) findViewById(R.id.email_edit);
+        newEmail = (EditText) findViewById(R.id.email_edit_new);
 
         //hint configuration
         oldPswrd.setTypeface(Typeface.DEFAULT);
@@ -58,7 +63,19 @@ public class ChangePassword extends BaseActivity implements Observer {
         newPswrd.setTypeface(Typeface.DEFAULT);
         newPswrd.setTransformationMethod(new PasswordTransformationMethod());
 
-        newPswrd.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//        newPswrd.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
+//                    // the user is done typing.
+//                    setPswrd.requestFocus();
+//                    setPswrd.performClick();
+//                }
+//                return false;
+//            }
+//        });
+
+        newEmail.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
@@ -83,16 +100,20 @@ public class ChangePassword extends BaseActivity implements Observer {
                 if (userId != null) {
                     v.setEnabled(false);
                     String oldP = oldPswrd.getText().toString();
+                    String oldE = oldEmail.getText().toString();
                     newP = newPswrd.getText().toString();
-                    if (oldP != null && newP != null) {
-                        if (newP.length() > 4 && oldP.length() > 4) {
+                    newE = newEmail.getText().toString();
+                    if ((oldP != null && newP != null) || (oldE != null && newE != null)) {
+                        if ((!newP.isEmpty() && !oldP.isEmpty()) || (!newE.isEmpty() && !oldE.isEmpty())) {
                             RequestParams params = new RequestParams();
                             params.put("oldPassWord", oldP);
                             params.put("newPassWord", newP);
-                            params.put("id", userId);
-                            dialog.show();
-                            dialog.setCancelable(false);
-                            dialog.setCanceledOnTouchOutside(false);
+                            params.put("oldEmail", oldE);
+                            params.put("newEmail", newE);
+                            showProgressBar();
+//                            dialog.show();
+//                            dialog.setCancelable(false);
+//                            dialog.setCanceledOnTouchOutside(false);
                             mManager.postChangePassword(ChangePassword.this, params);
                         } else {
                             showError(getResources().getString(R.string.password_short));
@@ -104,16 +125,21 @@ public class ChangePassword extends BaseActivity implements Observer {
     }
 
     public void showError(String err) {
-        dialog.dismiss();
+        //dialog.dismiss();
+        hideProgressBar();
         setPswrd.setEnabled(true);
         setErrText(err);
     }
 
     @Override
     public void update(Observable observable, Object data) {
-        dialog.dismiss();
+        //dialog.dismiss();
+        hideProgressBar();
         if(newP!=null && (!newP.isEmpty())) {
             Util.setDefaults("password", newP, getApplicationContext());
+        }
+        if(newE!=null && (!newE.isEmpty())) {
+            Util.setDefaults("user", newE, getApplicationContext());
         }
         finish();
     }

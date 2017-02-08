@@ -271,6 +271,7 @@ public class SelectRegionActivity extends BaseActivity implements Observer, Adap
         //decide activity to open
         //regIntent = mManager.decideToOpenActivity(localPushEvent);
         hideProgressBar();
+        hideKeyboard();
         if (data!=null) {
             UserData ud = (UserData) data;
             if (ud != null && ud.getUserId() != null) {
