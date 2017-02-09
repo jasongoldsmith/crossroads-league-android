@@ -59,6 +59,11 @@ public class CrashReport extends BaseActivity implements Observer {
 
         crash_text = (EditText) findViewById(R.id.crash_edittext);
         email = (EditText) findViewById(R.id.crash_email);
+        String em = Util.getDefaults("user", CrashReport.this);
+        if(em!=null && !em.isEmpty()) {
+            email.setText(em);
+            email.setKeyListener(null);
+        }
         send_crash = (TextView) findViewById(R.id.send_crash);
         backBtn = (ImageView) findViewById(R.id.back);
         backBtn.setOnClickListener(new View.OnClickListener() {

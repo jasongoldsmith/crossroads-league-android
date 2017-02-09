@@ -30,8 +30,8 @@ public class Constants {
     // terms of services, legal and privacy policy url links
     public static final String LEGAL = "https://www.crossroadsapp.co/legal";
     public static final String LICENCE = "https://www.crossroadsapp.co/license"; //"http://68.140.240.194:3000/license"
-    public static final String TERMS_OF_SERVICE = "https://www.crossroadsapp.co/terms";
-    public static final String PRIVACY_POLICY = "https://www.crossroadsapp.co/privacy";
+    public static final String TERMS_OF_SERVICE = "http://w3.crossroadsapp.co/lolterms";
+    public static final String PRIVACY_POLICY = "https://w3.crossroadsapp.co/lolprivacy";
     public static final String ADD_COMMENT_URL = "api/v1/a/event/addComment";
     public static final String ADD_CONSOLE_URL = "api/v1/a/user/addConsole";
     public static final String CHANGE_CONSOLE_URL = "api/v1/a/user/changePrimaryConsole";
@@ -45,7 +45,7 @@ public class Constants {
     public static final String EVENT_INVITE_ACCEPT_URL = "api/v1/a/event/invite/accept";
     public static final String EVENT_SEND_MESSAGE_URL = "api/v1/a/messages/send";
     public static final String RESET_PASSWORD_URL = "api/v1/auth/request/resetPassword";
-    public static final String UPDATE_PASSWORD_URL = "api/v1/a/user/updatePassword";
+    public static final String UPDATE_PASSWORD_URL = "api/v1/a/user/changePassword";
     public static final String UPDATE_USER_CREDENTIALS = "api/v1/a/user/changeUserCredentials";
     public static final String ANDROID_VERSION_URL = "api/v1/appVersion/android";
     public static final String GROUP_LIST_URL = "api/v1/a/account/group/list";
@@ -67,6 +67,7 @@ public class Constants {
     public static final String CHECK_BUNGIE_ACCOUNT_URL = "api/v1/auth/checkBungieAccount";
     public static final String UPDATE_REVIEW_CARD = "api/v1/a/user/updateReviewPromptCardStatus";
     public static final int REVIEW_CARD_PRESENT = 1;
+    public static final String UPDATE_EMAIL_URL = "api/v1/a/user/changeEmail";
 
     //getCurrentUser bungie
     public static String BUGIE_CURRENT_USER = "https://www.bungie.net/Platform/User/GetCurrentBungieAccount";
@@ -88,11 +89,11 @@ public class Constants {
 
     //firebase url
     public static String FIREBASE_DEV_URL = "https://lolapp-dev.firebaseio.com/";
-    public static String FIREBASE_PROD_URL = "https://crossroadsapp-live.firebaseio.com/";
+    public static String FIREBASE_PROD_URL = "https://lolapp-live.firebaseio.com/";
 
     //network base url
     public static String NETWORK_DEV_BASE_URL = "https://lol-development.herokuapp.com/";
-    public static String NETWORK_PROD_BASE_URL = "https://live.crossroadsapp.co/";
+    public static String NETWORK_PROD_BASE_URL = "https://lollive.crossroadsapp.co/";//"https://lol-live.herokuapp.com/"; //"https://lollive.crossroadsapp.co/";
     public static String NETWORK_DEV_BASE_STAGING_URL = "https://travelerbackendproduction.herokuapp.com/";
 
     //app download links

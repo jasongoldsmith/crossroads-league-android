@@ -2,9 +2,8 @@ package co.crossroadsapp.leagueoflegends;
 
 import android.app.ProgressDialog;
 import android.graphics.Typeface;
-import android.media.Image;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
+import android.app.Activity;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.view.KeyEvent;
@@ -14,28 +13,34 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import co.crossroadsapp.leagueoflegends.data.UserData;
-import co.crossroadsapp.leagueoflegends.utils.Util;
-
+import com.firebase.client.core.view.Change;
 import com.loopj.android.http.RequestParams;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ChangePassword extends BaseActivity implements Observer {
+import co.crossroadsapp.leagueoflegends.data.UserData;
+import co.crossroadsapp.leagueoflegends.utils.Constants;
+import co.crossroadsapp.leagueoflegends.utils.Util;
+
+public class ChangeEmail extends BaseActivity implements Observer {
 
     private ImageView backBtn;
     private EditText oldPswrd;
-    private TextView setPswrd;
-    private EditText newPswrd;
     private ControlManager mManager;
     String userId;
-    private String newP;
+    String newE;
+    private TextView oldEmail;
+    private EditText newEmail;
+    private TextView setPswrd;
+    private ImageView showPswrdCurrent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_password);
+        setContentView(R.layout.activity_change_email);
 
         mManager = ControlManager.getmInstance();
         mManager.setCurrentActivity(this);
@@ -48,23 +53,21 @@ public class ChangePassword extends BaseActivity implements Observer {
             }
         });
 
-        setPswrd = (TextView) findViewById(R.id.send_change_pswrd);
+        setPswrd = (TextView) findViewById(R.id.send_change_email);
 
         oldPswrd = (EditText) findViewById(R.id.pswrd_edit);
-        newPswrd = (EditText) findViewById(R.id.pswrd_edit_new);
+        oldEmail = (TextView) findViewById(R.id.current_email);
+        newEmail = (EditText) findViewById(R.id.email_edit_new);
 
         //hint configuration
         oldPswrd.setTypeface(Typeface.DEFAULT);
         oldPswrd.setTransformationMethod(new PasswordTransformationMethod());
-        newPswrd.setTypeface(Typeface.DEFAULT);
-        newPswrd.setTransformationMethod(new PasswordTransformationMethod());
 
-        ImageView showPswdOld = (ImageView) findViewById(R.id.show_pswd_old);
-        ImageView showPswdNew = (ImageView) findViewById(R.id.show_pswd_new);
+        showPswrdCurrent = (ImageView) findViewById(R.id.show_pswd_old);
 
         final boolean[] showPswdState = {false};
 
-        showPswdOld.setOnClickListener(new View.OnClickListener() {
+        showPswrdCurrent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //tracking showPassword click
@@ -86,31 +89,7 @@ public class ChangePassword extends BaseActivity implements Observer {
             }
         });
 
-        final boolean[] showPswdState1 = {false};
-
-        showPswdNew.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //tracking showPassword click
-//                Map<String, String> json = new HashMap<String, String>();
-//                Util.postTracking(json, LoginActivity.this, mManager, Constants.APP_SHOWPASSWORD);
-                if(newPswrd!=null && !newPswrd.getText().toString().isEmpty()) {
-                    if(!showPswdState1[0]) {
-                        newPswrd.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                        newPswrd.setSelection(newPswrd.getText().length());
-                        newPswrd.setTypeface(Typeface.DEFAULT);
-                        showPswdState1[0] = true;
-                    } else {
-                        newPswrd.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                        newPswrd.setSelection(newPswrd.getText().length());
-                        newPswrd.setTypeface(Typeface.DEFAULT);
-                        showPswdState1[0] = false;
-                    }
-                }
-            }
-        });
-
-        newPswrd.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        oldPswrd.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
@@ -122,9 +101,15 @@ public class ChangePassword extends BaseActivity implements Observer {
             }
         });
 
-        if(mManager!=null && mManager.getUserData()!=null) {
+        if (mManager != null && mManager.getUserData() != null) {
             UserData ud = mManager.getUserData();
             userId = ud.getUserId();
+        }
+
+        String em = Util.getDefaults("user", ChangeEmail.this);
+        if(em!=null && !em.isEmpty()) {
+            oldEmail.setText(em);
+            oldEmail.setKeyListener(null);
         }
 
         setPswrd.setOnClickListener(new View.OnClickListener() {
@@ -133,16 +118,18 @@ public class ChangePassword extends BaseActivity implements Observer {
                 if (userId != null) {
                     v.setEnabled(false);
                     String oldP = oldPswrd.getText().toString();
-                    newP = newPswrd.getText().toString();
-                    if (oldP != null && newP != null) {
-                        if (!newP.isEmpty() && !oldP.isEmpty()) {
+                    String oldE = oldEmail.getText().toString();
+                    //newP = newPswrd.getText().toString();
+                    newE = newEmail.getText().toString();
+                    if ((oldP != null && newE != null)) {
+                        if (!oldP.isEmpty() && !newE.isEmpty()) {
                             RequestParams params = new RequestParams();
-                            params.put("oldPassWord", oldP);
-                            params.put("newPassWord", newP);
+                            params.put("passWord", oldP);
+                            params.put("newEmail", newE);
                             showProgressBar();
-                            mManager.postChangePassword(ChangePassword.this, params);
+                            mManager.postChangeEmail(ChangeEmail.this, params);
                         } else {
-                            showError(getResources().getString(R.string.password_missing));
+                            showError("Please enter your email/password");
                         }
                     }
                 }
@@ -161,8 +148,8 @@ public class ChangePassword extends BaseActivity implements Observer {
     public void update(Observable observable, Object data) {
         //dialog.dismiss();
         hideProgressBar();
-        if(newP!=null && (!newP.isEmpty())) {
-            Util.setDefaults("password", newP, getApplicationContext());
+        if (newE != null && (!newE.isEmpty())) {
+            Util.setDefaults("user", newE, getApplicationContext());
         }
         finish();
     }
@@ -172,5 +159,4 @@ public class ChangePassword extends BaseActivity implements Observer {
         super.onBackPressed();
         finish();
     }
-
 }

@@ -299,7 +299,7 @@ public class EventDetailActivity extends BaseActivity implements Observer, Token
 
             if(currEvent.getActivityData().getActivityType()!=null) {
                 String activityName = currEvent.getActivityData().getActivityType();
-                eventName.setText(activityName);
+                eventName.setText(activityName!=null?activityName.replaceAll(".*,", "").trim():activityName);
             }
 
             if (currEvent.getActivityData().getActivitySubtype() != null) {

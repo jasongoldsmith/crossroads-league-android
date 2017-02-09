@@ -22,7 +22,8 @@ public class ForgotPasswordNetwork extends Observable {
     private Context mContext;
     private NetworkEngine ntwrk;
     private String url = Constants.RESET_PASSWORD_URL;
-    private String changeUserCredentialsUrl = Constants.UPDATE_USER_CREDENTIALS;
+    private String changePasswordUrl = Constants.UPDATE_PASSWORD_URL;
+    private String changeEmailUrl = Constants.UPDATE_EMAIL_URL;
     private ControlManager mManager;
 
     public ForgotPasswordNetwork(Context c) {
@@ -54,7 +55,26 @@ public class ForgotPasswordNetwork extends Observable {
 
     public void doChangePassword(RequestParams params) throws JSONException {
         if (Util.isNetworkAvailable(mContext)) {
-            ntwrk.post(changeUserCredentialsUrl, params, new JsonHttpResponseHandler() {
+            ntwrk.post(changePasswordUrl, params, new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    setChanged();
+                    notifyObservers();
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                    mManager.showErrorDialogue(Util.getErrorMessage(errorResponse));
+                }
+            });
+        }else {
+            Util.createNoNetworkDialogue(mContext);
+        }
+    }
+
+    public void doChangeEmail(RequestParams params) throws JSONException {
+        if (Util.isNetworkAvailable(mContext)) {
+            ntwrk.post(changeEmailUrl, params, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     setChanged();

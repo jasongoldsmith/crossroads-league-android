@@ -583,6 +583,8 @@ public class ControlManager implements Observer{
                     ((CrashReport) mCurrentAct.get()).showError(err);
                 } else if (mCurrentAct.get() instanceof SelectRegionActivity) {
                     ((SelectRegionActivity) mCurrentAct.get()).showError(err);
+                } else if(mCurrentAct.get() instanceof ChangeEmail) {
+                    ((ChangeEmail) mCurrentAct.get()).showError(err);
                 }
             }
         //}
@@ -892,6 +894,16 @@ public class ControlManager implements Observer{
             forgotPasswordNetwork = new ForgotPasswordNetwork(activity);
             forgotPasswordNetwork.addObserver(activity);
             forgotPasswordNetwork.doChangePassword(params);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void postChangeEmail(ChangeEmail activity, RequestParams params) {
+        try {
+            forgotPasswordNetwork = new ForgotPasswordNetwork(activity);
+            forgotPasswordNetwork.addObserver(activity);
+            forgotPasswordNetwork.doChangeEmail(params);
         } catch (Exception e) {
             e.printStackTrace();
         }

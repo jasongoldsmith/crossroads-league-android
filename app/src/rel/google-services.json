@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "678992187547",
+    "firebase_url": "https://lolapp-dev.firebaseio.com",
+    "project_id": "lolapp-dev",
+    "storage_bucket": "lolapp-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678992187547:android:4b253a99e131fe65",
+        "android_client_info": {
+          "package_name": "co.crossroadsapp.leagueoflegends"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678992187547-cemgnt4ug3kitpba0a64hppk5rthb5q6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCELm9FbQNEZcscrOGHPrLwJ_Y6dYP37qU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

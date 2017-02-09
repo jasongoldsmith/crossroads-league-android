@@ -28,27 +28,89 @@
             android:layout_alignParentStart="true"/>
 
         <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/change_email_text"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/back"
+        android:layout_marginTop="31dp"
+            android:textAllCaps="true"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:text="@string/change_email"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"/>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/change_password_text"
+            android:id="@+id/current_email_text"
+            android:layout_below="@+id/change_email_text"
+            android:text="Current email address:"
+            android:textColor="@color/trimbe_white"
+            android:textSize="14sp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/back"
-            android:layout_marginTop="31dp"
-            android:fontFamily="sans-serif"
-            android:textStyle="bold"
-            android:text="Change Password"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"/>
+            android:layout_marginTop="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/current_email"
+            android:layout_below="@+id/current_email_text"
+            android:id="@+id/current_email"
+            android:layout_marginTop="2dp"
+            android:layout_centerHorizontal="true"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:id="@+id/pswrd_old_layout"
-            android:layout_marginTop="18dp"
+            android:id="@+id/email_new_layout"
+            android:layout_marginTop="17dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:background="#4f000000"
-            android:layout_below="@+id/change_password_text">
+            android:layout_below="@+id/current_email">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/email_icon"
+                android:src="@drawable/img_icon_email"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="22dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/email_edit_new"
+                android:textColorHint="@color/region_hint_textcolor"
+                android:hint="@string/enter_new_email"
+                android:textColor="@android:color/white"
+                android:textCursorDrawable="@drawable/cursor_draw"
+                android:background="@null"
+                android:singleLine="true"
+                android:imeOptions="actionDone"
+                android:inputType="textVisiblePassword"
+                android:nextFocusDown="@+id/send_change_pswrd"
+                android:textSize="18sp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="63dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/pswrd_current_layout"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="#4f000000"
+            android:layout_below="@+id/email_new_layout">
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
@@ -86,58 +148,10 @@
                 android:padding="4dp"/>
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/pswrd_new_layout"
-            android:layout_marginTop="2dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="#4f000000"
-            android:layout_below="@+id/pswrd_old_layout">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:id="@+id/pswrd_icon2"
-                android:src="@drawable/img_icon_password"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="17dp"
-                android:layout_marginTop="13dp"
-                android:layout_marginBottom="22dp"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/pswrd_edit_new"
-                android:textColorHint="@color/region_hint_textcolor"
-                android:hint="@string/enter_new_pswd"
-                android:textColor="@android:color/white"
-                android:textCursorDrawable="@drawable/cursor_draw"
-                android:background="@null"
-                android:singleLine="true"
-                android:imeOptions="actionNext"
-                android:inputType="textPassword"
-                android:password="true"
-                android:textSize="18sp"
-                android:gravity="center_vertical"
-                android:layout_marginTop="9dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="63dp" />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/show_pswd_new"
-                android:src="@drawable/icon_showpassword"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:padding="4dp"/>
-        </RelativeLayout>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/send_change_pswrd"
+            android:id="@+id/send_change_email"
             android:background="@color/app_theme_color"
             android:text="@string/save"
             android:fontFamily="sans-serif"

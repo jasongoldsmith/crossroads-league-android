@@ -21,6 +21,8 @@ import android.widget.TextView;
 import com.loopj.android.http.RequestParams;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Objects;
 
 import co.crossroadsapp.leagueoflegends.data.CommentData;
 import co.crossroadsapp.leagueoflegends.data.EventData;
@@ -144,9 +146,19 @@ public class EventDetailsFragments extends Fragment {
         if(page==0) {
             // fireteam fragment
             if(currentEvent!=null && currentEvent.getPlayerData()!=null) {
-                if(currentEvent.getClanName()!=null) {
+                if(user!=null && user.getRegion()!=null) {
                     clanTag.setVisibility(View.VISIBLE);
-                    clanTag.setText(currentEvent.getClanName());
+                    String reg = user.getRegion();
+                    if(mManager.getRegions()!=null) {
+                        Map<String, Object> hashMAp = mManager.getRegions();
+                        for(Map.Entry<String, Object> entry: hashMAp.entrySet()) {
+                            if(Objects.equals(user.getRegion(), entry.getValue())) {
+                                reg = entry.getKey();
+                            }
+                        }
+                    }
+
+                    clanTag.setText(reg);
                     clanTag.setBackgroundColor(getResources().getColor(R.color.eventdetail_clan));
                 }
                 mAdapter = new CurrentEventsViewAdapter(currentEvent.getPlayerData());

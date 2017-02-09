@@ -432,7 +432,7 @@ public class EventCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     }
 
                     if(activityName!=null && !activityName.isEmpty()) {
-                        holder.eventSubType.setText(activityName);
+                        holder.eventSubType.setText(activityName!=null?activityName.replaceAll(".*,", "").trim():activityName);
                     }
 
                     if(!publicEventCard) {
@@ -468,8 +468,6 @@ public class EventCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                         });
                     }
 
-                    String feed = this.elistLocal.get(eventPosition).getActivityData().getaFeedMode()!=null?this.elistLocal.get(eventPosition).getActivityData().getaFeedMode():"";
-                    holder.eventaLight.setText(feed.toUpperCase());
 //                        if (l > 0) {
 //                            // unicode to show star
 //                            String st = "\u2726";
@@ -488,6 +486,8 @@ public class EventCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
                         setCardViewLayoutParams(holder.event_card_mainLayout, 165);
                     } else {
+                        String feed = this.elistLocal.get(eventPosition).getActivityData().getaFeedMode()!=null?this.elistLocal.get(eventPosition).getActivityData().getaFeedMode():"";
+                        holder.eventaLight.setText(feed.toUpperCase());
                         updateJoinButton(holder, status, CreatorIn, CreatorIsPlayer, ifUserIsInvited(currEvent.getPlayerData()));
                     }
 

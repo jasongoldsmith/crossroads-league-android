@@ -19,14 +19,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/signin_pressed"
+        android:background="@color/banner_color"
         android:layout_below ="@+id/clan_tag_text"
         android:id="@+id/fireteam_banner"
         android:visibility="gone">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_ghost_default"
+            android:src="@drawable/icon_notification"
             android:id="@+id/banner_ghost_icon"
             android:layout_marginTop="13dp"
             android:layout_marginLeft="20dp"

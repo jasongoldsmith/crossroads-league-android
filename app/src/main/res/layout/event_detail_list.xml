@@ -167,7 +167,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/join_btn"
-            android:background="#0086d0"
+            android:background="@color/app_theme_color"
             android:text="@string/join_event"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
@@ -180,7 +180,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/leave_btn"
-            android:background="@color/app_theme_color"
+            android:background="@color/support_email"
             android:text="@string/leave_event"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
@@ -252,7 +252,7 @@
                 android:textStyle="bold"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
-                android:background="@color/app_theme_color"/>
+                android:background="@color/support_email"/>
 
             <TextView
                 android:layout_width="0dp"

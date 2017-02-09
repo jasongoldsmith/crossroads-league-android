@@ -28,6 +28,7 @@ public class UserData {
     private String clanTag=null;
     private boolean maxReported = false;
     private int commentsReported;
+    private String region=null;
 
     public UserData() {
         consoles = new ArrayList<ConsoleData>();
@@ -154,6 +155,14 @@ public class UserData {
         return this.consoles;
     }
 
+    public void setRegion(String reg) {
+        region = reg;
+    }
+
+    public String getRegion() {
+        return this.region;
+    }
+
     public void toJson(JSONObject json) {
         try {
             if (json.has("value") && !json.isNull("value")) {
@@ -207,6 +216,12 @@ public class UserData {
                             ConsoleData cData = new ConsoleData();
                             if(conData.has("isPrimary") && !conData.isNull("isPrimary")) {
                                 cData.setPrimary(conData.getBoolean("isPrimary"));
+                            }
+                            if (conData.has("region") && !conData.isNull("region")) {
+                                String reg = conData.getString("region");
+                                if(cData.getPrimary()) {
+                                    setRegion(reg);
+                                }
                             }
                             if (conData.has("consoleType") && !conData.isNull("consoleType")) {
                                 String cType = conData.getString("consoleType");

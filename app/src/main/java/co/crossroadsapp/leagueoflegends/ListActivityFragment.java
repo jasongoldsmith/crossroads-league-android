@@ -149,6 +149,7 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
     private Bundle b;
     private ToggleButton groupMute;
     private TextView changePassword;
+    private TextView changeEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -399,6 +400,7 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
         });
 
         changePassword = (TextView) findViewById(R.id.change_password);
+        changeEmail = (TextView) findViewById(R.id.change_email);
 //        imgConsole = (ImageView) findViewById(R.id.console_icon);
 //        down_arw_img = (ImageView) findViewById(R.id.down_arw_img);
 //        consoleText = (TextView) findViewById(R.id.consoletype_text);
@@ -461,6 +463,15 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
             public void onClick(View v) {
                 Intent regIntent = new Intent(getApplicationContext(),
                         ChangePassword.class);
+                startActivity(regIntent);
+            }
+        });
+
+        changeEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent regIntent = new Intent(getApplicationContext(),
+                        ChangeEmail.class);
                 startActivity(regIntent);
             }
         });
