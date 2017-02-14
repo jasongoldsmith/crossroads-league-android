@@ -30,8 +30,8 @@ android {
         applicationId = theApplicationId
         minSdkVersion 19
         targetSdkVersion 23
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 9
+        versionName "1.0.7"
         multiDexEnabled true
     }
 //    buildTypes {
@@ -69,7 +69,7 @@ android {
             applicationId = theApplicationId
             applicationVariants.all { variant ->
                 variant.outputs.each { output ->
-                    String formattedString = "crossroads_lol";
+                    String formattedString = "crossroads_lol_dev";
                     output.outputFile = new File(output.outputFile.parent, output.outputFile.name.replace("app-dev-release", formattedString))
                 }
             }
@@ -80,6 +80,9 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile('com.crashlytics.sdk.android:crashlytics:2.6.3@aar') {
+        transitive = true;
+    }
+    compile('com.crashlytics.sdk.android:answers:1.3.11@aar') {
         transitive = true;
     }
     compile 'com.loopj.android:android-async-http:1.4.9'

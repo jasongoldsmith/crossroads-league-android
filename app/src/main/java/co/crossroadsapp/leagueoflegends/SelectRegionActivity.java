@@ -81,6 +81,11 @@ public class SelectRegionActivity extends BaseActivity implements Observer, Adap
                     if(!selectedRegion.isEmpty()) {
                         firstTimeKeyboardOpens=0;
                         showProgressBar();
+                        // TODO: 2/13/17 check the cause of control manager current activity getting null
+                        if(mManager==null || mManager.getCurrentActivity()==null) {
+                            mManager = ControlManager.getmInstance();
+                            mManager.setCurrentActivity(SelectRegionActivity.this);
+                        }
                         RequestParams params = new RequestParams();
                         params.put("consoleId", summonerName.getText().toString());
                         params.put("region", hashMAp.get(selectedRegion).toString());
@@ -141,6 +146,15 @@ public class SelectRegionActivity extends BaseActivity implements Observer, Adap
         }
         hideProgressBar();
         super.onStop();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mManager==null) {
+            mManager = ControlManager.getmInstance();
+        }
+        mManager.setCurrentActivity(this);
     }
 
     public void showError(String err) {

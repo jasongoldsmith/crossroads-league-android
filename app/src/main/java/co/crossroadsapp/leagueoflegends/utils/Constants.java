@@ -166,7 +166,7 @@ public class Constants {
     public static String APP_SHOWPASSWORD = "showPassword";
 
     //urls
-    public static String DEEP_LINK_IMAGE = "http://w3.crossroadsapp.co/bungie/share/branch/v1/";
+    public static String DEEP_LINK_IMAGE = "https://s3-us-west-1.amazonaws.com/w3.crossroadsapp.co/lol/";
     public static String BUNGIE_ERROR = "BungieLoginError";
     public static String BUNGIE_CONNECT_ERROR = "BungieConnectError";
     public static String BUNGIE_LEGACY_ERROR = "BungieLegacyConsoleError";

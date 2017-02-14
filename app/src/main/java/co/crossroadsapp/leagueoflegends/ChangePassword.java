@@ -29,8 +29,11 @@ public class ChangePassword extends BaseActivity implements Observer {
     private TextView setPswrd;
     private EditText newPswrd;
     private ControlManager mManager;
+    private ProgressDialog dialog;
     String userId;
-    private String newP;
+    String newP;
+    private ImageView showPswrdOld;
+    private ImageView showPswrdCurrent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +62,11 @@ public class ChangePassword extends BaseActivity implements Observer {
         newPswrd.setTypeface(Typeface.DEFAULT);
         newPswrd.setTransformationMethod(new PasswordTransformationMethod());
 
-        ImageView showPswdOld = (ImageView) findViewById(R.id.show_pswd_old);
-        ImageView showPswdNew = (ImageView) findViewById(R.id.show_pswd_new);
+        showPswrdOld = (ImageView) findViewById(R.id.show_pswd_old);
 
         final boolean[] showPswdState = {false};
 
-        showPswdOld.setOnClickListener(new View.OnClickListener() {
+        showPswrdOld.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //tracking showPassword click
@@ -86,9 +88,11 @@ public class ChangePassword extends BaseActivity implements Observer {
             }
         });
 
+        showPswrdCurrent = (ImageView) findViewById(R.id.show_pswd_new);
+
         final boolean[] showPswdState1 = {false};
 
-        showPswdNew.setOnClickListener(new View.OnClickListener() {
+        showPswrdCurrent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //tracking showPassword click
@@ -102,7 +106,7 @@ public class ChangePassword extends BaseActivity implements Observer {
                         showPswdState1[0] = true;
                     } else {
                         newPswrd.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                        newPswrd.setSelection(newPswrd.getText().length());
+                        newPswrd.setSelection(oldPswrd.getText().length());
                         newPswrd.setTypeface(Typeface.DEFAULT);
                         showPswdState1[0] = false;
                     }
@@ -122,6 +126,8 @@ public class ChangePassword extends BaseActivity implements Observer {
             }
         });
 
+        dialog = new ProgressDialog(this);
+
         if(mManager!=null && mManager.getUserData()!=null) {
             UserData ud = mManager.getUserData();
             userId = ud.getUserId();
@@ -135,14 +141,17 @@ public class ChangePassword extends BaseActivity implements Observer {
                     String oldP = oldPswrd.getText().toString();
                     newP = newPswrd.getText().toString();
                     if (oldP != null && newP != null) {
-                        if (!newP.isEmpty() && !oldP.isEmpty()) {
+                        if (newP.length() > 4 && oldP.length() > 4) {
                             RequestParams params = new RequestParams();
                             params.put("oldPassWord", oldP);
                             params.put("newPassWord", newP);
-                            showProgressBar();
+                            params.put("id", userId);
+                            dialog.show();
+                            dialog.setCancelable(false);
+                            dialog.setCanceledOnTouchOutside(false);
                             mManager.postChangePassword(ChangePassword.this, params);
                         } else {
-                            showError(getResources().getString(R.string.password_missing));
+                            showError(getResources().getString(R.string.password_short));
                         }
                     }
                 }
@@ -151,16 +160,14 @@ public class ChangePassword extends BaseActivity implements Observer {
     }
 
     public void showError(String err) {
-        //dialog.dismiss();
-        hideProgressBar();
+        dialog.dismiss();
         setPswrd.setEnabled(true);
         setErrText(err);
     }
 
     @Override
     public void update(Observable observable, Object data) {
-        //dialog.dismiss();
-        hideProgressBar();
+        dialog.dismiss();
         if(newP!=null && (!newP.isEmpty())) {
             Util.setDefaults("password", newP, getApplicationContext());
         }

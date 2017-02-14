@@ -846,6 +846,7 @@ public class EventDetailActivity extends BaseActivity implements Observer, Token
                 }
                 invitee =  sb.toString();
             }
+
             // Create a BranchUniversal object for the content referred on this activity instance as invite
             branchUniversalObject = new BranchUniversalObject()
                     .setCanonicalIdentifier("item/12345")

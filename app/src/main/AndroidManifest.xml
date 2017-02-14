@@ -150,6 +150,7 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="11f888057a583a50a91f1434bf728d87358f6d8e" />
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
