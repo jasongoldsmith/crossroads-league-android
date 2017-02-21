@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="co.crossroadsapp.leagueoflegends.AddNewActivity">
 
     <ImageView
@@ -48,296 +47,173 @@
         android:layout_marginTop="4dp"
         android:src="@drawable/img_title_graphic"/>
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/top_text"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="33dp">
+        android:layout_marginTop="33dp"
+        android:layout_centerHorizontal="true">
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/activity_light_color"
             android:textSize="16sp"
+            android:layout_marginBottom="12dp"
             android:id="@+id/pvp_text"
-            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
             android:text="PVP"/>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <TextView
             android:id="@+id/first_act"
-            android:background="#203236"
-            android:layout_marginTop="6dp"
-            android:layout_below="@+id/pvp_text">
-            <android.support.v7.widget.CardView
-                xmlns:conversation="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/ad_event"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="6dp"
-                conversation:cardBackgroundColor="#203236"
-                app:border="true"
-                app:borderColor="#979797"
-                app:circularBorderWidth="2dp"
-                conversation:cardElevation="0dp"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icon_summ_rift"
-                    android:id="@+id/first_act_icon"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="17dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/first_act_icon"
-                    android:text="Summoner’s Rift"
-                    android:fontFamily="sans-serif"
-                    android:textStyle="bold"
-                    android:textSize="12sp"
-                    android:textColor="@color/trimbe_white"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="18dp"/>
-            </RelativeLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/second_act"
-            android:background="#203236"
-            android:layout_marginTop="4dp"
-            android:layout_below="@+id/first_act">
-            <android.support.v7.widget.CardView
-                xmlns:conversation="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/second_event"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="6dp"
-                conversation:cardBackgroundColor="#203236"
-                app:border="true"
-                app:borderColor="#979797"
-                app:circularBorderWidth="1dp"
-                conversation:cardElevation="0dp"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icon_twisted_treeline"
-                    android:id="@+id/second_act_icon"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="17dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/second_act_icon"
-                    android:text="Twisted Treeline"
-                    android:fontFamily="sans-serif"
-                    android:textStyle="bold"
-                    android:textSize="12sp"
-                    android:textColor="@color/trimbe_white"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="18dp"/>
-            </RelativeLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/third_act"
-            android:background="#203236"
-            android:layout_marginTop="4dp"
-            android:layout_below="@+id/second_act">
-            <android.support.v7.widget.CardView
-                xmlns:conversation="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/third_event"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="6dp"
-                conversation:cardBackgroundColor="#203236"
-                app:border="true"
-                app:borderColor="#979797"
-                app:circularBorderWidth="1dp"
-                conversation:cardElevation="0dp"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icon_a_r_a_m"
-                    android:id="@+id/third_act_icon"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="17dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/third_act_icon"
-                    android:fontFamily="sans-serif"
-                    android:textStyle="bold"
-                    android:text="ARAM"
-                    android:textSize="12sp"
-                    android:textColor="@color/trimbe_white"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="18dp"/>
-            </RelativeLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/fourth_act"
-            android:background="#203236"
-            android:layout_marginTop="4dp"
-            android:layout_below="@+id/third_act">
-            <android.support.v7.widget.CardView
-                xmlns:conversation="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/fourth_event"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="6dp"
-                conversation:cardBackgroundColor="#203236"
-                app:border="true"
-                app:borderColor="#979797"
-                app:circularBorderWidth="1dp"
-                conversation:cardElevation="0dp"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icon_custom"
-                    android:id="@+id/fourth_act_icon"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="17dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/fourth_act_icon"
-                    android:text="Rotating"
-                    android:fontFamily="sans-serif"
-                    android:textStyle="bold"
-                    android:textSize="12sp"
-                    android:textColor="@color/trimbe_white"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="18dp"/>
-            </RelativeLayout>
-        </RelativeLayout>
+            android:layout_height="50dp"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:background="@drawable/game_mode_btn_bgnd"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/trimbe_white"
+            android:drawableLeft="@drawable/icon_summ_rift"
+            android:drawableStart="@drawable/icon_summ_rift"
+            android:drawablePadding="15dp"
+            android:text="@string/summoner_text"
+            android:layout_marginBottom="10dp"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/second_act"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:background="@drawable/game_mode_btn_bgnd"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/trimbe_white"
+            android:drawableLeft="@drawable/icon_twisted_treeline"
+            android:drawableStart="@drawable/icon_twisted_treeline"
+            android:drawablePadding="15dp"
+            android:text="@string/twisted_text"
+            android:layout_marginBottom="10dp"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/third_act"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:background="@drawable/game_mode_btn_bgnd"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/trimbe_white"
+            android:drawableLeft="@drawable/icon_a_r_a_m"
+            android:drawableStart="@drawable/icon_a_r_a_m"
+            android:drawablePadding="15dp"
+            android:text="@string/aram_text"
+            android:layout_marginBottom="10dp"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/fourth_act"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:background="@drawable/game_mode_btn_bgnd"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/trimbe_white"
+            android:drawableLeft="@drawable/icon_custom"
+            android:drawableStart="@drawable/icon_custom"
+            android:drawablePadding="15dp"
+            android:text="@string/rotating_text"
+            android:layout_marginBottom="15dp"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:textColor="@color/activity_light_color"
+            android:layout_marginBottom="12dp"
             android:textSize="16sp"
             android:id="@+id/ai_text"
-            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
             android:layout_below="@+id/fourth_act"
             android:text="CO-OP VS. AI"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <TextView
             android:id="@+id/fifth_act"
-            android:background="#203236"
-            android:layout_marginTop="6dp"
-            android:layout_below="@+id/ai_text">
-            <android.support.v7.widget.CardView
-                xmlns:conversation="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/fifth_event"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="6dp"
-                conversation:cardBackgroundColor="#203236"
-                app:border="true"
-                app:borderColor="#979797"
-                app:circularBorderWidth="1dp"
-                conversation:cardElevation="0dp"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/icon_summ_rift"
-                    android:id="@+id/fifth_act_icon"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="17dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/fifth_act_icon"
-                    android:fontFamily="sans-serif"
-                    android:textStyle="bold"
-                    android:text="Summoner’s Rift"
-                    android:textSize="12sp"
-                    android:textColor="@color/trimbe_white"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="18dp"/>
-            </RelativeLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/sixth_act"
-            android:background="#203236"
-            android:layout_marginTop="4dp"
-            android:layout_below="@+id/fifth_act">
-            <android.support.v7.widget.CardView
-                xmlns:conversation="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/sixth_event"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="6dp"
-                conversation:cardBackgroundColor="#203236"
-                app:border="true"
-                app:borderColor="#979797"
-                app:circularBorderWidth="1dp"
-                conversation:cardElevation="0dp"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icon_twisted_treeline"
-                    android:id="@+id/sixth_act_icon"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="17dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/sixth_act_icon"
-                    android:text="Twisted Treeline"
-                    android:textSize="12sp"
-                    android:fontFamily="sans-serif"
-                    android:textStyle="bold"
-                    android:textColor="@color/trimbe_white"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="18dp"/>
-            </RelativeLayout>
-        </RelativeLayout>
+            android:layout_height="50dp"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:background="@drawable/game_mode_btn_bgnd"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/trimbe_white"
+            android:drawableLeft="@drawable/icon_summ_rift"
+            android:drawableStart="@drawable/icon_summ_rift"
+            android:drawablePadding="15dp"
+            android:text="@string/summoner_text"
+            android:layout_marginBottom="10dp"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/sixth_act"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:background="@drawable/game_mode_btn_bgnd"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/trimbe_white"
+            android:drawableLeft="@drawable/icon_twisted_treeline"
+            android:drawableStart="@drawable/icon_twisted_treeline"
+            android:drawablePadding="15dp"
+            android:text="@string/twisted_text"
+            android:layout_marginBottom="10dp"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
 
     <include layout="@layout/activity_base" />
 </RelativeLayout>

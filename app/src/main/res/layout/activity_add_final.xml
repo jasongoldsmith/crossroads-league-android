@@ -142,7 +142,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/final_create_event_firstcard"
-                android:background="@color/freelancer_background"
+                android:background="@drawable/game_mode_btn_bgnd"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="33dp"
                 android:layout_marginRight="33dp"
@@ -152,7 +152,7 @@
                     android:id="@+id/event_creation_subtype"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/freelancer_background"
+                    android:background="@drawable/game_mode_btn_bgnd"
                     android:gravity="center"
                     android:overlapAnchor="false"
                     android:popupElevation="0dp"
@@ -200,7 +200,7 @@
                     android:id="@+id/event_creation_checkpoint"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/freelancer_background"
+                    android:background="@drawable/game_mode_btn_bgnd"
                     android:gravity="center"
                     android:overlapAnchor="false"
                     android:popupElevation="0dp"
@@ -251,7 +251,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@color/freelancer_background"
+                    android:background="@drawable/game_mode_btn_bgnd"
                     android:layout_weight="1"
                     android:id="@+id/date">
                     <TextView
@@ -280,7 +280,7 @@
                     android:id="@+id/time"
                     android:layout_weight="1"
                     android:layout_toRightOf="@+id/date"
-                    android:background="@color/freelancer_background"
+                    android:background="@drawable/game_mode_btn_bgnd"
                     android:layout_marginLeft="8dp">
                     <TextView
                         android:layout_width="wrap_content"
@@ -318,7 +318,7 @@
                     android:id="@+id/event_creation_detail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/freelancer_background"
+                    android:background="@drawable/game_mode_btn_bgnd"
                     android:gravity="center"
                     android:overlapAnchor="false"
                     android:popupElevation="0dp"

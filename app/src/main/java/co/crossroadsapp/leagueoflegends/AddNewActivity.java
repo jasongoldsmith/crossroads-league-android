@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.loopj.android.http.RequestParams;
 
@@ -24,12 +25,12 @@ public class AddNewActivity extends BaseActivity implements Observer {
     private ImageView exoticAct;
     private ImageView questAct;
     private ImageView storyAct;
-    private RelativeLayout patrolAct;
-    private RelativeLayout strikeAct;
-    private RelativeLayout crucibleAct;
-    private RelativeLayout arenaAct;
-    private RelativeLayout raiddAct;
-    private RelativeLayout featuredAct;
+    private TextView patrolAct;
+    private TextView strikeAct;
+    private TextView crucibleAct;
+    private TextView arenaAct;
+    private TextView raiddAct;
+    private TextView featuredAct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +69,7 @@ public class AddNewActivity extends BaseActivity implements Observer {
         });
 
         //Raid
-        featuredAct = (RelativeLayout) findViewById(R.id.first_act);
+        featuredAct = (TextView) findViewById(R.id.first_act);
         featuredAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +78,7 @@ public class AddNewActivity extends BaseActivity implements Observer {
             }
         });
 
-        raiddAct = (RelativeLayout) findViewById(R.id.second_act);
+        raiddAct = (TextView) findViewById(R.id.second_act);
         raiddAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +87,7 @@ public class AddNewActivity extends BaseActivity implements Observer {
             }
         });
 
-        arenaAct = (RelativeLayout) findViewById(R.id.third_act);
+        arenaAct = (TextView) findViewById(R.id.third_act);
         arenaAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +96,7 @@ public class AddNewActivity extends BaseActivity implements Observer {
             }
         });
 
-        crucibleAct = (RelativeLayout) findViewById(R.id.fourth_act);
+        crucibleAct = (TextView) findViewById(R.id.fourth_act);
         crucibleAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +105,7 @@ public class AddNewActivity extends BaseActivity implements Observer {
             }
         });
 
-        strikeAct = (RelativeLayout) findViewById(R.id.fifth_act);
+        strikeAct = (TextView) findViewById(R.id.fifth_act);
         strikeAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,7 +114,7 @@ public class AddNewActivity extends BaseActivity implements Observer {
             }
         });
 
-        patrolAct = (RelativeLayout) findViewById(R.id.sixth_act);
+        patrolAct = (TextView) findViewById(R.id.sixth_act);
         patrolAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

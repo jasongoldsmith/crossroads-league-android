@@ -49,16 +49,16 @@
 
             <ToggleButton
                 android:id="@+id/mute_toggle"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@drawable/check"
                 android:focusable="false"
                 android:checked="true"
                 android:textOn=""
                 android:textOff=""
                 android:focusableInTouchMode="false"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="11dp"
+                android:layout_marginTop="31dp"
+                android:layout_marginEnd="17dp"
                 android:layout_alignParentRight="true"/>
 
             <co.crossroadsapp.leagueoflegends.utils.CircularImageView
@@ -66,8 +66,8 @@
                 android:layout_height="30dp"
                 android:id="@+id/userProfile"
                 android:src="@drawable/profile_image"
-                android:layout_marginLeft="11dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="36dp"
                 android:layout_alignParentLeft="true"
                 app:border="true"
                 app:borderColor="@color/trimbe_white"
@@ -271,53 +271,6 @@
                 android:gravity="center_horizontal"/>
         </RelativeLayout>
 
-        <!--<RelativeLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="44dp"-->
-            <!--android:id="@+id/multi_console_layout"-->
-            <!--android:layout_marginTop="25dp"-->
-            <!--android:layout_marginRight="37dp"-->
-            <!--android:layout_marginLeft="37dp"-->
-            <!--android:layout_below="@+id/profile_header">-->
-
-            <!--<Spinner-->
-                <!--android:id="@+id/console_spinner"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:background="@color/freelancer_background"-->
-                <!--android:gravity="center"-->
-                <!--android:overlapAnchor="false"-->
-                <!--android:popupElevation="0dp"-->
-                <!--android:popupBackground="@android:color/transparent"/>-->
-
-            <!--<ImageView-->
-                <!--android:layout_width="24dp"-->
-                <!--android:layout_height="24dp"-->
-                <!--android:id="@+id/console_icon"-->
-                <!--android:src="@drawable/icon_psn_consolex"-->
-                <!--android:layout_alignParentLeft="true"-->
-                <!--android:layout_marginLeft="16dp"-->
-                <!--android:layout_centerVertical="true"/>-->
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:id="@+id/consoletype_text"-->
-                <!--android:fontFamily="sans-serif"-->
-                <!--android:textStyle="bold"-->
-                <!--android:textSize="14sp"-->
-                <!--android:textColor="@android:color/white"-->
-                <!--android:layout_centerInParent="true"/>-->
-            <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:id="@+id/down_arw_img"-->
-                <!--android:src="@drawable/icon_arrow_dwn"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:padding="8dp"/>-->
-
-        <!--</RelativeLayout>-->
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="44dp"
@@ -325,7 +278,7 @@
             android:id="@+id/change_password"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
-            android:background="@drawable/game_mode_btn_bgnd"
+            android:background="@drawable/rounded_btn_bckgnd_profile"
             android:text="@string/change_password"
             android:textSize="14sp"
             android:textColor="@android:color/white"
@@ -346,7 +299,7 @@
             android:layout_marginLeft="37dp"
             android:layout_below="@+id/change_password"
             android:gravity="center"
-            android:background="@drawable/game_mode_btn_bgnd"/>
+            android:background="@drawable/rounded_btn_bckgnd_profile"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -361,14 +314,14 @@
             android:layout_marginLeft="37dp"
             android:layout_below="@+id/change_email"
             android:gravity="center"
-            android:background="@drawable/game_mode_btn_bgnd"/>
+            android:background="@drawable/rounded_btn_bckgnd_profile"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:id="@+id/logout_btn"
             android:layout_below="@+id/crash_btn"
-            android:background="@drawable/game_mode_btn_bgnd"
+            android:background="@drawable/rounded_btn_bckgnd_profile"
             android:text="@string/logout"
             android:textSize="14sp"
             android:textColor="@android:color/white"
