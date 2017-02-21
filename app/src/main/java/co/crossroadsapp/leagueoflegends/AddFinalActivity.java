@@ -692,6 +692,8 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
             } else {
                 if (dataList.get(0).toString().equalsIgnoreCase(Constants.NONE)) {
                     detailText.setText("Details (Optional)");
+                } else {
+                    detailText.setText(dataList.get(0));
                 }
                 dropdownDetails.setEnabled(false);
                 tagDropdownArw.setVisibility(View.GONE);

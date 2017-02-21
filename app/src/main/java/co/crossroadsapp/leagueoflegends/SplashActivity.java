@@ -16,6 +16,7 @@ import com.facebook.appevents.AppEventsLogger;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import co.crossroadsapp.leagueoflegends.data.InvitationLoginData;
+import co.crossroadsapp.leagueoflegends.network.ConfigNetwork;
 import co.crossroadsapp.leagueoflegends.network.TrackingNetwork;
 import co.crossroadsapp.leagueoflegends.utils.Constants;
 import co.crossroadsapp.leagueoflegends.utils.Util;
@@ -61,8 +62,20 @@ public class SplashActivity extends BaseActivity implements Observer {
         cManager = ControlManager.getmInstance();
         cManager.setClient(SplashActivity.this);
         cManager.setCurrentActivity(SplashActivity.this);
+
+//        mLayout = (RelativeLayout) findViewById(R.id.splash_layout);
+//        if(mLayout!=null) {
+//            mLayout.setVisibility(View.VISIBLE);
+//            Animation anim = AnimationUtils.loadAnimation(this,
+//                    R.anim.fadein_splash);
+//            mLayout.startAnimation(anim);
+//        }
+        cManager.getConfig();
+    }
+
+    private void afterGetConfig() {
         //mixpanel token
-        String projectToken =  getResources().getString(R.string.mix_panel_token);
+        String projectToken =  Util.getDefaults("mixpanelToken", this); //getResources().getString(R.string.mix_panel_token);
         mixpanel = MixpanelAPI.getInstance(SplashActivity.this, projectToken);
         cManager.addClientHeader("x-mixpanelid", mixpanel.getDistinctId()!=null?mixpanel.getDistinctId():"");
         mLayout = (RelativeLayout) findViewById(R.id.splash_layout);
@@ -222,6 +235,13 @@ public class SplashActivity extends BaseActivity implements Observer {
                 branchInitializationAndInit();
                 launchNextActivity();
                 appInstallSuccess = true;
+            }
+        } else if(observable instanceof ConfigNetwork) {
+            if(data!=null) {
+                if(cManager!=null) {
+                    cManager.parseAndSaveConfigUrls((JSONObject) data);
+                }
+                afterGetConfig();
             }
         }
     }

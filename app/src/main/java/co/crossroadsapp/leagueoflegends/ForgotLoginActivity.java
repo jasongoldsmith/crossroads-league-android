@@ -46,6 +46,7 @@ public class ForgotLoginActivity extends BaseActivity implements Observer{
     private TextView playstationBtnText;
     private TextView xboxBtnText;
     private ImageView heroImg;
+    private String emailAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,13 +124,12 @@ public class ForgotLoginActivity extends BaseActivity implements Observer{
             @Override
             public void onClick(View v) {
                 if (psnId!=null && console!=null) {
-                    String psnString = psnId.getText().toString();
-                    if (!psnString.isEmpty()) {
+                    emailAdd = psnId.getText().toString();
+                    if (!emailAdd.isEmpty()) {
                         dialog.show();
                         resetPassword.setEnabled(false);
                         RequestParams params = new RequestParams();
-                        //params.put("userName", psnString);
-                        params.add("userName", psnString);
+                        params.add("userName", emailAdd);
                         //params.add("consoleType", console);
                         mManager.postResetPassword(ForgotLoginActivity.this, params);
                     } else {
@@ -219,7 +219,16 @@ public class ForgotLoginActivity extends BaseActivity implements Observer{
 //        Intent intent = new Intent(getApplicationContext(),
 //                PasswordReset.class);
 //        startActivity(intent);
-        finish();
+        setContentView(R.layout.activity_message_sent);
+        ImageView back  = (ImageView) findViewById(R.id.back);
+        TextView text = (TextView) findViewById(R.id.text);
+        text.setText("Check your email address at:\n" + emailAdd + "\nfor a reset password link.");
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 //        Toast.makeText(this, "Instructions for resetting your password have been sent to your Bungie.net account. Follow the instructions to choose a new password.",
 //                Toast.LENGTH_LONG).show();
 //        long timeInMillisecondTheToastIsShowingFor = 3000;

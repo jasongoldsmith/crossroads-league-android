@@ -4,6 +4,14 @@ import android.content.Context;
 
 import co.crossroadsapp.leagueoflegends.ControlManager;
 import co.crossroadsapp.leagueoflegends.MainActivity;
+import co.crossroadsapp.leagueoflegends.core.BattletagAlreadyTakenException;
+import co.crossroadsapp.leagueoflegends.core.InvalidEmailProvided;
+import co.crossroadsapp.leagueoflegends.core.LeagueLoginException;
+import co.crossroadsapp.leagueoflegends.core.NoUserFoundException;
+import co.crossroadsapp.leagueoflegends.core.TrimbleException;
+import co.crossroadsapp.leagueoflegends.data.GeneralServerError;
+import co.crossroadsapp.leagueoflegends.data.LoginError;
+import co.crossroadsapp.leagueoflegends.utils.TravellerLog;
 import co.crossroadsapp.leagueoflegends.utils.Util;
 import co.crossroadsapp.leagueoflegends.data.UserData;
 import co.crossroadsapp.leagueoflegends.utils.Constants;
@@ -37,7 +45,7 @@ public class LoginNetwork extends Observable {
         ntwrk = NetworkEngine.getmInstance(c);
     }
 
-    public void doSignup(RequestParams params) throws JSONException {
+    public void doSignup(RequestParams params, final String username) throws JSONException {
         if (Util.isNetworkAvailable(mContext)) {
             ntwrk.post(url, params, new JsonHttpResponseHandler() {
                 @Override
@@ -49,6 +57,10 @@ public class LoginNetwork extends Observable {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                    //new error data structure
+                    TravellerLog.w(this, "onFailure errorResponse: " + errorResponse);
+//                    dispatchError(statusCode, username, errorResponse);
+                    ////////////new error data structure ends here
 //                    Toast.makeText(mContext, "Signup error from server  - " + statusCode,
 //                            Toast.LENGTH_LONG).show();
                     if(errorResponse.has("errorType")) {
@@ -65,6 +77,25 @@ public class LoginNetwork extends Observable {
         }else {
             Util.createNoNetworkDialogue(mContext);
         }
+    }
+
+    private void dispatchError(int statusCode, String email, JSONObject errorResponse) {
+        LeagueLoginException exception = null;
+        LoginError error = new LoginError();
+        error.toJson(errorResponse);
+        if (statusCode == TrimbleException.TRIMBLE_BAD_REQUEST) {
+            GeneralServerError er = error.getGeneralServerError();
+            if (er != null && er.getCode() == GeneralServerError.INVALID_MAIL_PROVIDED) {
+                exception = new InvalidEmailProvided(statusCode, error.getDescription(), error.getGeneralServerError());
+            } else if (er != null && er.getCode() == GeneralServerError.NO_USER_FOUND_WITH_THE_EMAIL) {
+                exception = new NoUserFoundException(statusCode, error.getDescription(), error.getGeneralServerError());
+            } else if (er != null && er.getCode() == GeneralServerError.ALREADY_TAKEN){
+                exception = new BattletagAlreadyTakenException(statusCode, error.getDescription(), error.getGeneralServerError());
+            }
+            exception.setUserTag(email);
+        }
+        setChanged();
+        notifyObservers(exception);
     }
 
     public void getUser(RequestParams params) throws JSONException {
@@ -85,7 +116,7 @@ public class LoginNetwork extends Observable {
         }
     }
 
-    public void doRegister(RequestParams params) throws JSONException {
+    public void doRegister(RequestParams params, String username) throws JSONException {
         if (Util.isNetworkAvailable(mContext)) {
             ntwrk.post(url_reg, params, new JsonHttpResponseHandler() {
                 @Override

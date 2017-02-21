@@ -150,7 +150,6 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="11f888057a583a50a91f1434bf728d87358f6d8e" />
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -195,7 +194,11 @@
             android:name=".ChangeEmail"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar"
-            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity android:name=".GamertagErrorScreen"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
     </application>
 
 </manifest>

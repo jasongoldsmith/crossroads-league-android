@@ -32,6 +32,10 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+import co.crossroadsapp.leagueoflegends.core.BattletagAlreadyTakenException;
+import co.crossroadsapp.leagueoflegends.core.InvalidEmailProvided;
+import co.crossroadsapp.leagueoflegends.core.LeagueLoginException;
+import co.crossroadsapp.leagueoflegends.core.NoUserFoundException;
 import co.crossroadsapp.leagueoflegends.data.UserData;
 import co.crossroadsapp.leagueoflegends.utils.Constants;
 import co.crossroadsapp.leagueoflegends.utils.Util;
@@ -76,7 +80,7 @@ public class SelectRegionActivity extends BaseActivity implements Observer, Adap
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(summonerName.getText()!=null && !summonerName.getText().toString().isEmpty()) {
+                if(summonerName.getText()!=null && summonerName.getText().toString().length()>2) {
                     String selectedRegion = String.valueOf(dropdown.getSelectedItem());
                     if(!selectedRegion.isEmpty()) {
                         firstTimeKeyboardOpens=0;
@@ -89,8 +93,10 @@ public class SelectRegionActivity extends BaseActivity implements Observer, Adap
                         RequestParams params = new RequestParams();
                         params.put("consoleId", summonerName.getText().toString());
                         params.put("region", hashMAp.get(selectedRegion).toString());
-                        mManager.addOtherConsole(params);
+                        mManager.addOtherConsole(params, summonerName.getText().toString());
                     }
+                } else {
+                    showError(getString(R.string.summoername_short_error));
                 }
             }
         });
@@ -282,26 +288,44 @@ public class SelectRegionActivity extends BaseActivity implements Observer, Adap
 
     @Override
     public void update(Observable observable, Object data) {
-        //decide activity to open
-        //regIntent = mManager.decideToOpenActivity(localPushEvent);
-        hideProgressBar();
-        hideKeyboard();
-        if (data!=null) {
-            UserData ud = (UserData) data;
-            if (ud != null && ud.getUserId() != null) {
-                if(ud.getConsoleType()!=null || !ud.getConsoleType().isEmpty()) {
-                    Util.setDefaults("consoleType", ud.getConsoleType(), getApplicationContext());
-                }
-            }
-            Intent regIntent;
-            regIntent = new Intent(getApplicationContext(),
-                    ListActivityFragment.class);
-            //clear invitation req params
+        if(data!=null) {
+            if (data instanceof BattletagAlreadyTakenException) {
+                String userTag = ((LeagueLoginException) data).getUserTag();
+                Intent intent = new Intent(this, GamertagErrorScreen.class);
+                Bundle b = new Bundle();
+                b.putInt("key", 1);//Your id
+                b.putString("user",userTag);
+                intent.putExtras(b); //Put your id to your next Intent
+                startActivity(intent);
+            } else if (data instanceof NoUserFoundException) {
+                String userTag = ((LeagueLoginException) data).getUserTag();
+                Intent intent = new Intent(this, GamertagErrorScreen.class);
+                Bundle b = new Bundle();
+                b.putInt("key", 2);//Your id
+                b.putString("user",userTag);
+                intent.putExtras(b); //Put your id to your next Intent
+                startActivity(intent);
+            } else {
+                hideProgressBar();
+                hideKeyboard();
+                if (data != null) {
+                    UserData ud = (UserData) data;
+                    if (ud != null && ud.getUserId() != null) {
+                        if (ud.getConsoleType() != null || !ud.getConsoleType().isEmpty()) {
+                            Util.setDefaults("consoleType", ud.getConsoleType(), getApplicationContext());
+                        }
+                    }
+                    Intent regIntent;
+                    regIntent = new Intent(getApplicationContext(),
+                            ListActivityFragment.class);
+                    //clear invitation req params
 //        if(invitationRp!=null) {
 //            invitationRp.clearRp();
 //        }
-            startActivity(regIntent);
-            finish();
+                    startActivity(regIntent);
+                    finish();
+                }
+            }
         }
     }
 }

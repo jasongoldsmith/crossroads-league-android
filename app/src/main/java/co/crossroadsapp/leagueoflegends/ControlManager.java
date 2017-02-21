@@ -447,7 +447,7 @@ public class ControlManager implements Observer{
         return activityList;
     }
 
-    public void postLogin(RequestParams params, int postId) {
+    public void postLogin(RequestParams params, int postId, String username) {
         try {
             if(mCurrentAct!=null) {
                 loginNetwork = new LoginNetwork(mCurrentAct.get());
@@ -458,10 +458,10 @@ public class ControlManager implements Observer{
                     } else if (mCurrentAct != null && mCurrentAct.get() instanceof MainActivity) {
                         loginNetwork.addObserver((MainActivity) mCurrentAct.get());
                     }
-                    loginNetwork.doSignup(params);
+                    loginNetwork.doSignup(params, username);
                 } else if (postId == Constants.REGISTER) {
                     loginNetwork.addObserver((RegisterActivity) mCurrentAct.get());
-                    loginNetwork.doRegister(params);
+                    loginNetwork.doRegister(params, username);
                 }
             }
         } catch (JSONException e) {
@@ -741,39 +741,39 @@ public class ControlManager implements Observer{
                 //getGroupList();
             }
         } else if(observable instanceof BungieUserNetwork) {
-            if(data!=null) {
-                try {
-                    String platform = getCurrentPlatform();
-                    if(platform!=null) {
-                        try {
-                            HashMap<String,Object> map =
-                                    new ObjectMapper().readValue(data.toString(), HashMap.class);
-                            RequestParams rp = new RequestParams();
-                            rp.put("bungieResponse", map);
-                            rp.put("consoleType", platform);
-                            rp.put("bungieURL", getBungieCurrentUserUrl()!=null?getBungieCurrentUserUrl():Constants.BUGIE_CURRENT_USER);
-                            if(mCurrentAct.get() instanceof MainActivity) {
-                                loginNetwork = new LoginNetwork(mCurrentAct.get());
-                                InvitationLoginData notificationObj = ((MainActivity) mCurrentAct.get()).getInvitationObject();
-                                if(notificationObj!=null) {
-                                    rp.put("invitation", notificationObj.getRp());
-                                }
-                                loginNetwork.addObserver(this);
-                                loginNetwork.addObserver(((MainActivity) mCurrentAct.get()));
-                                loginNetwork.doSignup(rp);
-                            }
-                        } catch (JsonGenerationException e) {
-                            e.printStackTrace();
-                        } catch (JsonMappingException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
+//            if(data!=null) {
+//                try {
+//                    String platform = getCurrentPlatform();
+//                    if(platform!=null) {
+//                        try {
+//                            HashMap<String,Object> map =
+//                                    new ObjectMapper().readValue(data.toString(), HashMap.class);
+//                            RequestParams rp = new RequestParams();
+//                            rp.put("bungieResponse", map);
+//                            rp.put("consoleType", platform);
+//                            rp.put("bungieURL", getBungieCurrentUserUrl()!=null?getBungieCurrentUserUrl():Constants.BUGIE_CURRENT_USER);
+//                            if(mCurrentAct.get() instanceof MainActivity) {
+//                                loginNetwork = new LoginNetwork(mCurrentAct.get());
+//                                InvitationLoginData notificationObj = ((MainActivity) mCurrentAct.get()).getInvitationObject();
+//                                if(notificationObj!=null) {
+//                                    rp.put("invitation", notificationObj.getRp());
+//                                }
+//                                loginNetwork.addObserver(this);
+//                                loginNetwork.addObserver(((MainActivity) mCurrentAct.get()));
+//                                loginNetwork.doSignup(rp, username);
+//                            }
+//                        } catch (JsonGenerationException e) {
+//                            e.printStackTrace();
+//                        } catch (JsonMappingException e) {
+//                            e.printStackTrace();
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
 //        } else if(observable instanceof BungieMessageNetwork) {
 //            if(data!=null) {
 //                try {
@@ -949,13 +949,13 @@ public class ControlManager implements Observer{
         return consoleList;
     }
 
-    public void addOtherConsole(RequestParams rp_console) {
+    public void addOtherConsole(RequestParams rp_console, String username) {
         try {
             if (mCurrentAct.get() != null && mCurrentAct.get() instanceof SelectRegionActivity) {
                 addConsoleNetwork = new AddNewConsoleNetwork(mCurrentAct.get());
                 addConsoleNetwork.addObserver(this);
                 addConsoleNetwork.addObserver((SelectRegionActivity)mCurrentAct.get());
-                addConsoleNetwork.doAddConsole(rp_console);
+                addConsoleNetwork.doAddConsole(rp_console, username);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -1156,9 +1156,13 @@ public class ControlManager implements Observer{
 
     public void getConfig() {
         try {
-            if(mCurrentAct!=null && mCurrentAct.get() instanceof MainActivity) {
+            if(mCurrentAct!=null && mCurrentAct.get()!=null) {
                 getConfigNetwork = new ConfigNetwork(mCurrentAct.get());
-                getConfigNetwork.addObserver((MainActivity)mCurrentAct.get());
+                if(mCurrentAct.get() instanceof MainActivity) {
+                    getConfigNetwork.addObserver((MainActivity) mCurrentAct.get());
+                } else if (mCurrentAct.get() instanceof SplashActivity) {
+                    getConfigNetwork.addObserver((SplashActivity) mCurrentAct.get());
+                }
                 getConfigNetwork.getConfig();
             }
         } catch (JSONException e) {
@@ -1193,6 +1197,12 @@ public class ControlManager implements Observer{
                 JSONObject jsonData = data.optJSONObject("LolRegions");
                 if (jsonData!=null) {
                     regionMap = Util.toMap(jsonData);
+                }
+            }
+            if(data.has("mixpanelToken") && !data.isNull("mixpanelToken")) {
+                if(!data.getString("mixpanelToken").isEmpty()) {
+                    String token = data.getString("mixpanelToken");
+                    Util.setDefaults("mixpanelToken", token, mCurrentAct.get());
                 }
             }
 //            if(data.has("psnLoginURL") && !data.isNull("psnLoginURL")) {

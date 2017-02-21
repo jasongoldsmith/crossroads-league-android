@@ -79,7 +79,7 @@
                 conversation:cardBackgroundColor="#203236"
                 app:border="true"
                 app:borderColor="#979797"
-                app:circularBorderWidth="1dp"
+                app:circularBorderWidth="2dp"
                 conversation:cardElevation="0dp"/>
             <RelativeLayout
                 android:layout_width="match_parent"

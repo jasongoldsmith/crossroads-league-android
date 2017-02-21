@@ -392,7 +392,7 @@ public class EventDetailActivity extends BaseActivity implements Observer, Token
         inviteLeaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showGenericError("CAN’T MAKE IT?", "If you turn down this invite, another Guardian will take your spot. Are you sure you want to leave?", "YES, I WANT TO LEAVE", "No, I want to stay", Constants.GENERAL_LEAVE, null, false);
+                showGenericError("CAN’T MAKE IT?", "If you turn down this invite, another Summoner will take your spot. Are you sure you want to leave?", "YES, I WANT TO LEAVE", "No, I want to stay", Constants.GENERAL_LEAVE, null, false);
                 //leaveEvent();
             }
         });
@@ -812,27 +812,27 @@ public class EventDetailActivity extends BaseActivity implements Observer, Token
             String deepLinkMsg = " ";
             String console = getDeepLinkConsoleType();
             if (checkUserIsPlayer()) {
-                deepLinkTitle = "Join My Fireteam";
+                deepLinkTitle = "Join My Team";
                 if (currEvent.getLaunchEventStatus().equalsIgnoreCase("upcoming")) {
-                    deepLinkMsg = getDeepLinkConsoleType() + ": I need " + reqPlayer + " more for " + actName + " on " + upcomingDate + " in the " + grpName + " group";
+                    deepLinkMsg = "I need " + reqPlayer + " more for " + actName + " on " + upcomingDate + " in the " + grpName + " region";
                 }else {
-                    deepLinkMsg = getDeepLinkConsoleType() + ": I need " + reqPlayer + " more for " + actName + " in the " + grpName + " group";
+                    deepLinkMsg = "I need " + reqPlayer + " more for " + actName + " in the " + grpName + " region";
                 }
             } else {
-                deepLinkTitle = "Searching for Guardians";
+                deepLinkTitle = "Searching for Agents";
                 if (currEvent.getLaunchEventStatus().equalsIgnoreCase("upcoming")) {
-                    deepLinkMsg = console + ": This fireteam needs " + reqPlayer + " more for " + actName + " on " + upcomingDate + " in the " + grpName + " group";
+                    deepLinkMsg = "This team needs " + reqPlayer + " more for " + actName + " on " + upcomingDate + " in the " + grpName + " region";
                 }else {
-                    deepLinkMsg = console + ": This fireteam needs " + reqPlayer + " more for " + actName + " in the " + grpName + " group";
+                    deepLinkMsg = "This team needs " + reqPlayer + " more for " + actName + " in the " + grpName + " region";
                 }
             }
 
             if (reqPlayer == 0) {
                 deepLinkTitle = currEvent.getActivityData().getActivitySubtype();
                 if (currEvent.getLaunchEventStatus().equalsIgnoreCase("Upcoming")) {
-                    deepLinkMsg = console + ": Check out this " + actName + " on " + upcomingDate + " in the " + grpName + " group";
+                    deepLinkMsg = "Check out this " + actName + " on " + upcomingDate + " in the " + grpName + " region";
                 } else {
-                    deepLinkMsg = console + ": Check out this " + actName + " in the " + grpName + " group";
+                    deepLinkMsg = "Check out this " + actName + " in the " + grpName + " region";
                 }
             }
 

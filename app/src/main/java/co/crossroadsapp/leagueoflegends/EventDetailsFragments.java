@@ -390,7 +390,7 @@ public class EventDetailsFragments extends Fragment {
                                         } else if (kickCancelBtnText.equalsIgnoreCase("Kick")) {
                                             // call kick api
                                             if (kickCancelReqPrams != null) {
-                                                ((EventDetailActivity) getActivity()).showGenericError("KICK FOR INACTIVITY?", "Removing this Guardian will allow another to join instead.", "KICK", "Cancel", Constants.GENERAL_KICK, kickCancelReqPrams, false);
+                                                ((EventDetailActivity) getActivity()).showGenericError("KICK FOR INACTIVITY?", "Removing this Summoner will allow another to join instead.", "KICK", "Cancel", Constants.GENERAL_KICK, kickCancelReqPrams, false);
                                             }
                                         }
                                     }

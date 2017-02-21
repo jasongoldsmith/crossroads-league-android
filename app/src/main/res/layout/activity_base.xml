@@ -186,7 +186,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/guardian_text"
                     android:textColor="@color/trimbe_white"
-                    android:text="WELCOME, GUARDIAN!"
+                    android:text="WELCOME, SUMMONER!"
                     android:textSize="14sp"
                     android:fontFamily="sans-serif"
                     android:textStyle="bold"

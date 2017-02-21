@@ -36,6 +36,7 @@ public class ChangeEmail extends BaseActivity implements Observer {
     private EditText newEmail;
     private TextView setPswrd;
     private ImageView showPswrdCurrent;
+    private String oldP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,25 +117,32 @@ public class ChangeEmail extends BaseActivity implements Observer {
             @Override
             public void onClick(View v) {
                 if (userId != null) {
-                    v.setEnabled(false);
-                    String oldP = oldPswrd.getText().toString();
-                    String oldE = oldEmail.getText().toString();
-                    //newP = newPswrd.getText().toString();
+                    oldP = oldPswrd.getText().toString();
                     newE = newEmail.getText().toString();
-                    if ((oldP != null && newE != null)) {
-                        if (!oldP.isEmpty() && !newE.isEmpty()) {
-                            RequestParams params = new RequestParams();
-                            params.put("passWord", oldP);
-                            params.put("newEmail", newE);
-                            showProgressBar();
-                            mManager.postChangeEmail(ChangeEmail.this, params);
-                        } else {
-                            showError("Please enter your email/password");
-                        }
+                    if(validateUsernamePassword()) {
+                        v.setEnabled(false);
+                        RequestParams params = new RequestParams();
+                        params.put("passWord", oldP);
+                        params.put("newEmail", newE);
+                        showProgressBar();
+                        mManager.postChangeEmail(ChangeEmail.this, params);
                     }
                 }
             }
         });
+    }
+
+    private boolean validateUsernamePassword() {
+        if ((oldP != null && newE != null && !oldP.isEmpty() && !newE.isEmpty())) {
+            if (!Util.isValidEmail(newE) || oldP.length()<5) {
+                showError("Please enter valid email or password");
+                return false;
+            }
+        } else {
+            showError("Please enter your email or password");
+            return false;
+        }
+        return true;
     }
 
     public void showError(String err) {

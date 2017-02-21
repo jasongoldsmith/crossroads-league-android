@@ -31,7 +31,7 @@ public class Constants {
     public static final String LEGAL = "https://www.crossroadsapp.co/legal";
     public static final String LICENCE = "https://www.crossroadsapp.co/license"; //"http://68.140.240.194:3000/license"
     public static final String TERMS_OF_SERVICE = "http://w3.crossroadsapp.co/lolterms";
-    public static final String PRIVACY_POLICY = "https://w3.crossroadsapp.co/lolprivacy";
+    public static final String PRIVACY_POLICY = "http://w3.crossroadsapp.co/lolprivacy";
     public static final String ADD_COMMENT_URL = "api/v1/a/event/addComment";
     public static final String ADD_CONSOLE_URL = "api/v1/a/user/addConsole";
     public static final String CHANGE_CONSOLE_URL = "api/v1/a/user/changePrimaryConsole";
@@ -166,7 +166,7 @@ public class Constants {
     public static String APP_SHOWPASSWORD = "showPassword";
 
     //urls
-    public static String DEEP_LINK_IMAGE = "https://s3-us-west-1.amazonaws.com/w3.crossroadsapp.co/lol/";
+    public static String DEEP_LINK_IMAGE = "http://w3.crossroadsapp.co/lol/share/branch/v1/";
     public static String BUNGIE_ERROR = "BungieLoginError";
     public static String BUNGIE_CONNECT_ERROR = "BungieConnectError";
     public static String BUNGIE_LEGACY_ERROR = "BungieLegacyConsoleError";

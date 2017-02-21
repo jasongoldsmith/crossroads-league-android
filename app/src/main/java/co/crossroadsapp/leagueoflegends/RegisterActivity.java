@@ -319,7 +319,7 @@ public class RegisterActivity extends BaseActivity implements Observer {
 //                        dialog.setCancelable(false);
                         firstTimeKeyboardOpens=0;
                         showProgressBar();
-                        mManager.postLogin(params, Constants.REGISTER);
+                        mManager.postLogin(params, Constants.REGISTER, username);
                     }
                 }
             }

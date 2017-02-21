@@ -11,8 +11,16 @@ import org.json.JSONObject;
 import java.util.Observable;
 
 import co.crossroadsapp.leagueoflegends.ControlManager;
+import co.crossroadsapp.leagueoflegends.core.BattletagAlreadyTakenException;
+import co.crossroadsapp.leagueoflegends.core.InvalidEmailProvided;
+import co.crossroadsapp.leagueoflegends.core.LeagueLoginException;
+import co.crossroadsapp.leagueoflegends.core.NoUserFoundException;
+import co.crossroadsapp.leagueoflegends.core.TrimbleException;
+import co.crossroadsapp.leagueoflegends.data.GeneralServerError;
+import co.crossroadsapp.leagueoflegends.data.LoginError;
 import co.crossroadsapp.leagueoflegends.data.UserData;
 import co.crossroadsapp.leagueoflegends.utils.Constants;
+import co.crossroadsapp.leagueoflegends.utils.TravellerLog;
 import co.crossroadsapp.leagueoflegends.utils.Util;
 import cz.msebera.android.httpclient.Header;
 
@@ -32,7 +40,7 @@ public class AddNewConsoleNetwork extends Observable {
         ntwrk = NetworkEngine.getmInstance(c);
     }
 
-    public void doAddConsole(RequestParams params) throws JSONException {
+    public void doAddConsole(RequestParams params, final String username) throws JSONException {
         if (Util.isNetworkAvailable(mContext)) {
             ntwrk.post(url, params, new JsonHttpResponseHandler() {
                 @Override
@@ -44,12 +52,33 @@ public class AddNewConsoleNetwork extends Observable {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                    mManager.showErrorDialogue(Util.getErrorMessage(errorResponse));
+                    //new error data structure
+                    TravellerLog.w(this, "onFailure errorResponse: " + errorResponse);
+                    dispatchError(statusCode, username, errorResponse);
+                    //mManager.showErrorDialogue(Util.getErrorMessage(errorResponse));
                 }
             });
         }else {
             Util.createNoNetworkDialogue(mContext);
         }
+    }
+
+    private void dispatchError(int statusCode, String email, JSONObject errorResponse) {
+        LeagueLoginException exception = null;
+        LoginError error = new LoginError();
+        error.toJson(errorResponse);
+            GeneralServerError er = error.getGeneralServerError();
+            if (er != null && er.getCode() == GeneralServerError.NO_USER_FOUND_WITH_THE_EMAIL) {
+                exception = new NoUserFoundException(statusCode, error.getDescription(), error.getGeneralServerError());
+            } else if (er != null && er.getCode() == GeneralServerError.ALREADY_TAKEN){
+                exception = new BattletagAlreadyTakenException(statusCode, error.getDescription(), error.getGeneralServerError());
+            } else {
+                mManager.showErrorDialogue(Util.getErrorMessage(errorResponse));
+                return;
+            }
+            exception.setUserTag(email);
+        setChanged();
+        notifyObservers(exception);
     }
 
     private void postGcm() {

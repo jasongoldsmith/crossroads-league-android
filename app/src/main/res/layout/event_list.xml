@@ -26,8 +26,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/event_top_layout"
-            android:background="@drawable/img_header_bg"
             android:layout_alignParentTop="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_header_bg"
+                android:adjustViewBounds="true"
+                android:layout_alignParentTop="true"/>
 
             <ImageView
                 android:layout_width="32dp"
@@ -74,12 +80,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_top_layout"
             android:layout_above="@+id/create_new_event"
-            android:layout_marginTop="-48dp">
+            android:layout_marginTop="-30dp">
             <android.support.design.widget.TabLayout
                 android:id="@+id/tab_layout"
                 app:tabMode="fixed"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_alignParentTop="true"
                 android:background="@android:color/transparent"
                 android:elevation="0dp"
@@ -154,7 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/error_text"
-                android:text="MISADVENTURE"
+                android:text="ERROR"
                 android:textSize="12sp"
                 android:textColor="#ff0000"
                 android:layout_toRightOf="@+id/error"
@@ -235,7 +241,7 @@
                 android:gravity="center"
                 android:id="@+id/user_profile_layout"
                 android:layout_marginBottom="20dp"
-                android:layout_marginTop="81dp"
+                android:layout_marginTop="89dp"
                 android:layout_centerHorizontal="true">
                 <co.crossroadsapp.leagueoflegends.utils.CircularImageView
                     android:layout_width="96dp"
@@ -319,7 +325,7 @@
             android:id="@+id/change_password"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
-            android:background="@color/logout_btn_background"
+            android:background="@drawable/game_mode_btn_bgnd"
             android:text="@string/change_password"
             android:textSize="14sp"
             android:textColor="@android:color/white"
@@ -340,7 +346,7 @@
             android:layout_marginLeft="37dp"
             android:layout_below="@+id/change_password"
             android:gravity="center"
-            android:background="@color/logout_btn_background"/>
+            android:background="@drawable/game_mode_btn_bgnd"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -355,14 +361,14 @@
             android:layout_marginLeft="37dp"
             android:layout_below="@+id/change_email"
             android:gravity="center"
-            android:background="@color/logout_btn_background"/>
+            android:background="@drawable/game_mode_btn_bgnd"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:id="@+id/logout_btn"
             android:layout_below="@+id/crash_btn"
-            android:background="@color/logout_btn_background"
+            android:background="@drawable/game_mode_btn_bgnd"
             android:text="@string/logout"
             android:textSize="14sp"
             android:textColor="@android:color/white"

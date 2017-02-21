@@ -124,7 +124,8 @@ public class MainActivity extends BaseActivity implements Observer {
 
         //check android version for dev builds
         mManager.getAndroidVersion(this);
-        mManager.getConfig();
+        forwardAfterVersionCheck();
+        //mManager.getConfig();
         TravellerLog.w(this, "MainActivity.onCreate ends...");
     }
 
@@ -268,7 +269,7 @@ public class MainActivity extends BaseActivity implements Observer {
 //                consoles.put("consoleId", u);
                 params.put("userName", u);
                 params.put("passWord", p);
-                mManager.postLogin(params, Constants.LOGIN);
+                mManager.postLogin(params, Constants.LOGIN, u);
             //let user move on to app
 //            Intent regIntent;
 //
@@ -414,9 +415,9 @@ public class MainActivity extends BaseActivity implements Observer {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                TravellerLog.w(this, "Launch login page activity");
-//                console = Constants.XBOX;
-//                launchLogin();
+                //tracking signup
+                Map<String, String> json = new HashMap<String, String>();
+                Util.postTracking(json, null, mManager, Constants.APP_SIGNUP);
                 TravellerLog.w(this, "Launch signup activity");
                     Intent regIntent = new Intent(getApplicationContext(),
                             RegisterActivity.class);

@@ -210,7 +210,7 @@ public class LoginActivity extends BaseActivity implements Observer {
                         //dialog.setCancelable(false);
                         firstTimeKeyboardOpens=0;
                         showProgressBar();
-                        mManager.postLogin(params, Constants.LOGIN);
+                        mManager.postLogin(params, Constants.LOGIN, username);
                     }
                 }
             }
