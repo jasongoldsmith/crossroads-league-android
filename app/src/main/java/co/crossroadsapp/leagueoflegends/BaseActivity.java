@@ -41,7 +41,7 @@ public class BaseActivity extends FragmentActivity {
     private ControlManager mManager = ControlManager.getmInstance();
     protected static ArrayList<PushNotification> notiList;
     protected ArrayList<PushNotification> eventNotiList=new ArrayList<PushNotification>();
-    private boolean appBackground;
+    protected boolean appBackground;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
