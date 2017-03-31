@@ -187,6 +187,32 @@ public class MainActivity extends BaseActivity implements Observer {
         }
     }
 
+    private void launchTutorial() {
+        setContentView(R.layout.activity_tutorial);
+
+        final RecyclerView horizontal_tutorial_view = (RecyclerView) findViewById(R.id.horizontal_tutorial_recycler_view);
+
+        TextView doneWithTutorial = (TextView) findViewById(R.id.done_tutorial);
+        doneWithTutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchMainLayout();
+            }
+        });
+//        ImageView skip = (ImageView) findViewById(R.id.skip_btn);
+//        skip.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                launchMainLayout();
+//            }
+//        });
+        TutorialCardAdapter horizontalTutorialAdapter = new TutorialCardAdapter(MainActivity.this, mManager);
+        CenterZoomLayoutManager horizontalLayoutManagaerTutorial
+                = new CenterZoomLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        horizontal_tutorial_view.setLayoutManager(horizontalLayoutManagaerTutorial);
+        horizontal_tutorial_view.setAdapter(horizontalTutorialAdapter);
+    }
+
     private boolean hideWebviews() {
 //        if(webView!=null && webView.getVisibility()==View.VISIBLE && topBar!=null) {
 //            webView.setVisibility(View.GONE);
@@ -330,6 +356,14 @@ public class MainActivity extends BaseActivity implements Observer {
             public void onClick(View v) {
                 onBackPressed();
 //                intializeLoginWebViews();
+            }
+        });
+
+        TextView tutorial = (TextView) findViewById(R.id.start_tutorial);
+        tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchTutorial();
             }
         });
 
@@ -756,5 +790,9 @@ public class MainActivity extends BaseActivity implements Observer {
             countText.setVisibility(View.VISIBLE);
             countText.setText(userCount);
         }
+    }
+
+    public void performSkip() {
+        launchMainLayout();
     }
 }

@@ -10,7 +10,7 @@
 
     <application
         android:name="io.branch.referral.BranchApp"
-        android:supportsRtl="true"
+        android:allowBackup="true"
         android:icon="@drawable/cr_lol_app_icon"
         android:label="@string/app_name">
         <receiver
@@ -24,6 +24,7 @@
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>

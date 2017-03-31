@@ -69,8 +69,6 @@ public class MyGcmBroadcastReceiver extends FirebaseMessagingService {
 //                mNotificationManager.notify(UUID.randomUUID().hashCode(), mBuilder.build());
             }
             //sendNotification(remoteMessage.getNotification().getBody());
-            Log.d(TAG, "From: " + remoteMessage.getFrom());
-            Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
         }
     }
 

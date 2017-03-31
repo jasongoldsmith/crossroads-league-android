@@ -518,12 +518,29 @@ public class Util {
     }
 
     public static void picassoLoadImageWithoutMeasurement(Context c, ImageView eventIcon, String url, int avatar) {
-        if(c!=null && eventIcon!=null) {
-            Picasso.with(c)
-                    .load(url)
-                    .placeholder(avatar)
-                    .fit().centerCrop()
-                    .into(eventIcon);
+        if (c != null && eventIcon != null) {
+            if(avatar==199) {
+                Picasso.with(c)
+                        .load(url)
+                        .noFade().fit().centerCrop()
+                        .into(eventIcon, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                TravellerLog.w(TAG, "success");
+                            }
+
+                            @Override
+                            public void onError() {
+                                TravellerLog.w(TAG, "error");
+                            }
+                        });
+            } else {
+                Picasso.with(c)
+                        .load(url)
+                        .placeholder(avatar)
+                        .noFade().fit()
+                        .into(eventIcon);
+            }
         }
     }
 
@@ -768,5 +785,25 @@ public class Util {
             list.add(value);
         }
         return list;
+    }
+
+    public static void picassoLoadIconPX(Context c, ImageView eventIcon, String url, int height, int width) {
+        if (c != null && eventIcon != null) {
+            if (url != null) {
+                Picasso.with(c).load(url)
+                        .resize(width, height)
+                        .into(eventIcon, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                TravellerLog.w(TAG, "success");
+                            }
+
+                            @Override
+                            public void onError() {
+                                TravellerLog.w(TAG, "error");
+                            }
+                        });
+            }
+        }
     }
 }

@@ -73,6 +73,7 @@
     <color name="hint_background">#80304043</color>
     <color name="support_email">#d29100</color>
     <color name="current_email">#c67f06</color>
+    <color name="join_btn_color">#fa9400</color>
 
     <color name="event_detail_fireteam_cardbackground">#8040555b</color>
     <color name="eventdetail_clan">#1d3137</color>

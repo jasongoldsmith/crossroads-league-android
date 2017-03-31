@@ -19,6 +19,7 @@ import android.util.DisplayMetrics;
 import co.crossroadsapp.leagueoflegends.data.ActivityData;
 import co.crossroadsapp.leagueoflegends.data.ActivityList;
 import co.crossroadsapp.leagueoflegends.data.AppVersion;
+import co.crossroadsapp.leagueoflegends.data.ConfigData;
 import co.crossroadsapp.leagueoflegends.data.EventData;
 import co.crossroadsapp.leagueoflegends.data.EventList;
 import co.crossroadsapp.leagueoflegends.data.GroupData;
@@ -51,6 +52,7 @@ import co.crossroadsapp.leagueoflegends.network.ReviewCardUpdate;
 import co.crossroadsapp.leagueoflegends.network.TrackingNetwork;
 import co.crossroadsapp.leagueoflegends.network.VerifyConsoleIDNetwork;
 import co.crossroadsapp.leagueoflegends.network.postGcmNetwork;
+import co.crossroadsapp.leagueoflegends.token.CompletedOnBoardingNetwork;
 import co.crossroadsapp.leagueoflegends.utils.Util;
 import co.crossroadsapp.leagueoflegends.network.LoginNetwork;
 import co.crossroadsapp.leagueoflegends.utils.Constants;
@@ -139,6 +141,7 @@ public class ControlManager implements Observer{
     private ReviewCardData reviewCard;
     private ReviewCardUpdate reviewCardUpdate;
     private Map<String, Object> regionMap;
+    private ConfigData mConfigData;
 
     public ControlManager() {
     }
@@ -1191,8 +1194,14 @@ public class ControlManager implements Observer{
         return Util.getDefaults("xboxLoginURL", mCurrentAct.get());
     }
 
+    public ConfigData getmConfigData() {
+        return mConfigData;
+    }
+
     public void parseAndSaveConfigUrls(JSONObject data) {
         try {
+            mConfigData = new ConfigData();
+            mConfigData.parseData(data);
             if(data.has("LolRegions") && !data.isNull("LolRegions")) {
                 JSONObject jsonData = data.optJSONObject("LolRegions");
                 if (jsonData!=null) {
@@ -1305,6 +1314,19 @@ public class ControlManager implements Observer{
 
     public ReviewCardData getReviewCard() {
         return reviewCard;
+    }
+
+    public void postTutorialDone(TutorialActivity activity) {
+        if(mConfigData!=null && mConfigData.getOnBoardingScreens()!=null && mConfigData.getOnBoardingScreens().getRequired()!=null && mConfigData.getOnBoardingScreens().getRequired().get(0)!=null && mConfigData.getOnBoardingScreens().getRequired().get(0).getLanguage()!=null) {
+            String lang = mConfigData.getOnBoardingScreens().getRequired().get(0).getLanguage();
+            if(!lang.isEmpty()) {
+                RequestParams params = new RequestParams();
+                params.put("lang_code", lang);
+                CompletedOnBoardingNetwork onBoardingNetwork = new CompletedOnBoardingNetwork(activity);
+                onBoardingNetwork.addObserver(activity);
+                onBoardingNetwork.postOnBoardingCompleted(params);
+            }
+        }
     }
 
 }

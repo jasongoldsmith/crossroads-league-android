@@ -244,6 +244,8 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
             }
         }
 
+        decidetoShowTutorial();
+
         //hemlet update
         userProfileDrawer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -598,6 +600,14 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
         checkIfExternalDeepLinkPresent();
 
         setGroupImageUrl();
+    }
+
+    private void decidetoShowTutorial() {
+        if(user!=null && !user.getHasCompletedOnBoarding()) {
+            Intent regIntent = new Intent(this,
+                    TutorialActivity.class);
+            startActivity(regIntent);
+        }
     }
 
     private void checkPrivacyDialoge() {

@@ -29,6 +29,7 @@ public class UserData {
     private boolean maxReported = false;
     private int commentsReported;
     private String region=null;
+    private boolean hasCompletedOnBoarding;
 
     public UserData() {
         consoles = new ArrayList<ConsoleData>();
@@ -163,6 +164,14 @@ public class UserData {
         return this.region;
     }
 
+    public void setHasCompletedOnBoarding(boolean t) {
+        hasCompletedOnBoarding = t;
+    }
+
+    public boolean getHasCompletedOnBoarding() {
+        return this.hasCompletedOnBoarding;
+    }
+
     public void toJson(JSONObject json) {
         try {
             if (json.has("value") && !json.isNull("value")) {
@@ -185,6 +194,11 @@ public class UserData {
                     if (jsonData.has("hasReachedMaxReportedComments") && !jsonData.isNull("hasReachedMaxReportedComments")) {
                         boolean maxRepo = jsonData.getBoolean("hasReachedMaxReportedComments");
                         setMaxReported(maxRepo);
+                    }
+
+                    if (jsonData.has("hasCompletedOnBoarding") && !jsonData.isNull("hasCompletedOnBoarding")) {
+                        boolean t = jsonData.getBoolean("hasCompletedOnBoarding");
+                        setHasCompletedOnBoarding(t);
                     }
 
                 if (jsonData.has("clanId") && !jsonData.isNull("clanId")) {
